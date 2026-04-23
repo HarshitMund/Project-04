@@ -88,7 +88,7 @@ public class RoleModel {
 			conn.setAutoCommit(false);
 
 			PreparedStatement pstmt = conn.prepareStatement(
-					"delete from st_role set name = ?, description = ?, created_by = ?, modified_by = ?, created_datetime = ?, modified_datetime = ? where id = ?");
+					"update st_role set name = ?, description = ?, created_by = ?, modified_by = ?, created_datetime = ?, modified_datetime = ? where id = ?");
 			pstmt.setString(1, bean.getName());
 			pstmt.setString(2, bean.getDescription());
 			pstmt.setString(3, bean.getCreatedBy());
@@ -98,7 +98,6 @@ public class RoleModel {
 			pstmt.setLong(7, bean.getId());
 
 			pstmt.executeUpdate();
-
 			pstmt.close();
 			conn.commit();
 		} catch (Exception e) {
