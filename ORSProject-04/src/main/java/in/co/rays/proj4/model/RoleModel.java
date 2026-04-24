@@ -260,4 +260,9 @@ public class RoleModel {
 
 		return list;
 	}
+	
+	public List<RoleBean> list() throws ApplicationException {
+		return search(null, 0, 0);
+	}
+	
 }

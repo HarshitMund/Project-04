@@ -14,14 +14,15 @@ import in.co.rays.proj4.model.RoleModel;
 
 public class TestRoleModel {
 
-	public static void main(String[] args) throws ParseException {
+	public static void main(String[] args) throws ParseException, ApplicationException {
 
 //		testAdd();
 //		testUpdate();
 //		testDelete();
 //		testFindByPk();
 //		testFindByName();
-		testSearch();
+//		testSearch();
+		testList();
 
 	}
 
@@ -127,6 +128,32 @@ public class TestRoleModel {
 			RoleBean bean = new RoleBean();
 
 			list = model.search(bean, 1, 5);
+
+			Iterator<RoleBean> it = list.iterator();
+			while (it.hasNext()) {
+				bean = it.next();
+
+				System.out.print(bean.getId());
+				System.out.print("\t" + bean.getName());
+				System.out.print("\t" + bean.getDescription());
+				System.out.print("\t" + bean.getCreatedBy());
+				System.out.print("\t" + bean.getModifiedBy());
+				System.out.print("\t" + bean.getCreatedDatatime());
+				System.out.println("\t" + bean.getModifiedDatetime());
+			}
+		} catch (ApplicationException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void testList() throws ParseException {
+
+		try {
+			List<RoleBean> list = new ArrayList<RoleBean>();
+			RoleModel model = new RoleModel();
+			RoleBean bean = new RoleBean();
+
+			list = model.list();
 
 			Iterator<RoleBean> it = list.iterator();
 			while (it.hasNext()) {
