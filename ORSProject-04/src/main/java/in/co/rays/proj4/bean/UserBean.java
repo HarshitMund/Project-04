@@ -11,7 +11,7 @@ public class UserBean extends BaseBean {
 	private String confirmPassword;
 	private Date dob;
 	private String mobileNo;
-	private long rollId;
+	private long roleId;
 	private String gender;
 
 	public String getFirstName() {
@@ -70,12 +70,12 @@ public class UserBean extends BaseBean {
 		this.mobileNo = mobileNo;
 	}
 
-	public long getRollId() {
-		return rollId;
+	public long getRoleId() {
+		return roleId;
 	}
 
-	public void setRollId(long rollId) {
-		this.rollId = rollId;
+	public void setRoleId(long roleId) {
+		this.roleId = roleId;
 	}
 
 	public String getGender() {

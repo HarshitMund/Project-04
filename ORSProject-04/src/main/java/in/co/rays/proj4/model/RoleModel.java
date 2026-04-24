@@ -3,6 +3,8 @@ package in.co.rays.proj4.model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.mchange.util.DuplicateElementException;
 
@@ -113,7 +115,7 @@ public class RoleModel {
 		}
 
 	}
-	
+
 	public void delete(RoleBean bean) throws DuplicateElementException, ApplicationException {
 
 		Connection conn = null;
@@ -122,8 +124,7 @@ public class RoleModel {
 			conn = JDBCDataSource.getConnection();
 			conn.setAutoCommit(false);
 
-			PreparedStatement pstmt = conn.prepareStatement(
-					"delete from st_role where id = ?");
+			PreparedStatement pstmt = conn.prepareStatement("delete from st_role where id = ?");
 			pstmt.setLong(1, bean.getId());
 
 			pstmt.executeUpdate();
@@ -142,5 +143,121 @@ public class RoleModel {
 			JDBCDataSource.closeConnection(conn);
 		}
 
+	}
+
+	public RoleBean findByPk(long pk) throws ApplicationException {
+
+		RoleBean bean = new RoleBean();
+		Connection conn = null;
+
+		try {
+			conn = JDBCDataSource.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement("select * from st_role where id = ?");
+			pstmt.setLong(1, pk);
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				bean = new RoleBean();
+
+				bean.setId(rs.getLong(1));
+				bean.setName(rs.getString(2));
+				bean.setDescription(rs.getString(3));
+				bean.setCreatedBy(rs.getString(4));
+				bean.setModifiedBy(rs.getString(5));
+				bean.setCreatedDatatime(rs.getTimestamp(6));
+				bean.setModifiedDatetime(rs.getTimestamp(7));
+			}
+			rs.close();
+			pstmt.close();
+		} catch (Exception e) {
+			throw new ApplicationException("Exception: Exception in getting user by pk");
+		} finally {
+			JDBCDataSource.closeConnection(conn);
+		}
+
+		return bean;
+	}
+
+	public RoleBean findByName(String name) throws ApplicationException {
+
+		RoleBean bean = null;
+		Connection conn = null;
+
+		try {
+			conn = JDBCDataSource.getConnection();
+
+			PreparedStatement pstmt = conn.prepareStatement("select * from st_role where name = ?");
+			pstmt.setString(1, name);
+
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				bean = new RoleBean();
+
+				bean.setId(rs.getLong(1));
+				bean.setName(rs.getString(2));
+				bean.setDescription(rs.getString(3));
+				bean.setCreatedBy(rs.getString(4));
+				bean.setModifiedBy(rs.getString(5));
+				bean.setCreatedDatatime(rs.getTimestamp(6));
+				bean.setModifiedDatetime(rs.getTimestamp(7));
+			}
+			rs.close();
+			pstmt.close();
+		} catch (Exception e) {
+			throw new ApplicationException("Exception: Exception in getting user by role");
+		} finally {
+			JDBCDataSource.closeConnection(conn);
+		}
+
+		return bean;
+	}
+
+	public List<RoleBean> search(RoleBean bean, int pageNo, int pageSize) throws ApplicationException {
+
+		List<RoleBean> list = new ArrayList<RoleBean>();
+		Connection conn = null;
+
+		StringBuffer sb = new StringBuffer("select * from st_role where 1 = 1");
+
+		if (bean != null) {
+			if (bean.getId() > 0)
+				sb.append(" and id = " + bean.getId());
+
+			if (bean.getName() != null && bean.getName().length() > 0)
+				sb.append(" and name like '" + bean.getName() + "%'");
+
+			if (bean.getDescription() != null && bean.getDescription().length() > 0)
+				sb.append(" and description like '" + bean.getDescription() + "%'");
+		}
+
+		if (pageSize > 0) {
+			pageNo = (pageNo - 1) * pageSize;
+			sb.append(" limit " + pageNo + ", " + pageSize);
+		}
+
+		try {
+			conn = JDBCDataSource.getConnection();
+
+			PreparedStatement pstmt = conn.prepareStatement(sb.toString());
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				bean = new RoleBean();
+				bean.setId(rs.getLong(1));
+				bean.setName(rs.getString(2));
+				bean.setDescription(rs.getString(3));
+				bean.setCreatedBy(rs.getString(4));
+				bean.setModifiedBy(rs.getString(5));
+				bean.setCreatedDatatime(rs.getTimestamp(6));
+				bean.setModifiedDatetime(rs.getTimestamp(7));
+				list.add(bean);
+			}
+			rs.close();
+			pstmt.close();
+		} catch (Exception e) {
+			throw new ApplicationException("Exception: Exception in search role");
+		} finally {
+			JDBCDataSource.closeConnection(conn);
+		}
+
+		return list;
 	}
 }
