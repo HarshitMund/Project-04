@@ -289,7 +289,7 @@ public class UserModel {
 				sb.append(" and password like '" + bean.getPassword() + "%'");
 
 			if (bean.getDob() != null && bean.getDob().getDate() > 0)
-				sb.append(" and dob = " + bean.getDob());
+				sb.append(" and dob like '" + new Date(bean.getDob().getTime()) + "%'");
 
 			if (bean.getMobileNo() != null && bean.getMobileNo().length() > 0)
 				sb.append(" and mobile_no like '" + bean.getMobileNo() + "%'");

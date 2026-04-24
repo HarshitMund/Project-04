@@ -170,6 +170,9 @@ public class TestUserModel {
 		try {
 			UserBean bean = new UserBean();
 			List<UserBean> list = new ArrayList<UserBean>();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			
+			bean.setDob(sdf.parse("2000-02-02"));
 
 			list = model.search(bean, 1, 5);
 			Iterator<UserBean> it = list.iterator();
