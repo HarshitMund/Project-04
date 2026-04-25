@@ -3,6 +3,8 @@ package in.co.rays.proj4.model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import in.co.rays.proj4.bean.MarksheetBean;
 import in.co.rays.proj4.bean.StudentBean;
@@ -148,4 +150,173 @@ public class MarksheetModel {
 		}
 	}
 
+	public MarksheetBean findByPk(long pk) throws ApplicationException {
+
+		MarksheetBean bean = null;
+		Connection conn = null;
+
+		try {
+			conn = JDBCDataSource.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement("select * from st_marksheet where id = ?");
+			pstmt.setLong(1, pk);
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				bean = new MarksheetBean();
+				bean.setId(rs.getLong(1));
+				bean.setRollNo(rs.getString(2));
+				bean.setStudentId(rs.getLong(3));
+				bean.setName(rs.getString(4));
+				bean.setPhysics(rs.getInt(5));
+				bean.setChemistry(rs.getInt(6));
+				bean.setMaths(rs.getInt(7));
+				bean.setCreatedBy(rs.getString(8));
+				bean.setModifiedBy(rs.getString(9));
+				bean.setCreatedDatatime(rs.getTimestamp(10));
+				bean.setModifiedDatetime(rs.getTimestamp(11));
+			}
+			rs.close();
+			pstmt.close();
+		} catch (Exception e) {
+			throw new ApplicationException("Exception: Exception in getting marksheet by PK");
+		} finally {
+			JDBCDataSource.closeConnection(conn);
+		}
+
+		return bean;
+	}
+
+	public MarksheetBean findByRollNo(String rollNo) throws ApplicationException {
+
+		MarksheetBean bean = null;
+		Connection conn = null;
+
+		try {
+			conn = JDBCDataSource.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement("select * from st_marksheet where roll_no = ?");
+			pstmt.setString(1, rollNo);
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				bean = new MarksheetBean();
+				bean.setId(rs.getLong(1));
+				bean.setRollNo(rs.getString(2));
+				bean.setStudentId(rs.getLong(3));
+				bean.setName(rs.getString(4));
+				bean.setPhysics(rs.getInt(5));
+				bean.setChemistry(rs.getInt(6));
+				bean.setMaths(rs.getInt(7));
+				bean.setCreatedBy(rs.getString(8));
+				bean.setModifiedBy(rs.getString(9));
+				bean.setCreatedDatatime(rs.getTimestamp(10));
+				bean.setModifiedDatetime(rs.getTimestamp(11));
+			}
+			rs.close();
+			pstmt.close();
+		} catch (Exception e) {
+			throw new ApplicationException("Exception: Exception in getting marksheet by Roll no");
+		} finally {
+			JDBCDataSource.closeConnection(conn);
+		}
+
+		return bean;
+	}
+
+	public List<MarksheetBean> search(MarksheetBean bean, int pageNo, int pageSize) throws ApplicationException {
+
+		List<MarksheetBean> list = new ArrayList<MarksheetBean>();
+		Connection conn = null;
+
+		StringBuffer sb = new StringBuffer("select * from st_marksheet where 1 = 1");
+
+		if (bean != null) {
+			if (bean.getId() > 0)
+				sb.append(" and id = " + bean.getId());
+
+			if (bean.getRollNo() != null && bean.getRollNo().length() > 0)
+				sb.append(" and roll_no like '" + bean.getRollNo() + "%'");
+
+			if (bean.getName() != null && bean.getName().length() > 0)
+				sb.append(" and name like '" + bean.getName() + "%'");
+
+			if (bean.getPhysics() > 0)
+				sb.append(" and physics = " + bean.getPhysics());
+
+			if (bean.getChemistry() > 0)
+				sb.append(" and chemistry = " + bean.getChemistry());
+
+			if (bean.getMaths() > 0)
+				sb.append(" and maths = " + bean.getMaths());
+		}
+
+		if (pageSize > 0) {
+			pageNo = (pageNo - 1) * pageSize;
+			sb.append(" limit " + pageNo + ", " + pageSize);
+		}
+
+		try {
+			conn = JDBCDataSource.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sb.toString());
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				bean = new MarksheetBean();
+				bean.setId(rs.getLong(1));
+				bean.setRollNo(rs.getString(2));
+				bean.setStudentId(rs.getLong(3));
+				bean.setName(rs.getString(4));
+				bean.setPhysics(rs.getInt(5));
+				bean.setChemistry(rs.getInt(6));
+				bean.setMaths(rs.getInt(7));
+				bean.setCreatedBy(rs.getString(8));
+				bean.setModifiedBy(rs.getString(9));
+				bean.setCreatedDatatime(rs.getTimestamp(10));
+				bean.setModifiedDatetime(rs.getTimestamp(11));
+				list.add(bean);
+			}
+			rs.close();
+			pstmt.close();
+		} catch (Exception e) {
+			throw new ApplicationException("Exception: Exception in search marksheet");
+		} finally {
+			JDBCDataSource.closeConnection(conn);
+		}
+		return list;
+	}
+
+	public List<MarksheetBean> getMeritList(int pageNo, int pageSize) throws ApplicationException {
+
+		List<MarksheetBean> list = new ArrayList<MarksheetBean>();
+
+		StringBuffer sb = new StringBuffer(
+				"select id, roll_no, name, physics, chemistry, maths, (physics + chemistry + maths) as total from st_marksheet where physics > 33 and "
+						+ "chemistry > 33 and maths > 33 order by total desc");
+
+		if (pageSize > 0) {
+			pageNo = (pageNo - 1) * pageSize;
+			sb.append(" limit " + pageNo + ", " + pageSize);
+		}
+
+		Connection conn = null;
+
+		try {
+			conn = JDBCDataSource.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sb.toString());
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				MarksheetBean bean = new MarksheetBean();
+				bean.setId(rs.getLong(1));
+				bean.setRollNo(rs.getString(2));
+				bean.setName(rs.getString(3));
+				bean.setPhysics(rs.getInt(4));
+				bean.setChemistry(rs.getInt(5));
+				bean.setMaths(rs.getInt(6));
+				list.add(bean);
+			}
+			rs.close();
+			pstmt.close();
+		} catch (Exception e) {
+			throw new ApplicationException("Exception in getting merit list of Marksheet");
+		} finally {
+			JDBCDataSource.closeConnection(conn);
+		}
+		return list;
+	}
 }
