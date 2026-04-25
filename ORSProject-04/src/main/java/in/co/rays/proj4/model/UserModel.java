@@ -59,7 +59,7 @@ public class UserModel {
 			pstmt.setString(9, bean.getGender());
 			pstmt.setString(10, bean.getCreatedBy());
 			pstmt.setString(11, bean.getModifiedBy());
-			pstmt.setTimestamp(12, bean.getCreatedDatatime());
+			pstmt.setTimestamp(12, bean.getCreatedDatetime());
 			pstmt.setTimestamp(13, bean.getModifiedDatetime());
 
 			pstmt.executeUpdate();
@@ -101,7 +101,7 @@ public class UserModel {
 			pstmt.setString(8, bean.getGender());
 			pstmt.setString(9, bean.getCreatedBy());
 			pstmt.setString(10, bean.getModifiedBy());
-			pstmt.setTimestamp(11, bean.getCreatedDatatime());
+			pstmt.setTimestamp(11, bean.getCreatedDatetime());
 			pstmt.setTimestamp(12, bean.getModifiedDatetime());
 			pstmt.setLong(13, bean.getId());
 
@@ -172,7 +172,7 @@ public class UserModel {
 				bean.setGender(rs.getString(9));
 				bean.setCreatedBy(rs.getString(10));
 				bean.setModifiedBy(rs.getString(11));
-				bean.setCreatedDatatime(rs.getTimestamp(12));
+				bean.setCreatedDatetime(rs.getTimestamp(12));
 				bean.setModifiedDatetime(rs.getTimestamp(13));
 			}
 			rs.close();
@@ -210,7 +210,7 @@ public class UserModel {
 				bean.setGender(rs.getString(9));
 				bean.setCreatedBy(rs.getString(10));
 				bean.setModifiedBy(rs.getString(11));
-				bean.setCreatedDatatime(rs.getTimestamp(12));
+				bean.setCreatedDatetime(rs.getTimestamp(12));
 				bean.setModifiedDatetime(rs.getTimestamp(13));
 			}
 			rs.close();
@@ -250,7 +250,7 @@ public class UserModel {
 				bean.setGender(rs.getString(9));
 				bean.setCreatedBy(rs.getString(10));
 				bean.setModifiedBy(rs.getString(11));
-				bean.setCreatedDatatime(rs.getTimestamp(12));
+				bean.setCreatedDatetime(rs.getTimestamp(12));
 				bean.setModifiedDatetime(rs.getTimestamp(13));
 			}
 			rs.close();
@@ -323,7 +323,7 @@ public class UserModel {
 				bean.setGender(rs.getString(9));
 				bean.setCreatedBy(rs.getString(10));
 				bean.setModifiedBy(rs.getString(11));
-				bean.setCreatedDatatime(rs.getTimestamp(12));
+				bean.setCreatedDatetime(rs.getTimestamp(12));
 				bean.setModifiedDatetime(rs.getTimestamp(13));
 				list.add(bean);
 			}

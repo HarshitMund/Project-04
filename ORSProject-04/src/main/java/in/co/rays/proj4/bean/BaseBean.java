@@ -7,7 +7,7 @@ public class BaseBean {
 	protected long id;
 	protected String createdBy;
 	protected String modifiedBy;
-	protected Timestamp createdDatatime;
+	protected Timestamp createdDatetime;
 	protected Timestamp modifiedDatetime;
 
 	public long getId() {
@@ -34,12 +34,12 @@ public class BaseBean {
 		this.modifiedBy = modifiedBy;
 	}
 
-	public Timestamp getCreatedDatatime() {
-		return createdDatatime;
+	public Timestamp getCreatedDatetime() {
+		return createdDatetime;
 	}
 
-	public void setCreatedDatatime(Timestamp createdDatatime) {
-		this.createdDatatime = createdDatatime;
+	public void setCreatedDatetime(Timestamp createdDatetime) {
+		this.createdDatetime = createdDatetime;
 	}
 
 	public Timestamp getModifiedDatetime() {

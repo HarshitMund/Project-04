@@ -52,7 +52,7 @@ public class CourseModel {
 			pstmt.setString(4, bean.getDescription());
 			pstmt.setString(5, bean.getCreatedBy());
 			pstmt.setString(6, bean.getModifiedBy());
-			pstmt.setTimestamp(7, bean.getCreatedDatatime());
+			pstmt.setTimestamp(7, bean.getCreatedDatetime());
 			pstmt.setTimestamp(8, bean.getModifiedDatetime());
 
 			pstmt.executeUpdate();
@@ -88,7 +88,7 @@ public class CourseModel {
 			pstmt.setString(3, bean.getDescription());
 			pstmt.setString(4, bean.getCreatedBy());
 			pstmt.setString(5, bean.getModifiedBy());
-			pstmt.setTimestamp(6, bean.getCreatedDatatime());
+			pstmt.setTimestamp(6, bean.getCreatedDatetime());
 			pstmt.setTimestamp(7, bean.getModifiedDatetime());
 			pstmt.setLong(8, bean.getId());
 
@@ -154,7 +154,7 @@ public class CourseModel {
 				bean.setDescription(rs.getString(4));
 				bean.setCreatedBy(rs.getString(5));
 				bean.setModifiedBy(rs.getString(6));
-				bean.setCreatedDatatime(rs.getTimestamp(7));
+				bean.setCreatedDatetime(rs.getTimestamp(7));
 				bean.setModifiedDatetime(rs.getTimestamp(8));
 			}
 			rs.close();
@@ -186,7 +186,7 @@ public class CourseModel {
 				bean.setDescription(rs.getString(4));
 				bean.setCreatedBy(rs.getString(5));
 				bean.setModifiedBy(rs.getString(6));
-				bean.setCreatedDatatime(rs.getTimestamp(7));
+				bean.setCreatedDatetime(rs.getTimestamp(7));
 				bean.setModifiedDatetime(rs.getTimestamp(8));
 			}
 			rs.close();
@@ -238,7 +238,7 @@ public class CourseModel {
 				bean.setDescription(rs.getString(4));
 				bean.setCreatedBy(rs.getString(5));
 				bean.setModifiedBy(rs.getString(6));
-				bean.setCreatedDatatime(rs.getTimestamp(7));
+				bean.setCreatedDatetime(rs.getTimestamp(7));
 				bean.setModifiedDatetime(rs.getTimestamp(8));
 				list.add(bean);
 			}

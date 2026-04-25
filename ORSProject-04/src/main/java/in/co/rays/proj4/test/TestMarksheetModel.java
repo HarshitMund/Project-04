@@ -38,7 +38,7 @@ public class TestMarksheetModel {
 		bean.setMaths(43);
 		bean.setCreatedBy("Admin");
 		bean.setModifiedBy("Admin");
-		bean.setCreatedDatatime(new Timestamp(new Date().getTime()));
+		bean.setCreatedDatetime(new Timestamp(new Date().getTime()));
 		bean.setModifiedDatetime(new Timestamp(new Date().getTime()));
 
 		long id = model.add(bean);
@@ -57,7 +57,7 @@ public class TestMarksheetModel {
 		bean.setMaths(33);
 		bean.setCreatedBy("Admin");
 		bean.setModifiedBy("Admin");
-		bean.setCreatedDatatime(new Timestamp(new Date().getTime()));
+		bean.setCreatedDatetime(new Timestamp(new Date().getTime()));
 		bean.setModifiedDatetime(new Timestamp(new Date().getTime()));
 
 		model.update(bean);
@@ -85,7 +85,7 @@ public class TestMarksheetModel {
 		System.out.println(bean.getMaths());
 		System.out.println(bean.getCreatedBy());
 		System.out.println(bean.getModifiedBy());
-		System.out.println(bean.getCreatedDatatime());
+		System.out.println(bean.getCreatedDatetime());
 		System.out.println(bean.getModifiedDatetime());
 
 	}
@@ -103,7 +103,7 @@ public class TestMarksheetModel {
 		System.out.println(bean.getMaths());
 		System.out.println(bean.getCreatedBy());
 		System.out.println(bean.getModifiedBy());
-		System.out.println(bean.getCreatedDatatime());
+		System.out.println(bean.getCreatedDatetime());
 		System.out.println(bean.getModifiedDatetime());
 
 	}
@@ -127,7 +127,7 @@ public class TestMarksheetModel {
 			System.out.print("\t" + bean.getMaths());
 			System.out.print("\t" + bean.getCreatedBy());
 			System.out.print("\t" + bean.getModifiedBy());
-			System.out.print("\t" + bean.getCreatedDatatime());
+			System.out.print("\t" + bean.getCreatedDatetime());
 			System.out.println("\t" + bean.getModifiedDatetime());
 		}
 

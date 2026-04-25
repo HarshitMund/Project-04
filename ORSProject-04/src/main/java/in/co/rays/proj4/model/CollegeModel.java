@@ -55,7 +55,7 @@ public class CollegeModel {
 			pstmt.setString(6, bean.getPhoneNo());
 			pstmt.setString(7, bean.getCreatedBy());
 			pstmt.setString(8, bean.getModifiedBy());
-			pstmt.setTimestamp(9, bean.getCreatedDatatime());
+			pstmt.setTimestamp(9, bean.getCreatedDatetime());
 			pstmt.setTimestamp(10, bean.getModifiedDatetime());
 
 			pstmt.executeUpdate();
@@ -95,7 +95,7 @@ public class CollegeModel {
 			pstmt.setString(5, bean.getPhoneNo());
 			pstmt.setString(6, bean.getCreatedBy());
 			pstmt.setString(7, bean.getModifiedBy());
-			pstmt.setTimestamp(8, bean.getCreatedDatatime());
+			pstmt.setTimestamp(8, bean.getCreatedDatetime());
 			pstmt.setTimestamp(9, bean.getModifiedDatetime());
 			pstmt.setLong(10, bean.getId());
 
@@ -163,7 +163,7 @@ public class CollegeModel {
 				bean.setPhoneNo(rs.getString(6));
 				bean.setCreatedBy(rs.getString(7));
 				bean.setModifiedBy(rs.getString(8));
-				bean.setCreatedDatatime(rs.getTimestamp(9));
+				bean.setCreatedDatetime(rs.getTimestamp(9));
 				bean.setModifiedDatetime(rs.getTimestamp(10));
 			}
 
@@ -199,7 +199,7 @@ public class CollegeModel {
 				bean.setPhoneNo(rs.getString(6));
 				bean.setCreatedBy(rs.getString(7));
 				bean.setModifiedBy(rs.getString(8));
-				bean.setCreatedDatatime(rs.getTimestamp(9));
+				bean.setCreatedDatetime(rs.getTimestamp(9));
 				bean.setModifiedDatetime(rs.getTimestamp(10));
 			}
 
@@ -260,7 +260,7 @@ public class CollegeModel {
 				bean.setPhoneNo(rs.getString(6));
 				bean.setCreatedBy(rs.getString(7));
 				bean.setModifiedBy(rs.getString(8));
-				bean.setCreatedDatatime(rs.getTimestamp(9));
+				bean.setCreatedDatetime(rs.getTimestamp(9));
 				bean.setModifiedDatetime(rs.getTimestamp(10));
 				list.add(bean);
 			}

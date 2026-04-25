@@ -34,7 +34,7 @@ public class TestCourseModel {
 		bean.setDuration("4 Year");
 		bean.setCreatedBy("admin");
 		bean.setModifiedBy("admin");
-		bean.setCreatedDatatime(new Timestamp(new Date().getTime()));
+		bean.setCreatedDatetime(new Timestamp(new Date().getTime()));
 		bean.setModifiedDatetime(new Timestamp(new Date().getTime()));
 
 		long id = model.add(bean);
@@ -51,7 +51,7 @@ public class TestCourseModel {
 		bean.setDuration("4 Year");
 		bean.setCreatedBy("System");
 		bean.setModifiedBy("System");
-		bean.setCreatedDatatime(new Timestamp(new Date().getTime()));
+		bean.setCreatedDatetime(new Timestamp(new Date().getTime()));
 		bean.setModifiedDatetime(new Timestamp(new Date().getTime()));
 
 		model.update(bean);
@@ -76,8 +76,8 @@ public class TestCourseModel {
 		System.out.println(bean.getDescription());
 		System.out.println(bean.getCreatedBy());
 		System.out.println(bean.getModifiedBy());
-		System.out.println(bean.getCreatedDatatime());
-		System.out.println(bean.getCreatedDatatime());
+		System.out.println(bean.getCreatedDatetime());
+		System.out.println(bean.getModifiedDatetime());
 	}
 
 	public static void testFindByName() throws ApplicationException {
@@ -90,8 +90,8 @@ public class TestCourseModel {
 		System.out.println(bean.getDescription());
 		System.out.println(bean.getCreatedBy());
 		System.out.println(bean.getModifiedBy());
-		System.out.println(bean.getCreatedDatatime());
-		System.out.println(bean.getCreatedDatatime());
+		System.out.println(bean.getCreatedDatetime());
+		System.out.println(bean.getModifiedDatetime());
 	}
 
 	public static void testSearch() throws ApplicationException {
@@ -110,8 +110,8 @@ public class TestCourseModel {
 			System.out.print("\t" + bean.getDescription());
 			System.out.print("\t" + bean.getCreatedBy());
 			System.out.print("\t" + bean.getModifiedBy());
-			System.out.print("\t" + bean.getCreatedDatatime());
-			System.out.println("\t" + bean.getCreatedDatatime());
+			System.out.print("\t" + bean.getCreatedDatetime());
+			System.out.println("\t" + bean.getModifiedDatetime());
 		}
 	}
 }

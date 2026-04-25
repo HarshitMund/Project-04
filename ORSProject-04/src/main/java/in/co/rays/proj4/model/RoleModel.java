@@ -60,7 +60,7 @@ public class RoleModel {
 			pstmt.setString(3, bean.getDescription());
 			pstmt.setString(4, bean.getCreatedBy());
 			pstmt.setString(5, bean.getModifiedBy());
-			pstmt.setTimestamp(6, bean.getCreatedDatatime());
+			pstmt.setTimestamp(6, bean.getCreatedDatetime());
 			pstmt.setTimestamp(7, bean.getModifiedDatetime());
 
 			pstmt.executeUpdate();
@@ -90,12 +90,13 @@ public class RoleModel {
 			conn.setAutoCommit(false);
 
 			PreparedStatement pstmt = conn.prepareStatement(
-					"update st_role set name = ?, description = ?, created_by = ?, modified_by = ?, created_datetime = ?, modified_datetime = ? where id = ?");
+					"update st_role set name = ?, description = ?, created_by = ?, modified_by = ?, created_datetime = ?, "
+					+ "modified_datetime = ? where id = ?");
 			pstmt.setString(1, bean.getName());
 			pstmt.setString(2, bean.getDescription());
 			pstmt.setString(3, bean.getCreatedBy());
 			pstmt.setString(4, bean.getModifiedBy());
-			pstmt.setTimestamp(5, bean.getCreatedDatatime());
+			pstmt.setTimestamp(5, bean.getCreatedDatetime());
 			pstmt.setTimestamp(6, bean.getModifiedDatetime());
 			pstmt.setLong(7, bean.getId());
 
@@ -163,7 +164,7 @@ public class RoleModel {
 				bean.setDescription(rs.getString(3));
 				bean.setCreatedBy(rs.getString(4));
 				bean.setModifiedBy(rs.getString(5));
-				bean.setCreatedDatatime(rs.getTimestamp(6));
+				bean.setCreatedDatetime(rs.getTimestamp(6));
 				bean.setModifiedDatetime(rs.getTimestamp(7));
 			}
 			rs.close();
@@ -197,7 +198,7 @@ public class RoleModel {
 				bean.setDescription(rs.getString(3));
 				bean.setCreatedBy(rs.getString(4));
 				bean.setModifiedBy(rs.getString(5));
-				bean.setCreatedDatatime(rs.getTimestamp(6));
+				bean.setCreatedDatetime(rs.getTimestamp(6));
 				bean.setModifiedDatetime(rs.getTimestamp(7));
 			}
 			rs.close();
@@ -246,7 +247,7 @@ public class RoleModel {
 				bean.setDescription(rs.getString(3));
 				bean.setCreatedBy(rs.getString(4));
 				bean.setModifiedBy(rs.getString(5));
-				bean.setCreatedDatatime(rs.getTimestamp(6));
+				bean.setCreatedDatetime(rs.getTimestamp(6));
 				bean.setModifiedDatetime(rs.getTimestamp(7));
 				list.add(bean);
 			}

@@ -44,7 +44,7 @@ public class TestUserModel {
 			bean.setGender("Male");
 			bean.setCreatedBy("Admin");
 			bean.setModifiedBy("Admin");
-			bean.setCreatedDatatime(new Timestamp(new Date().getTime()));
+			bean.setCreatedDatetime(new Timestamp(new Date().getTime()));
 			bean.setModifiedDatetime(new Timestamp(new Date().getTime()));
 
 			long id = model.add(bean);
@@ -71,7 +71,7 @@ public class TestUserModel {
 			bean.setGender("Male");
 			bean.setCreatedBy("System");
 			bean.setModifiedBy("System");
-			bean.setCreatedDatatime(new Timestamp(new Date().getTime()));
+			bean.setCreatedDatetime(new Timestamp(new Date().getTime()));
 			bean.setModifiedDatetime(new Timestamp(new Date().getTime()));
 
 			model.update(bean);
@@ -109,7 +109,7 @@ public class TestUserModel {
 			System.out.println(bean.getGender());
 			System.out.println(bean.getCreatedBy());
 			System.out.println(bean.getModifiedBy());
-			System.out.println(bean.getCreatedDatatime());
+			System.out.println(bean.getCreatedDatetime());
 			System.out.println(bean.getModifiedDatetime());
 
 		} catch (ApplicationException e) {
@@ -133,7 +133,7 @@ public class TestUserModel {
 			System.out.println(bean.getGender());
 			System.out.println(bean.getCreatedBy());
 			System.out.println(bean.getModifiedBy());
-			System.out.println(bean.getCreatedDatatime());
+			System.out.println(bean.getCreatedDatetime());
 			System.out.println(bean.getModifiedDatetime());
 
 		} catch (ApplicationException e) {
@@ -157,7 +157,7 @@ public class TestUserModel {
 			System.out.println(bean.getGender());
 			System.out.println(bean.getCreatedBy());
 			System.out.println(bean.getModifiedBy());
-			System.out.println(bean.getCreatedDatatime());
+			System.out.println(bean.getCreatedDatetime());
 			System.out.println(bean.getModifiedDatetime());
 
 		} catch (ApplicationException e) {
@@ -189,7 +189,7 @@ public class TestUserModel {
 				System.out.println(bean.getGender());
 				System.out.println(bean.getCreatedBy());
 				System.out.println(bean.getModifiedBy());
-				System.out.println(bean.getCreatedDatatime());
+				System.out.println(bean.getCreatedDatetime());
 				System.out.println(bean.getModifiedDatetime());
 			}
 

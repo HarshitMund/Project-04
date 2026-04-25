@@ -61,7 +61,7 @@ public class MarksheetModel {
 			pstmt.setInt(7, bean.getMaths());
 			pstmt.setString(8, bean.getCreatedBy());
 			pstmt.setString(9, bean.getModifiedBy());
-			pstmt.setTimestamp(10, bean.getCreatedDatatime());
+			pstmt.setTimestamp(10, bean.getCreatedDatetime());
 			pstmt.setTimestamp(11, bean.getModifiedDatetime());
 
 			pstmt.executeUpdate();
@@ -104,7 +104,7 @@ public class MarksheetModel {
 			pstmt.setInt(6, bean.getMaths());
 			pstmt.setString(7, bean.getCreatedBy());
 			pstmt.setString(8, bean.getModifiedBy());
-			pstmt.setTimestamp(9, bean.getCreatedDatatime());
+			pstmt.setTimestamp(9, bean.getCreatedDatetime());
 			pstmt.setTimestamp(10, bean.getModifiedDatetime());
 			pstmt.setLong(11, bean.getId());
 
@@ -171,7 +171,7 @@ public class MarksheetModel {
 				bean.setMaths(rs.getInt(7));
 				bean.setCreatedBy(rs.getString(8));
 				bean.setModifiedBy(rs.getString(9));
-				bean.setCreatedDatatime(rs.getTimestamp(10));
+				bean.setCreatedDatetime(rs.getTimestamp(10));
 				bean.setModifiedDatetime(rs.getTimestamp(11));
 			}
 			rs.close();
@@ -206,7 +206,7 @@ public class MarksheetModel {
 				bean.setMaths(rs.getInt(7));
 				bean.setCreatedBy(rs.getString(8));
 				bean.setModifiedBy(rs.getString(9));
-				bean.setCreatedDatatime(rs.getTimestamp(10));
+				bean.setCreatedDatetime(rs.getTimestamp(10));
 				bean.setModifiedDatetime(rs.getTimestamp(11));
 			}
 			rs.close();
@@ -267,7 +267,7 @@ public class MarksheetModel {
 				bean.setMaths(rs.getInt(7));
 				bean.setCreatedBy(rs.getString(8));
 				bean.setModifiedBy(rs.getString(9));
-				bean.setCreatedDatatime(rs.getTimestamp(10));
+				bean.setCreatedDatetime(rs.getTimestamp(10));
 				bean.setModifiedDatetime(rs.getTimestamp(11));
 				list.add(bean);
 			}
