@@ -9,6 +9,7 @@ import java.util.List;
 
 import in.co.rays.proj4.bean.CollegeBean;
 import in.co.rays.proj4.exception.ApplicationException;
+import in.co.rays.proj4.exception.DuplicateRecordException;
 import in.co.rays.proj4.model.CollegeModel;
 
 public class TestCollegeModel {
@@ -17,13 +18,13 @@ public class TestCollegeModel {
 
 	public static void main(String[] args) throws ParseException {
 
-//		testAdd();
+		testAdd();
 //		testUpdate();
 //		testDelete();
 //		testFindByPk();
 //		testFindByName();
 //		testSearch();
-		testList();
+//		testList();
 
 	}
 
@@ -44,7 +45,7 @@ public class TestCollegeModel {
 
 			long id = model.add(bean);
 			System.out.println("Rocord add at ID: " + id);
-		} catch (ApplicationException e) {
+		} catch (ApplicationException | DuplicateRecordException e) {
 			e.printStackTrace();
 		}
 	}
@@ -66,7 +67,7 @@ public class TestCollegeModel {
 			bean.setModifiedDatetime(new Timestamp(new Date().getTime()));
 
 			model.update(bean);
-		} catch (ApplicationException e) {
+		} catch (ApplicationException | DuplicateRecordException e) {
 			e.printStackTrace();
 		}
 	}
@@ -133,7 +134,7 @@ public class TestCollegeModel {
 //			bean.setId(1);
 //			bean.setName("KITT");
 			bean.setCity("Bhubaneswar");
-			
+
 			list = model.search(bean, 1, 5);
 			Iterator<CollegeBean> it = list.iterator();
 
@@ -156,7 +157,7 @@ public class TestCollegeModel {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void testList() throws ParseException {
 
 		try {

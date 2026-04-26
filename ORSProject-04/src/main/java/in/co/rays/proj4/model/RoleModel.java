@@ -11,6 +11,7 @@ import com.mchange.util.DuplicateElementException;
 import in.co.rays.proj4.bean.RoleBean;
 import in.co.rays.proj4.exception.ApplicationException;
 import in.co.rays.proj4.exception.DatabaseException;
+import in.co.rays.proj4.exception.DuplicateRecordException;
 import in.co.rays.proj4.util.JDBCDataSource;
 
 public class RoleModel {
@@ -43,10 +44,15 @@ public class RoleModel {
 		return pk + 1;
 	}
 
-	public long add(RoleBean bean) throws DuplicateElementException, ApplicationException {
+	public long add(RoleBean bean) throws DuplicateRecordException, ApplicationException {
 
 		Connection conn = null;
 		int pk = 0;
+
+		RoleBean duplicateBean = findByName(bean.getName());
+		if (duplicateBean != null) {
+			throw new DuplicateRecordException("Role already exist");
+		}
 
 		try {
 			pk = nextPk();
@@ -81,9 +87,13 @@ public class RoleModel {
 		return pk;
 	}
 
-	public void update(RoleBean bean) throws DuplicateElementException, ApplicationException {
+	public void update(RoleBean bean) throws ApplicationException, DuplicateRecordException {
 
 		Connection conn = null;
+
+		RoleBean duplicateBean = findByName(bean.getName());
+		if (duplicateBean != null)
+			throw new DuplicateRecordException("Role already exist");
 
 		try {
 			conn = JDBCDataSource.getConnection();
@@ -91,7 +101,7 @@ public class RoleModel {
 
 			PreparedStatement pstmt = conn.prepareStatement(
 					"update st_role set name = ?, description = ?, created_by = ?, modified_by = ?, created_datetime = ?, "
-					+ "modified_datetime = ? where id = ?");
+							+ "modified_datetime = ? where id = ?");
 			pstmt.setString(1, bean.getName());
 			pstmt.setString(2, bean.getDescription());
 			pstmt.setString(3, bean.getCreatedBy());
@@ -117,7 +127,7 @@ public class RoleModel {
 
 	}
 
-	public void delete(RoleBean bean) throws DuplicateElementException, ApplicationException {
+	public void delete(RoleBean bean) throws ApplicationException {
 
 		Connection conn = null;
 
@@ -261,9 +271,9 @@ public class RoleModel {
 
 		return list;
 	}
-	
+
 	public List<RoleBean> list() throws ApplicationException {
 		return search(null, 0, 0);
 	}
-	
+
 }

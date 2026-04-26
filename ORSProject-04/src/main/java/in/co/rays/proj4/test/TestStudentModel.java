@@ -10,24 +10,25 @@ import java.util.List;
 
 import in.co.rays.proj4.bean.StudentBean;
 import in.co.rays.proj4.exception.ApplicationException;
+import in.co.rays.proj4.exception.DuplicateRecordException;
 import in.co.rays.proj4.model.StudentModel;
 
 public class TestStudentModel {
 
 	public static StudentModel model = new StudentModel();
 
-	public static void main(String[] args) throws ParseException, ApplicationException {
+	public static void main(String[] args) throws ParseException, ApplicationException, DuplicateRecordException {
 
-//		testAdd();
+		testAdd();
 //		testUpdate();
 //		testDelete();
 //		testFindByPk();
 //		testFindByEmail();
-		testSearch();
+//		testSearch();
 
 	}
 
-	public static void testAdd() throws ParseException, ApplicationException {
+	public static void testAdd() throws ParseException, ApplicationException, DuplicateRecordException {
 
 		StudentBean bean = new StudentBean();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -48,7 +49,7 @@ public class TestStudentModel {
 		System.out.println("Rocord add at ID: " + id);
 	}
 
-	public static void testUpdate() throws ParseException, ApplicationException {
+	public static void testUpdate() throws ParseException, ApplicationException, DuplicateRecordException {
 
 		StudentBean bean = new StudentBean();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

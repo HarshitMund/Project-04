@@ -9,6 +9,7 @@ import java.util.List;
 import in.co.rays.proj4.bean.CollegeBean;
 import in.co.rays.proj4.exception.ApplicationException;
 import in.co.rays.proj4.exception.DatabaseException;
+import in.co.rays.proj4.exception.DuplicateRecordException;
 import in.co.rays.proj4.util.JDBCDataSource;
 
 public class CollegeModel {
@@ -36,10 +37,14 @@ public class CollegeModel {
 		return pk + 1;
 	}
 
-	public long add(CollegeBean bean) throws ApplicationException {
+	public long add(CollegeBean bean) throws ApplicationException, DuplicateRecordException {
 
 		Connection conn = null;
 		long pk = 0;
+
+		CollegeBean duplicateBean = findByName(bean.getName());
+		if (duplicateBean != null)
+			throw new DuplicateRecordException("College name already exist");
 
 		try {
 			pk = nextPk();
@@ -77,9 +82,13 @@ public class CollegeModel {
 
 	}
 
-	public void update(CollegeBean bean) throws ApplicationException {
+	public void update(CollegeBean bean) throws ApplicationException, DuplicateRecordException {
 
 		Connection conn = null;
+
+		CollegeBean duplicateBean = findByName(bean.getName());
+		if (duplicateBean != null)
+			throw new DuplicateRecordException("College name aleady exist");
 
 		try {
 			conn = JDBCDataSource.getConnection();
@@ -274,7 +283,7 @@ public class CollegeModel {
 		}
 		return list;
 	}
-	
+
 	public List<CollegeBean> list() throws ApplicationException {
 		return search(null, 0, 0);
 	}

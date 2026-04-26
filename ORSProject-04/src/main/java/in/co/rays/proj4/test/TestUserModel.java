@@ -10,25 +10,26 @@ import java.util.List;
 
 import in.co.rays.proj4.bean.UserBean;
 import in.co.rays.proj4.exception.ApplicationException;
+import in.co.rays.proj4.exception.DuplicateRecordException;
 import in.co.rays.proj4.model.UserModel;
 
 public class TestUserModel {
 
 	public static UserModel model = new UserModel();
 
-	public static void main(String[] args) throws ParseException {
+	public static void main(String[] args) throws ParseException, DuplicateRecordException {
 
-//		testAdd();
+		testAdd();
 //		testUpdate();
 //		testDelete();
 //		testFindByPk();
 //		testFindByName();
 //		testAuthenticate();
-		testSearch();
+//		testSearch();
 
 	}
 
-	public static void testAdd() throws ParseException {
+	public static void testAdd() throws ParseException, DuplicateRecordException {
 
 		try {
 			UserBean bean = new UserBean();
@@ -54,7 +55,7 @@ public class TestUserModel {
 		}
 	}
 
-	public static void testUpdate() throws ParseException {
+	public static void testUpdate() throws ParseException, DuplicateRecordException {
 
 		try {
 			UserBean bean = new UserBean();
@@ -171,7 +172,7 @@ public class TestUserModel {
 			UserBean bean = new UserBean();
 			List<UserBean> list = new ArrayList<UserBean>();
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-			
+
 			bean.setDob(sdf.parse("2000-02-02"));
 
 			list = model.search(bean, 1, 5);

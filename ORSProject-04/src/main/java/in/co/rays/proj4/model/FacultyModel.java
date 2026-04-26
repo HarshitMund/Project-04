@@ -13,6 +13,7 @@ import in.co.rays.proj4.bean.FacultyBean;
 import in.co.rays.proj4.bean.SubjectBean;
 import in.co.rays.proj4.exception.ApplicationException;
 import in.co.rays.proj4.exception.DatabaseException;
+import in.co.rays.proj4.exception.DuplicateRecordException;
 import in.co.rays.proj4.util.JDBCDataSource;
 
 public class FacultyModel {
@@ -40,10 +41,14 @@ public class FacultyModel {
 		return pk + 1;
 	}
 
-	public long add(FacultyBean bean) throws ApplicationException {
+	public long add(FacultyBean bean) throws ApplicationException, DuplicateRecordException {
 
 		Connection conn = null;
 		long pk = 0;
+
+		FacultyBean duplicateBean = findByEmail(bean.getEmail());
+		if (duplicateBean != null)
+			throw new DuplicateRecordException("Email already exist");
 
 		CollegeModel collegeModel = new CollegeModel();
 		CollegeBean collegeBean = collegeModel.findByPk(bean.getCollegeId());
@@ -99,9 +104,13 @@ public class FacultyModel {
 		return pk;
 	}
 
-	public void update(FacultyBean bean) throws ApplicationException {
+	public void update(FacultyBean bean) throws ApplicationException, DuplicateRecordException {
 
 		Connection conn = null;
+
+		FacultyBean duplicateBean = findByEmail(bean.getEmail());
+		if (duplicateBean != null)
+			throw new DuplicateRecordException("Email already exist");
 
 		CollegeModel collegeModel = new CollegeModel();
 		CollegeBean collegeBean = collegeModel.findByPk(bean.getCollegeId());

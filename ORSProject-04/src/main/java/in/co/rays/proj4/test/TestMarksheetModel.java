@@ -9,25 +9,26 @@ import java.util.List;
 
 import in.co.rays.proj4.bean.MarksheetBean;
 import in.co.rays.proj4.exception.ApplicationException;
+import in.co.rays.proj4.exception.DuplicateRecordException;
 import in.co.rays.proj4.model.MarksheetModel;
 
 public class TestMarksheetModel {
 
 	public static MarksheetModel model = new MarksheetModel();
 
-	public static void main(String[] args) throws ApplicationException, ParseException {
+	public static void main(String[] args) throws ApplicationException, ParseException, DuplicateRecordException {
 
-//		testAdd();
+		testAdd();
 //		testUpdate();
 //		testDelete();
 //		testFindByPk();
 //		testFindByRollNo();
 //		testSearch();
-		testGetMeritList();
+//		testGetMeritList();
 
 	}
 
-	public static void testAdd() throws ApplicationException {
+	public static void testAdd() throws ApplicationException, DuplicateRecordException {
 
 		MarksheetBean bean = new MarksheetBean();
 
@@ -45,7 +46,7 @@ public class TestMarksheetModel {
 		System.out.println("Rocord add at ID: " + id);
 	}
 
-	public static void testUpdate() throws ParseException, ApplicationException {
+	public static void testUpdate() throws ParseException, ApplicationException, DuplicateRecordException {
 
 		MarksheetBean bean = new MarksheetBean();
 

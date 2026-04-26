@@ -10,6 +10,7 @@ import in.co.rays.proj4.bean.MarksheetBean;
 import in.co.rays.proj4.bean.StudentBean;
 import in.co.rays.proj4.exception.ApplicationException;
 import in.co.rays.proj4.exception.DatabaseException;
+import in.co.rays.proj4.exception.DuplicateRecordException;
 import in.co.rays.proj4.util.JDBCDataSource;
 
 public class MarksheetModel {
@@ -37,7 +38,7 @@ public class MarksheetModel {
 		return pk + 1;
 	}
 
-	public long add(MarksheetBean bean) throws ApplicationException {
+	public long add(MarksheetBean bean) throws ApplicationException, DuplicateRecordException {
 
 		Connection conn = null;
 		long pk = 0;
@@ -45,6 +46,10 @@ public class MarksheetModel {
 		StudentModel studentModel = new StudentModel();
 		StudentBean studentBean = studentModel.findByPk(bean.getStudentId());
 		bean.setName(studentBean.getFirstName() + " " + studentBean.getLastName());
+
+		MarksheetBean duplicateBean = findByRollNo(bean.getRollNo());
+		if (duplicateBean != null)
+			throw new DuplicateRecordException("Roll no already exist");
 
 		try {
 			pk = nextPk();
@@ -82,13 +87,17 @@ public class MarksheetModel {
 		return pk;
 	}
 
-	public void update(MarksheetBean bean) throws ApplicationException {
+	public void update(MarksheetBean bean) throws ApplicationException, DuplicateRecordException {
 
 		Connection conn = null;
 
 		StudentModel studentModel = new StudentModel();
 		StudentBean studentBean = studentModel.findByPk(bean.getStudentId());
 		bean.setName(studentBean.getFirstName() + " " + studentBean.getLastName());
+
+		MarksheetBean duplicateBean = findByRollNo(bean.getRollNo());
+		if (duplicateBean != null)
+			throw new DuplicateRecordException("Roll no already exist");
 
 		try {
 			conn = JDBCDataSource.getConnection();

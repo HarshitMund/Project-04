@@ -10,6 +10,7 @@ import in.co.rays.proj4.bean.CourseBean;
 import in.co.rays.proj4.bean.SubjectBean;
 import in.co.rays.proj4.exception.ApplicationException;
 import in.co.rays.proj4.exception.DatabaseException;
+import in.co.rays.proj4.exception.DuplicateRecordException;
 import in.co.rays.proj4.util.JDBCDataSource;
 
 public class SubjectModel {
@@ -37,7 +38,7 @@ public class SubjectModel {
 		return pk + 1;
 	}
 
-	public long add(SubjectBean bean) throws ApplicationException {
+	public long add(SubjectBean bean) throws ApplicationException, DuplicateRecordException {
 
 		Connection conn = null;
 		long pk = 0;
@@ -45,6 +46,10 @@ public class SubjectModel {
 		CourseModel courseModel = new CourseModel();
 		CourseBean courseBean = courseModel.findByPk(bean.getCourseId());
 		bean.setCourseName(courseBean.getName());
+
+		SubjectBean duplicateBean = findByName(bean.getName());
+		if (duplicateBean != null)
+			throw new DuplicateRecordException("Subject name already Exist");
 
 		try {
 			pk = nextPk();
@@ -80,13 +85,17 @@ public class SubjectModel {
 		return pk;
 	}
 
-	public void update(SubjectBean bean) throws ApplicationException {
+	public void update(SubjectBean bean) throws ApplicationException, DuplicateRecordException {
 
 		Connection conn = null;
 
 		CourseModel courseModel = new CourseModel();
 		CourseBean courseBean = courseModel.findByPk(bean.getCourseId());
 		bean.setCourseName(courseBean.getName());
+
+		SubjectBean duplicateBean = findByName(bean.getName());
+		if (duplicateBean != null)
+			throw new DuplicateRecordException("Subject name already Exist");
 
 		try {
 			conn = JDBCDataSource.getConnection();

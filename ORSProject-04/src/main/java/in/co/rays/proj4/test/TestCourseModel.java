@@ -8,24 +8,25 @@ import java.util.List;
 
 import in.co.rays.proj4.bean.CourseBean;
 import in.co.rays.proj4.exception.ApplicationException;
+import in.co.rays.proj4.exception.DuplicateRecordException;
 import in.co.rays.proj4.model.CourseModel;
 
 public class TestCourseModel {
 
 	public static CourseModel model = new CourseModel();
 
-	public static void main(String[] args) throws ApplicationException {
+	public static void main(String[] args) throws ApplicationException, DuplicateRecordException {
 
-//		testAdd();
+		testAdd();
 //		testUpdate();
 //		testDelete();
 //		testFindByPk();
 //		testFindByName();
-		testSearch();
+//		testSearch();
 
 	}
 
-	public static void testAdd() throws ApplicationException {
+	public static void testAdd() throws ApplicationException, DuplicateRecordException {
 
 		CourseBean bean = new CourseBean();
 
@@ -41,7 +42,7 @@ public class TestCourseModel {
 		System.out.println("Record inserted at ID: " + id);
 	}
 
-	public static void testUpdate() throws ApplicationException {
+	public static void testUpdate() throws ApplicationException, DuplicateRecordException {
 
 		CourseBean bean = new CourseBean();
 

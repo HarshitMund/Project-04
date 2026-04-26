@@ -9,6 +9,7 @@ import java.util.List;
 import in.co.rays.proj4.bean.CourseBean;
 import in.co.rays.proj4.exception.ApplicationException;
 import in.co.rays.proj4.exception.DatabaseException;
+import in.co.rays.proj4.exception.DuplicateRecordException;
 import in.co.rays.proj4.util.JDBCDataSource;
 
 public class CourseModel {
@@ -36,10 +37,14 @@ public class CourseModel {
 		return pk + 1;
 	}
 
-	public long add(CourseBean bean) throws ApplicationException {
+	public long add(CourseBean bean) throws ApplicationException, DuplicateRecordException {
 
 		Connection conn = null;
 		long pk = 0;
+
+		CourseBean duplicateBean = findByName(bean.getName());
+		if (duplicateBean != null)
+			throw new DuplicateRecordException("Course name already exist");
 
 		try {
 			pk = nextPk();
@@ -73,9 +78,13 @@ public class CourseModel {
 		return pk;
 	}
 
-	public void update(CourseBean bean) throws ApplicationException {
+	public void update(CourseBean bean) throws ApplicationException, DuplicateRecordException {
 
 		Connection conn = null;
+
+		CourseBean duplicateBean = findByName(bean.getName());
+		if (duplicateBean != null)
+			throw new DuplicateRecordException("Course name already exist");
 
 		try {
 			conn = JDBCDataSource.getConnection();

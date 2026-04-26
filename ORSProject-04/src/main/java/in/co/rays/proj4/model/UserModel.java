@@ -10,6 +10,7 @@ import java.util.List;
 import in.co.rays.proj4.bean.UserBean;
 import in.co.rays.proj4.exception.ApplicationException;
 import in.co.rays.proj4.exception.DatabaseException;
+import in.co.rays.proj4.exception.DuplicateRecordException;
 import in.co.rays.proj4.util.JDBCDataSource;
 
 public class UserModel {
@@ -37,10 +38,14 @@ public class UserModel {
 		return pk + 1;
 	}
 
-	public long add(UserBean bean) throws ApplicationException {
+	public long add(UserBean bean) throws ApplicationException, DuplicateRecordException {
 
 		Connection conn = null;
 		long pk = 0;
+
+		UserBean duplicateBean = findByLogin(bean.getLogin());
+		if (duplicateBean != null)
+			throw new DuplicateRecordException("Login already exist");
 
 		try {
 			pk = nextPk();
@@ -81,9 +86,13 @@ public class UserModel {
 		return pk;
 	}
 
-	public void update(UserBean bean) throws ApplicationException {
+	public void update(UserBean bean) throws ApplicationException, DuplicateRecordException {
 
 		Connection conn = null;
+
+		UserBean duplicateBean = findByLogin(bean.getLogin());
+		if (duplicateBean != null)
+			throw new DuplicateRecordException("Login already exist");
 
 		try {
 			conn = JDBCDataSource.getConnection();
@@ -338,16 +347,16 @@ public class UserModel {
 
 		return list;
 	}
-	
+
 	/**
 	 * Changes the password of a user.
 	 *
-	 * @param id the user ID
+	 * @param id          the user ID
 	 * @param oldPassword the current password
 	 * @param newPassword the new password
 	 * @return true if password changed successfully, false otherwise
 	 * @throws RecordNotFoundException if old password is invalid
-	 * @throws ApplicationException if an application-level exception occurs
+	 * @throws ApplicationException    if an application-level exception occurs
 	 */
 //	public boolean changePassword(Long id, String oldPassword, String newPassword)
 //			throws RecordNotFoundException, ApplicationException {
@@ -393,7 +402,7 @@ public class UserModel {
 	 * @param login the login ID (email)
 	 * @return true if email sent successfully
 	 * @throws RecordNotFoundException if login ID does not exist
-	 * @throws ApplicationException if an application-level exception occurs
+	 * @throws ApplicationException    if an application-level exception occurs
 	 */
 //	public boolean forgetPassword(String login) throws RecordNotFoundException, ApplicationException {
 //
@@ -433,7 +442,7 @@ public class UserModel {
 	 * @param bean the UserBean containing user details
 	 * @return primary key of the newly registered user
 	 * @throws DuplicateRecordException if login ID already exists
-	 * @throws ApplicationException if an application-level exception occurs
+	 * @throws ApplicationException     if an application-level exception occurs
 	 */
 //	public long registerUser(UserBean bean) throws DuplicateRecordException, ApplicationException {
 //

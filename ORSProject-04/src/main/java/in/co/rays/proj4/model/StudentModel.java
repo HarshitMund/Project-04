@@ -11,6 +11,7 @@ import in.co.rays.proj4.bean.CollegeBean;
 import in.co.rays.proj4.bean.StudentBean;
 import in.co.rays.proj4.exception.ApplicationException;
 import in.co.rays.proj4.exception.DatabaseException;
+import in.co.rays.proj4.exception.DuplicateRecordException;
 import in.co.rays.proj4.util.JDBCDataSource;
 
 public class StudentModel {
@@ -39,7 +40,7 @@ public class StudentModel {
 		return pk + 1;
 	}
 
-	public long add(StudentBean bean) throws ApplicationException {
+	public long add(StudentBean bean) throws ApplicationException, DuplicateRecordException {
 
 		long pk = 0;
 		Connection conn = null;
@@ -47,6 +48,10 @@ public class StudentModel {
 		CollegeModel collegeModel = new CollegeModel();
 		CollegeBean collegeBean = collegeModel.findByPk(bean.getCollegeId());
 		bean.setCollegeName(collegeBean.getName());
+
+		StudentBean duplicateBean = findByEmail(bean.getEmail());
+		if (duplicateBean != null)
+			throw new DuplicateRecordException("Email already exist");
 
 		try {
 			pk = nextPk();
@@ -86,13 +91,17 @@ public class StudentModel {
 		return pk;
 	}
 
-	public void update(StudentBean bean) throws ApplicationException {
+	public void update(StudentBean bean) throws ApplicationException, DuplicateRecordException {
 
 		Connection conn = null;
 
 		CollegeModel collegeModel = new CollegeModel();
 		CollegeBean collegeBean = collegeModel.findByPk(bean.getCollegeId());
 		bean.setCollegeName(collegeBean.getName());
+
+		StudentBean duplicateBean = findByEmail(bean.getEmail());
+		if (duplicateBean != null)
+			throw new DuplicateRecordException("Email already exist");
 
 		try {
 			conn = JDBCDataSource.getConnection();

@@ -10,32 +10,33 @@ import com.google.protobuf.TextFormat.ParseException;
 
 import in.co.rays.proj4.bean.RoleBean;
 import in.co.rays.proj4.exception.ApplicationException;
+import in.co.rays.proj4.exception.DuplicateRecordException;
 import in.co.rays.proj4.model.RoleModel;
 
 public class TestRoleModel {
 
-	public static void main(String[] args) throws ParseException, ApplicationException {
+	public static void main(String[] args) throws ParseException, ApplicationException, DuplicateRecordException {
 
-//		testAdd();
+		testAdd();
 //		testUpdate();
 //		testDelete();
 //		testFindByPk();
 //		testFindByName();
 //		testSearch();
-		testList();
+//		testList();
 
 	}
 
-	public static void testAdd() throws ParseException {
+	public static void testAdd() throws ParseException, DuplicateRecordException {
 
 		try {
 			RoleBean bean = new RoleBean();
 			RoleModel model = new RoleModel();
 
-			bean.setName("College");
-			bean.setDescription("College");
-			bean.setCreatedBy("System");
-			bean.setModifiedBy("System");
+			bean.setName("FACULTY");
+			bean.setDescription("FACULTY");
+			bean.setCreatedBy("Root");
+			bean.setModifiedBy("Root");
 			bean.setCreatedDatetime(new Timestamp(new Date().getTime()));
 			bean.setModifiedDatetime(new Timestamp(new Date().getTime()));
 
@@ -46,7 +47,7 @@ public class TestRoleModel {
 		}
 	}
 
-	public static void testUpdate() throws ParseException {
+	public static void testUpdate() throws ParseException, DuplicateRecordException {
 
 		try {
 			RoleBean bean = new RoleBean();
