@@ -57,7 +57,7 @@ public class TimetableModel {
 			conn = JDBCDataSource.getConnection();
 			conn.setAutoCommit(false);
 			PreparedStatement pstmt = conn
-					.prepareStatement("insert into st_faculty values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+					.prepareStatement("insert into st_timetable values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 			pstmt.setLong(1, pk);
 			pstmt.setString(2, bean.getSemester());
 			pstmt.setString(3, bean.getDescription());
@@ -106,7 +106,7 @@ public class TimetableModel {
 			conn = JDBCDataSource.getConnection();
 			conn.setAutoCommit(false);
 			PreparedStatement pstmt = conn.prepareStatement(
-					"update st_faculty set semester = ?, description = ?, exam_date = ?, exam_time = ?, course_id = ?, "
+					"update st_timetable set semester = ?, description = ?, exam_date = ?, exam_time = ?, course_id = ?, "
 							+ "course_name = ?, subject_id = ?, subject_name = ?, created_by = ?, modified_by = ?, "
 							+ "created_datetime = ?, modified_datetime = ? where id = ?");
 			pstmt.setString(1, bean.getSemester());
@@ -147,7 +147,7 @@ public class TimetableModel {
 		try {
 			conn = JDBCDataSource.getConnection();
 			conn.setAutoCommit(false);
-			PreparedStatement pstmt = conn.prepareStatement("delete from st_faculty where id = ?");
+			PreparedStatement pstmt = conn.prepareStatement("delete from st_timetable where id = ?");
 			pstmt.setLong(1, bean.getId());
 
 			pstmt.executeUpdate();

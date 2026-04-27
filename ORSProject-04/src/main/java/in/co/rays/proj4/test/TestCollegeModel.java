@@ -18,8 +18,8 @@ public class TestCollegeModel {
 
 	public static void main(String[] args) throws ParseException {
 
-		testAdd();
-//		testUpdate();
+//		testAdd();
+		testUpdate();
 //		testDelete();
 //		testFindByPk();
 //		testFindByName();

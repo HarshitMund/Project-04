@@ -18,7 +18,7 @@ public class TestMarksheetModel {
 
 	public static void main(String[] args) throws ApplicationException, ParseException, DuplicateRecordException {
 
-		testAdd();
+//		testAdd();
 //		testUpdate();
 //		testDelete();
 //		testFindByPk();

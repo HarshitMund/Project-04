@@ -17,8 +17,8 @@ public class TestCourseModel {
 
 	public static void main(String[] args) throws ApplicationException, DuplicateRecordException {
 
-		testAdd();
-//		testUpdate();
+//		testAdd();
+		testUpdate();
 //		testDelete();
 //		testFindByPk();
 //		testFindByName();

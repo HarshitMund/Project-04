@@ -17,8 +17,8 @@ public class TestRoleModel {
 
 	public static void main(String[] args) throws ParseException, ApplicationException, DuplicateRecordException {
 
-		testAdd();
-//		testUpdate();
+//		testAdd();
+		testUpdate();
 //		testDelete();
 //		testFindByPk();
 //		testFindByName();

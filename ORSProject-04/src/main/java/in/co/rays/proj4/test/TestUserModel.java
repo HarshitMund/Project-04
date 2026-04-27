@@ -64,7 +64,7 @@ public class TestUserModel {
 			bean.setId(1);
 			bean.setFirstName("Hardik");
 			bean.setLastName("Mund");
-			bean.setLogin("hardikt@example.com");
+			bean.setLogin("hardik@example.com");
 			bean.setPassword("12345");
 			bean.setDob(sdf.parse("1999-02-02"));
 			bean.setMobileNo("9123456789");
