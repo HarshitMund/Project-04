@@ -2,10 +2,7 @@ package in.co.rays.proj4.test;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-
 import in.co.rays.proj4.bean.TimetableBean;
 import in.co.rays.proj4.exception.ApplicationException;
 import in.co.rays.proj4.model.TimetableModel;
@@ -154,10 +151,8 @@ public class TestTimetableModel {
 
 		TimetableBean bean = new TimetableBean();
 
-		// Optional filters
 //		bean.setSemester("1st");
 //		bean.setCourseName("BTech");
-//		bean.setSubjectName("Maths");
 
 		List<TimetableBean> list = model.search(bean, 1, 10);
 

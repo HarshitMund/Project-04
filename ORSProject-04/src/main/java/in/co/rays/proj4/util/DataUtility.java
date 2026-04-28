@@ -126,7 +126,7 @@ public class DataUtility {
 
 		// Test getDate
 		System.out.println("\ngetDate Test:");
-		String dateStr = "10/15/2024";
+		String dateStr = "2024-10-25";
 		Date date = getDate(dateStr);
 		System.out.println("String to Date: '" + dateStr + "' -> " + date);
 
@@ -136,7 +136,7 @@ public class DataUtility {
 
 		// Test getTimestamp (String)
 		System.out.println("\ngetTimestamp(String) Test:");
-		String timestampStr = "10/15/2024 10:30:45";
+		String timestampStr = "2024-10-15 10:30:45";
 		Timestamp timestamp = getTimestamp(timestampStr);
 		System.out.println("String to Timestamp: '" + timestampStr + "' -> " + timestamp);
 

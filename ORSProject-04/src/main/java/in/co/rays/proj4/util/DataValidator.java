@@ -199,7 +199,7 @@ public class DataValidator {
 		// Test isPassword
 		System.out.println("\nisPassword Test:");
 		System.out.println("Valid Password: 'Passw0rd@123' -> " + isPassword("Passw0rd@123"));
-		System.out.println("Invalid Password: 'pass123' -> " + isPassword("pass123"));
+		System.out.println("Invalid Password: 'password123' -> " + isPassword("password123"));
 
 		// Test isPasswordLength
 		System.out.println("\nisPasswordLength Test:");
@@ -223,7 +223,7 @@ public class DataValidator {
 
 		// Test isSunday
 		System.out.println("\nisSunday Test:");
-		System.out.println("Date on Sunday: '10/13/2024' -> " + isSunday("10/13/2024"));
-		System.out.println("Date not on Sunday: '10/15/2024' -> " + isSunday("10/15/2024"));
+		System.out.println("Date on Sunday: '2024-10-13' -> " + isSunday("2024-10-13"));
+		System.out.println("Date not on Sunday: '2024-10-15' -> " + isSunday("2024-10-15"));
 	}
 }
