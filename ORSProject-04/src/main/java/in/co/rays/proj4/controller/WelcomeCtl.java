@@ -19,7 +19,7 @@ public class WelcomeCtl extends BaseCtl {
 
 	@Override
 	protected String getView() {
-		return "jsp/Welcome.jsp";
+		return ORSView.WELCOME_VIEW;
 	}
 
 }

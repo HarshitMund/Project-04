@@ -1,3 +1,4 @@
+<%@page import="in.co.rays.proj4.controller.ORSView"%>
 <%@page import="in.co.rays.proj4.bean.UserBean"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -28,7 +29,7 @@
 	} else {
 	%>
 	<h3>Hi, Guest</h3>
-	<a href="WelcomeCtl"><b>Welcome</b></a> |
+	<a href="<%=ORSView.WELCOME_CTL%>>"><b>Welcome</b></a> |
 	<a href="#"><b>Login</b></a>
 	<%
 	}
