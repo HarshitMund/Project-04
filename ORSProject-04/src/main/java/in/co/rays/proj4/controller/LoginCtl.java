@@ -37,15 +37,17 @@ public class LoginCtl extends BaseCtl {
 		}
 
 		if (DataValidator.isNull(request.getParameter("login"))) {
-			request.setAttribute("login", "Login is required");
+			request.setAttribute("login", "login is required.");
+			flag = false;
+		} else if (DataValidator.isEmail(request.getParameter("login"))) {
+			request.setAttribute("login", "login is in invalid format");
 			flag = false;
 		}
 
 		if (DataValidator.isNull(request.getParameter("password"))) {
-			request.setAttribute("password", "Password is required");
+			request.setAttribute("password", "password is required");
 			flag = false;
 		}
-
 		return flag;
 
 	}
@@ -100,13 +102,18 @@ public class LoginCtl extends BaseCtl {
 					if (roleBean != null) {
 						session.setAttribute("role", roleBean.getName());
 					}
+
+					ServletUtility.redirect(ORSView.WELCOME_CTL, request, response);
+					return;
+
 				} else {
+					bean = (UserBean) populateBean(request);
 					ServletUtility.setBean(bean, request);
 					ServletUtility.setErrorMessage("Invalid Login or Password", request);
+					ServletUtility.forward(getView(), request, response);
+					return;
 				}
 
-				ServletUtility.redirect(ORSView.WELCOME_CTL, request, response);
-				return;
 			} catch (ApplicationException e) {
 				e.printStackTrace();
 				return;
