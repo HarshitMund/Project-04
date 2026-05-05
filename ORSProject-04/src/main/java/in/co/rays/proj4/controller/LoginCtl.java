@@ -37,11 +37,10 @@ public class LoginCtl extends BaseCtl {
 		}
 
 		if (DataValidator.isNull(request.getParameter("login"))) {
-			request.setAttribute("login", "login is required.");
+			request.setAttribute("login", "Login is required.");
 			flag = false;
-		} else if (DataValidator.isEmail(request.getParameter("login"))) {
-			request.setAttribute("login", "login is in invalid format");
-			flag = false;
+		} else if (!DataValidator.isEmail(request.getParameter("login"))) {
+			request.setAttribute("login", "Login is invalid");
 		}
 
 		if (DataValidator.isNull(request.getParameter("password"))) {

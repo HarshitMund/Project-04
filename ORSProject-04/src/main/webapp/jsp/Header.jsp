@@ -19,11 +19,13 @@
 	<%
 	if (user != null) {
 	%>
-	<h3>	
+	<h3>
 		Hi,
 		<%=user.getFirstName()%>
 		(<%=session.getAttribute("role")%>)
 	</h3>
+	<a href="<%=ORSView.ROLE_CTL%>">Add Role</a> |
+	<a href="<%=ORSView.ROLE_LIST_CTL%>">Role List</a>
 	<a href="<%=ORSView.LOGIN_CTL + "?operation=Logout"%>"><b>Logout</b></a>
 	<%
 	} else {
