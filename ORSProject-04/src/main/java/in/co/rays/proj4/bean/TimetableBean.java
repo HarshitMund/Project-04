@@ -77,4 +77,9 @@ public class TimetableBean extends BaseBean {
 		this.subjectName = subjectName;
 	}
 
+	@Override
+	public String getValue() {
+		return courseName;
+	}
+
 }

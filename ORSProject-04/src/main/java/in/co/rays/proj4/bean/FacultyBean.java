@@ -3,7 +3,7 @@ package in.co.rays.proj4.bean;
 import java.util.Date;
 
 public class FacultyBean extends BaseBean {
-	
+
 	private String firstname;
 	private String lastName;
 	private Date dob;
@@ -111,6 +111,11 @@ public class FacultyBean extends BaseBean {
 
 	public void setSubjectName(String subjectName) {
 		this.subjectName = subjectName;
+	}
+
+	@Override
+	public String getValue() {
+		return null;
 	}
 
 }

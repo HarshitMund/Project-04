@@ -57,4 +57,9 @@ public class MarksheetBean extends BaseBean {
 		this.maths = maths;
 	}
 
+	@Override
+	public String getValue() {
+		return null;
+	}
+
 }

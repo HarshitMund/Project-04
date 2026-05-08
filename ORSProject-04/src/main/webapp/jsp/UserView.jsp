@@ -28,8 +28,16 @@
 		%>
 
 		<div align="center">
-			<h1 align="center" style="margin-bottom: -15; color: navy">Add
-				User</h1>
+			<h1 align="center" style="margin-bottom: -15; color: navy">
+				<%
+				if (bean != null && bean.getId() > 0) {
+				%>Update<%
+				} else {
+				%>Add<%
+				}
+				%>
+				User
+			</h1>
 			<h3 style="color: red"><%=ServletUtility.getErrorMessage(request)%></h3>
 			<h3 style="color: green"><%=ServletUtility.getSuccessMessage(request)%></h3>
 		</div>
@@ -102,13 +110,7 @@
 			</tr>
 			<tr>
 				<th align="left">Role:<span style="color: red">*</span></th>
-				<%-- <td><%=HTMLUtility.getList("roleId", String.valueOf(bean.getRoleId()), roleList)%></td> --%>
-				<td><select style="width: 169px; text-align-last: center;"
-					class='form-control' name='roleId'>
-						<option selected value=''>-------------Select-------------</option>
-						<option value='ADMIN'>ADMIN</option>
-						<option value='STUDENT'>STUDENT</option>
-				</select></td>
+				<td><%=HTMLUtility.getList("roleId", String.valueOf(bean.getRoleId()), roleList)%></td>
 				<td style="position: fixed;"><font color="red"> <%=ServletUtility.getErrorMessage("roleId", request)%></font></td>
 			</tr>
 			<tr>
@@ -120,10 +122,21 @@
 			</tr>
 			<tr>
 				<th></th>
+				<%
+				if (bean != null && bean.getId() > 0) {
+				%>
+				<td align="left" colspan="2"><input type="submit"
+					name="operation" value="<%=UserCtl.OP_UPDATE%>"> <input
+					type="submit" name="operation" value="<%=UserCtl.OP_CANCEL%>">
+					<%
+					} else {
+					%></td>
 				<td align="left" colspan="2"><input type="submit"
 					name="operation" value="<%=UserCtl.OP_SAVE%>"> <input
 					type="submit" name="operation" value="<%=UserCtl.OP_RESET%>">
-				</td>
+					<%
+					}
+					%></td>
 			</tr>
 		</table>
 
