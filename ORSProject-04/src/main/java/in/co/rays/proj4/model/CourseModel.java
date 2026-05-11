@@ -260,4 +260,8 @@ public class CourseModel {
 		}
 		return list;
 	}
+
+	public List<CourseBean> list() throws ApplicationException {
+		return search(null, 0, 0);
+	}
 }
