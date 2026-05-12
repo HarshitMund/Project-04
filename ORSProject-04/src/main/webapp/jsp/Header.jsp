@@ -38,6 +38,10 @@
 	<a href="<%=ORSView.SUBJECT_LIST_CTL%>">Subject List</a> |
 	<a href="<%=ORSView.FACULTY_CTL%>">Add Faculty</a> |
 	<a href="<%=ORSView.FACULTY_LIST_CTL%>">Faculty List</a> |
+	<a href="<%=ORSView.MARKSHEET_CTL%>">Add Marksheet</a> |
+	<a href="<%=ORSView.MARKSHEET_LIST_CTL%>">Marksheet List</a> |
+	<a href="<%=ORSView.TIMETABLE_CTL%>">Add Timetable</a> |
+	<a href="<%=ORSView.TIMETABLE_LIST_CTL%>">Timetable List</a> |
 	<a href="<%=ORSView.LOGIN_CTL + "?operation=Logout"%>"><b>Logout</b></a>
 	<%
 	} else {

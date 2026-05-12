@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.co.rays.proj4.bean.CollegeBean;
+import in.co.rays.proj4.bean.MarksheetBean;
 import in.co.rays.proj4.bean.StudentBean;
 import in.co.rays.proj4.exception.ApplicationException;
 import in.co.rays.proj4.exception.DatabaseException;
@@ -312,6 +313,10 @@ public class StudentModel {
 		}
 
 		return list;
+	}
+	
+	public List<StudentBean> list() throws ApplicationException {
+		return search(null, 0, 0);
 	}
 
 }

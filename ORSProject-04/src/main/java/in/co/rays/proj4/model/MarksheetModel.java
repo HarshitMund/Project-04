@@ -290,6 +290,10 @@ public class MarksheetModel {
 		return list;
 	}
 
+	public List<MarksheetBean> list() throws ApplicationException {
+		return search(null, 0, 0);
+	}
+
 	public List<MarksheetBean> getMeritList(int pageNo, int pageSize) throws ApplicationException {
 
 		List<MarksheetBean> list = new ArrayList<MarksheetBean>();

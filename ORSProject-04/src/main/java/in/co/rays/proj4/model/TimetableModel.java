@@ -204,7 +204,7 @@ public class TimetableModel {
 		return bean;
 	}
 
-	public TimetableBean checkByCourseName(Long courseId, Date examDate) throws ApplicationException {
+	public TimetableBean checkByCourseName(Long courseId, java.util.Date date) throws ApplicationException {
 
 		TimetableBean bean = null;
 		Connection conn = null;
@@ -214,7 +214,7 @@ public class TimetableModel {
 			PreparedStatement pstmt = conn
 					.prepareStatement("select * from st_timetable where course_id = ? and exam_date = ?");
 			pstmt.setLong(1, courseId);
-			pstmt.setDate(2, new java.sql.Date(examDate.getTime()));
+			pstmt.setDate(2, new java.sql.Date(date.getTime()));
 
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
@@ -244,7 +244,7 @@ public class TimetableModel {
 		return bean;
 	}
 
-	public TimetableBean checkBySubjectName(Long courseId, Long subjectId, Date examDate) throws ApplicationException {
+	public TimetableBean checkBySubjectName(Long courseId, Long subjectId, java.util.Date date) throws ApplicationException {
 
 		TimetableBean bean = null;
 		Connection conn = null;
@@ -255,7 +255,7 @@ public class TimetableModel {
 					"select * from st_timetable where course_id = ? and subject_id = ? and exam_date = ?");
 			pstmt.setLong(1, courseId);
 			pstmt.setLong(2, subjectId);
-			pstmt.setDate(3, new java.sql.Date(examDate.getTime()));
+			pstmt.setDate(3, new java.sql.Date(date.getTime()));
 
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
@@ -285,7 +285,7 @@ public class TimetableModel {
 		return bean;
 	}
 
-	public TimetableBean checkBySemester(Long courseId, Long subjectId, String semester, Date examDate)
+	public TimetableBean checkBySemester(Long courseId, Long subjectId, String semester, java.util.Date date)
 			throws ApplicationException {
 
 		TimetableBean bean = null;
@@ -298,7 +298,7 @@ public class TimetableModel {
 			pstmt.setLong(1, courseId);
 			pstmt.setLong(2, subjectId);
 			pstmt.setString(3, semester);
-			pstmt.setDate(4, new java.sql.Date(examDate.getTime()));
+			pstmt.setDate(4, new java.sql.Date(date.getTime()));
 
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
@@ -327,7 +327,7 @@ public class TimetableModel {
 		return bean;
 	}
 
-	public TimetableBean checkByExamTime(Long courseId, Long subjectId, String semester, Date examDate, String examTime,
+	public TimetableBean checkByExamTime(Long courseId, Long subjectId, String semester, java.util.Date date, String examTime,
 			String description) throws ApplicationException {
 
 		TimetableBean bean = null;
@@ -341,7 +341,7 @@ public class TimetableModel {
 			pstmt.setLong(1, courseId);
 			pstmt.setLong(2, subjectId);
 			pstmt.setString(3, semester);
-			pstmt.setDate(4, new java.sql.Date(examDate.getTime()));
+			pstmt.setDate(4, new java.sql.Date(date.getTime()));
 			pstmt.setString(5, examTime);
 			pstmt.setString(6, description);
 
