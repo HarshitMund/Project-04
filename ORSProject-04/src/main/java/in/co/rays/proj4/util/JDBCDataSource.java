@@ -12,14 +12,14 @@ public final class JDBCDataSource {
 
 	private static JDBCDataSource jds = null;
 
-	private ComboPooledDataSource cpds = null;
+	private static ComboPooledDataSource cpds = null;
 
 	private static ResourceBundle rb = ResourceBundle.getBundle("in.co.rays.proj4.bundle.system");
 
 	private JDBCDataSource() {
 		try {
 			cpds = new ComboPooledDataSource();
-			cpds.setDriverClass(rb.getString("driver"));
+			cpds.setDriverClass(PropertyReader.getValue("driver"));
 			cpds.setJdbcUrl(rb.getString("url"));
 			cpds.setUser(rb.getString("username"));
 			cpds.setPassword(rb.getString("password"));

@@ -16,7 +16,7 @@ import in.co.rays.proj4.util.DataUtility;
 import in.co.rays.proj4.util.PropertyReader;
 import in.co.rays.proj4.util.ServletUtility;
 
-@WebServlet("/CourseListCtl")
+@WebServlet(name = "CourseListCtl", urlPatterns = { "/ctl/CourseListCtl" })
 public class CourseListCtl extends BaseCtl {
 
 	@Override
@@ -125,11 +125,11 @@ public class CourseListCtl extends BaseCtl {
 				}
 
 			} else if (OP_RESET.equalsIgnoreCase(op)) {
-				ServletUtility.redirect(ORSView.COLLEGE_LIST_CTL, request, response);
+				ServletUtility.redirect(ORSView.COURSE_LIST_CTL, request, response);
 				return;
 
 			} else if (OP_BACK.equalsIgnoreCase(op)) {
-				ServletUtility.redirect(ORSView.COLLEGE_LIST_CTL, request, response);
+				ServletUtility.redirect(ORSView.COURSE_LIST_CTL, request, response);
 				return;
 			}
 
