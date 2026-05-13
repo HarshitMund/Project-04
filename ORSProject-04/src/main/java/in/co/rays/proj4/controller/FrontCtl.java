@@ -37,7 +37,7 @@ public class FrontCtl implements Filter {
 
 		if (session.getAttribute("user") == null) {
 			ServletUtility.setErrorMessage("Your session has been expired... Please Login Again", req);
-			ServletUtility.forward(ORSView.LOGIN_CTL, req, resp);
+			ServletUtility.forward(ORSView.LOGIN_VIEW, req, resp);
 		} else {
 			chain.doFilter(request, response);
 		}
