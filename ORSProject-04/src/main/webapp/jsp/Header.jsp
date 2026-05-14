@@ -24,6 +24,7 @@
 		<%=user.getFirstName()%>
 		(<%=session.getAttribute("role")%>)
 	</h3>
+	<a href="ctl/ChangePasswordCtl">Change Password</a> |
 	<a href="<%=ORSView.ROLE_CTL%>">Add Role</a> |
 	<a href="<%=ORSView.ROLE_LIST_CTL%>">Role List</a> |
 	<a href="<%=ORSView.USER_CTL%>">Add User</a> |
