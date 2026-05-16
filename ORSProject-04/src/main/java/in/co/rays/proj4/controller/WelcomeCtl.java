@@ -11,7 +11,7 @@ import in.co.rays.proj4.util.ServletUtility;
 
 /**
  * Controller class to handle forwarding to the Welcome page after successful login.
- * * @author Harshit
+ * @author Harshit
  */
 @WebServlet("/WelcomeCtl")
 public class WelcomeCtl extends BaseCtl {

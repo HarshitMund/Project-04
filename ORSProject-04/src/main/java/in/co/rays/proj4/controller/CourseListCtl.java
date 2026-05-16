@@ -18,14 +18,14 @@ import in.co.rays.proj4.util.ServletUtility;
 
 /**
  * Controller class to handle listing and searching of Course entities.
- * * @author Harshit
+ * @author Harshit
  */
 @WebServlet(name = "CourseListCtl", urlPatterns = { "/ctl/CourseListCtl" })
 public class CourseListCtl extends BaseCtl {
 
 	/**
-	 * Preloads the course list into the request for initial displays.
-	 * * @param request the HTTP servlet request
+	 * Preloads the course list into the request for initial displays. * @param
+	 * request the HTTP servlet request
 	 */
 	@Override
 	protected void preload(HttpServletRequest request) {
@@ -43,6 +43,7 @@ public class CourseListCtl extends BaseCtl {
 	/**
 	 * Populates the CourseBean representing search criteria from the request.
 	 * * @param request the HTTP servlet request
+	 * 
 	 * @return the populated BaseBean used for filtering the list
 	 */
 	@Override
@@ -57,8 +58,9 @@ public class CourseListCtl extends BaseCtl {
 	}
 
 	/**
-	 * Handles HTTP GET requests to display the initial course list.
-	 * * @param request  the HTTP servlet request
+	 * Handles HTTP GET requests to display the initial course list. * @param
+	 * request the HTTP servlet request
+	 * 
 	 * @param response the HTTP servlet response
 	 * @throws ServletException if a servlet-specific error occurs
 	 * @throws IOException      if an I/O error occurs
@@ -97,8 +99,9 @@ public class CourseListCtl extends BaseCtl {
 	}
 
 	/**
-	 * Handles HTTP POST requests for searching, paginating, deleting, or resetting the list.
-	 * * @param request  the HTTP servlet request
+	 * Handles HTTP POST requests for searching, paginating, deleting, or resetting
+	 * the list. * @param request the HTTP servlet request
+	 * 
 	 * @param response the HTTP servlet response
 	 * @throws ServletException if a servlet-specific error occurs
 	 * @throws IOException      if an I/O error occurs

@@ -2,7 +2,7 @@ package in.co.rays.proj4.controller;
 
 /**
  * Interface defining constant values for all application views and controllers.
- * * @author Harshit
+ * @author Harshit
  */
 public interface ORSView {
 

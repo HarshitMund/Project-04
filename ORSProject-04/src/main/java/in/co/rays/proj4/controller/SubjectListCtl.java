@@ -19,7 +19,7 @@ import in.co.rays.proj4.util.ServletUtility;
 
 /**
  * Controller class to handle listing and searching of Subject entities.
- * * @author Harshit
+ * @author Harshit
  */
 @WebServlet(name = "SubjectListCtl", urlPatterns = { "/ctl/SubjectListCtl" })
 public class SubjectListCtl extends BaseCtl {

@@ -7,7 +7,7 @@ import java.util.Date;
 /**
  * Format and convert data types from one format to another format.
  * Primarily handles conversions between String, Integer, Long, Date, and Timestamp.
- * * @author Harshit
+ * @author Harshit
  */
 public class DataUtility {
 

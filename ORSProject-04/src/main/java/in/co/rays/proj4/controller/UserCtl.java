@@ -22,7 +22,7 @@ import in.co.rays.proj4.util.ServletUtility;
 
 /**
  * Controller class to handle add and update operations for User entities.
- * * @author Harshit
+ * @author Harshit
  */
 @WebServlet(name = "UserCtl", urlPatterns = { "/ctl/UserCtl" })
 public class UserCtl extends BaseCtl {

@@ -3,7 +3,7 @@ package in.co.rays.proj4.exception;
 /**
  * DuplicateRecordException is thrown when an operation attempts to insert 
  * or register data that already exists within the application's unique records database.
- * * @author Harshit
+ * @author Harshit
  */
 public class DuplicateRecordException extends Exception {
 

@@ -10,7 +10,7 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 /**
  * Single-point database interaction controller implementing a pool-backed Singleton mechanism (via C3P0).
- * * @author Harshit
+ * @author Harshit
  */
 public final class JDBCDataSource {
 

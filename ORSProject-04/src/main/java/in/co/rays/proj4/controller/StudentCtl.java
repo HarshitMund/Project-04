@@ -21,7 +21,7 @@ import in.co.rays.proj4.util.ServletUtility;
 
 /**
  * Controller class to handle add and update operations for Student entities.
- * * @author Harshit
+ * @author Harshit
  */
 @WebServlet(name = "StudentCtl", urlPatterns = { "/ctl/StudentCtl" })
 public class StudentCtl extends BaseCtl {

@@ -14,7 +14,7 @@ import in.co.rays.proj4.controller.ORSView;
 
 /**
  * Controller-level helper utility class handling context storage operations, forward actions, and redirection pathways.
- * * @author Harshit
+ * @author Harshit
  */
 public class ServletUtility {
 

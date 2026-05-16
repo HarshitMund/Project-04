@@ -2,7 +2,7 @@ package in.co.rays.proj4.util;
 
 /**
  * Data Transfer Object containment model grouping transaction parameters for Email deliveries.
- * * @author Harshit
+ * @author Harshit
  */
 public class EmailMessage {
 

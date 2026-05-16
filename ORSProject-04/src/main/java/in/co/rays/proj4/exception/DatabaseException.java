@@ -3,7 +3,7 @@ package in.co.rays.proj4.exception;
 /**
  * DatabaseException is thrown when a failure or error occurs during 
  * low-level database processing operations, such as query failures or connectivity losses.
- * * @author Harshit
+ * @author Harshit
  */
 public class DatabaseException extends Exception {
 

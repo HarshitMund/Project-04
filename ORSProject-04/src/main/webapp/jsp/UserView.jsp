@@ -12,9 +12,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>User View</title>
+<link rel="icon" type="image/png"
+	href="<%=ORSView.APP_CONTEXT%>/img/logo.jpg" sizes="16x16" />
 </head>
 <body>
+
 
 	<form action="<%=ORSView.USER_CTL%>" method="post">
 
@@ -99,7 +102,7 @@
 				</td>
 				<td style="position: fixed;"><font color="red"> <%=ServletUtility.getErrorMessage("gender", request)%></font></td>
 			</tr>
-			
+
 			<tr>
 				<th align="left">Date of Birth<span style="width: 98%"
 					style="color: red">*</span></th>

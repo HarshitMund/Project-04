@@ -19,7 +19,7 @@ import in.co.rays.proj4.util.ServletUtility;
 
 /**
  * Controller class to handle listing and searching of Role entities.
- * * @author Harshit
+ * @author Harshit
  */
 @WebServlet(name = "RoleListCtl", urlPatterns = { "/ctl/RoleListCtl" })
 public class RoleListCtl extends BaseCtl {

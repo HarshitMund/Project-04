@@ -24,10 +24,11 @@ import in.co.rays.proj4.util.ServletUtility;
  */
 @WebServlet(name = "CourseCtl", urlPatterns = { "/ctl/CourseCtl" })
 public class CourseCtl extends BaseCtl {
-	
+
 	/**
-	 * Validates the input data to ensure all required fields for a Course are correct.
-	 * * @param request the HTTP servlet request
+	 * Validates the input data to ensure all required fields for a Course are
+	 * correct. * @param request the HTTP servlet request
+	 * 
 	 * @return true if validation checks pass, false otherwise
 	 */
 	@Override
@@ -57,8 +58,9 @@ public class CourseCtl extends BaseCtl {
 	}
 
 	/**
-	 * Populates the CourseBean from the incoming request parameters.
-	 * * @param request the HTTP servlet request
+	 * Populates the CourseBean from the incoming request parameters. * @param
+	 * request the HTTP servlet request
+	 * 
 	 * @return the populated BaseBean object representing a course
 	 */
 	@Override
@@ -77,9 +79,9 @@ public class CourseCtl extends BaseCtl {
 	}
 
 	/**
-	 * Handles HTTP GET requests, primarily used to populate the form 
-	 * with existing course data if an ID is passed.
-	 * * @param request  the HTTP servlet request
+	 * Handles HTTP GET requests, primarily used to populate the form with existing
+	 * course data if an ID is passed. * @param request the HTTP servlet request
+	 * 
 	 * @param response the HTTP servlet response
 	 * @throws ServletException if a servlet-specific error occurs
 	 * @throws IOException      if an I/O error occurs
@@ -105,9 +107,10 @@ public class CourseCtl extends BaseCtl {
 	}
 
 	/**
-	 * Handles HTTP POST requests for performing operations like save, update, 
-	 * reset, and cancel on the course data.
-	 * * @param request  the HTTP servlet request
+	 * Handles HTTP POST requests for performing operations like save, update,
+	 * reset, and cancel on the course data. * @param request the HTTP servlet
+	 * request
+	 * 
 	 * @param response the HTTP servlet response
 	 * @throws ServletException if a servlet-specific error occurs
 	 * @throws IOException      if an I/O error occurs
@@ -163,7 +166,7 @@ public class CourseCtl extends BaseCtl {
 
 	/**
 	 * Returns the specific view corresponding to the course registration/edit page.
-	 * * @return a string representing the view path
+	 * @return a string representing the view path
 	 */
 	@Override
 	protected String getView() {

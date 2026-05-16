@@ -3,7 +3,7 @@ package in.co.rays.proj4.exception;
 /**
  * ApplicationException is thrown when a general higher-level application 
  * business logic error or runtime obstruction occurs.
- * * @author Harshit
+ * @author Harshit
  */
 public class ApplicationException extends Exception {
 

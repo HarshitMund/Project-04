@@ -15,7 +15,7 @@ import in.co.rays.proj4.exception.ApplicationException;
 
 /**
  * Utility handling mail transfers through an external SMTP network layout.
- * * @author Harshit
+ * @author Harshit
  */
 public class EmailUtility {
 

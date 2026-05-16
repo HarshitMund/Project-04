@@ -20,7 +20,7 @@ import in.co.rays.proj4.util.ServletUtility;
 
 /**
  * Controller class to handle listing and searching of Timetable entities.
- * * @author Harshit
+ * @author Harshit
  */
 @WebServlet(name = "TimetableListCtl", urlPatterns = { "/ctl/TimetableListCtl" })
 public class TimetableListCtl extends BaseCtl {

@@ -9,7 +9,7 @@ import in.co.rays.proj4.model.RoleModel;
 
 /**
  * Utility factory used to compile structural UI block structures like standard dynamic HTML Select lists.
- * * @author Harshit
+ * @author Harshit
  */
 public class HTMLUtility {
 

@@ -15,6 +15,8 @@
 <script src="/ORS_Project4/js/checkbox.js"></script>
 <script src="/ORS_Project4/js/datepicker.js"></script>
 
+<link rel="icon" type="image/png"
+	href="<%=ORSView.APP_CONTEXT%>/img/logo.jpg" sizes="16x16" />
 </head>
 <body>
 	<%@include file="Header.jsp"%>
@@ -63,7 +65,7 @@
 						value="<%=ServletUtility.getParameter("login", request)%>">&emsp;
 
 						<label><b>Role : </b></label> <%=HTMLUtility.getList("roleId", String.valueOf(bean.getRoleId()), roleList)%>&emsp;
-						
+
 						<input type="submit" name="operation"
 						value="<%=UserListCtl.OP_SEARCH%>"> &nbsp; <input
 						type="submit" name="operation" value="<%=UserListCtl.OP_RESET%>">

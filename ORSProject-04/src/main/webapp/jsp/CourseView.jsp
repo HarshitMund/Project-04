@@ -11,6 +11,8 @@
 	border-color: red;
 }
 </style>
+<link rel="icon" type="image/png"
+	href="<%=ORSView.APP_CONTEXT%>/img/logo.jpg" sizes="16x16" />
 </head>
 <body>
 	<form action="<%=ORSView.COURSE_CTL%>" method="post">

@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 /**
  * Class used to dynamically compile inline HTML bodies for system mailing alerts.
- * * @author Harshit
+ * @author Harshit
  */
 public class EmailBuilder {
 

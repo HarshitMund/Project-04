@@ -4,7 +4,7 @@ import java.util.ResourceBundle;
 
 /**
  * Controller class executing variable configuration string data Extractions directly from bundle resource systems.
- * * @author Harshit
+ * @author Harshit
  */
 public class PropertyReader {
 

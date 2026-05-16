@@ -19,7 +19,7 @@ import in.co.rays.proj4.util.ServletUtility;
 
 /**
  * Controller class to handle add and update operations for Role entities.
- * * @author Harshit
+ * @author Harshit
  */
 @WebServlet(name = "RoleCtl", urlPatterns = { "/ctl/RoleCtl" })
 public class RoleCtl extends BaseCtl {

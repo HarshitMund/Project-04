@@ -5,7 +5,7 @@
 <head>
 <title>Change Password</title>
 <link rel="icon" type="image/png"
-	href="<%=ORSView.APP_CONTEXT%>/img/logo.png" sizes="16x16" />
+	href="<%=ORSView.APP_CONTEXT%>/img/logo.jpg" sizes="16x16" />
 </head>
 <body>
 	<form action="<%=ORSView.CHANGE_PASSWORD_CTL%>" method="post">

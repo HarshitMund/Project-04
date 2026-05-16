@@ -5,7 +5,7 @@ import java.util.Date;
 
 /**
  * Performs business data validations across format layers.
- * * @author Harshit
+ * @author Harshit
  */
 public class DataValidator {
 

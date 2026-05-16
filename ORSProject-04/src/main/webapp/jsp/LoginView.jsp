@@ -8,6 +8,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<link rel="icon" type="image/png"
+	href="<%=ORSView.APP_CONTEXT%>/img/logo.jpg" sizes="16x16" />
 </head>
 <body>
 	<%@ include file="Header.jsp"%>
@@ -54,7 +56,7 @@
 						value="<%=LoginCtl.OP_SIGN_IN%>"> <input type="submit"
 						name="operation" value="<%=LoginCtl.OP_SIGN_UP%>"></td>
 				</tr>
-				
+
 				<tr>
 					<th></th>
 					<td></td>

@@ -3,7 +3,7 @@ package in.co.rays.proj4.exception;
 /**
  * RecordNotFoundException is thrown when a requested data record 
  * cannot be located or does not exist within the persistence layer.
- * * @author Harshit
+ * @author Harshit
  */
 public class RecordNotFoundException extends Exception {
 

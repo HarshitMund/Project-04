@@ -18,7 +18,7 @@ import in.co.rays.proj4.util.ServletUtility;
 
 /**
  * Controller class to handle listing and searching of Faculty entities.
- * * @author Harshit
+ * @author Harshit
  */
 @WebServlet(name = "FacultyListCtl", urlPatterns = { "/ctl/FacultyListCtl" })
 public class FacultyListCtl extends BaseCtl {

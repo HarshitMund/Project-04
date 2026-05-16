@@ -20,7 +20,7 @@ import in.co.rays.proj4.util.ServletUtility;
 
 /**
  * Controller class to handle User Login, Sign Up, and Logout operations.
- * * @author Harshit
+ * @author Harshit
  */
 @WebServlet("/LoginCtl")
 public class LoginCtl extends BaseCtl {

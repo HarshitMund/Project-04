@@ -10,6 +10,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<link rel="icon" type="image/png"
+	href="<%=ORSView.APP_CONTEXT%>/img/logo.jpg" sizes="16x16" />
 </head>
 <body>
 	<%@ include file="Header.jsp"%>
@@ -80,13 +82,13 @@
 				</tr>
 
 				<tr>
-				<th align="left">Date of Birth<span style="width: 98%"
-					style="color: red">*</span></th>
-				<td><input type="date" name="dob" style="width: 165px"
-					placeholder="Select Date of Birth"
-					value="<%=DataUtility.getDateString(bean.getDob())%>"></td>
-				<td style="position: fixed;"><font color="red"> <%=ServletUtility.getErrorMessage("dob", request)%></font></td>
-			</tr>
+					<th align="left">Date of Birth<span style="width: 98%"
+						style="color: red">*</span></th>
+					<td><input type="date" name="dob" style="width: 165px"
+						placeholder="Select Date of Birth"
+						value="<%=DataUtility.getDateString(bean.getDob())%>"></td>
+					<td style="position: fixed;"><font color="red"> <%=ServletUtility.getErrorMessage("dob", request)%></font></td>
+				</tr>
 
 				<tr>
 					<th>Gender:<span style="color: red">*</span></th>

@@ -20,7 +20,7 @@ import in.co.rays.proj4.util.ServletUtility;
 
 /**
  * Controller class to handle new User Registrations.
- * * @author Harshit
+ * @author Harshit
  */
 @WebServlet("/UserRegistrationCtl")
 public class UserRegistrationCtl extends BaseCtl {

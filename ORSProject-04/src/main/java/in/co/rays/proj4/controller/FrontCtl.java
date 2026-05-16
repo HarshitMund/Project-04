@@ -20,7 +20,7 @@ import in.co.rays.proj4.util.ServletUtility;
 /**
  * Front Controller filter to handle session management and authentication checks
  * before allowing access to secure application resources.
- * * @author Harshit
+ * @author Harshit
  */
 @WebFilter(filterName = "FrontCtl", urlPatterns = { "/ctl/*", "/doc/*" })
 public class FrontCtl implements Filter {

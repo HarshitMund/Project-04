@@ -21,7 +21,7 @@ import in.co.rays.proj4.util.ServletUtility;
 
 /**
  * Controller class to handle add and update operations for Subject entities.
- * * @author Harshit
+ * @author Harshit
  */
 @WebServlet(name = "SubjectCtl", urlPatterns = { "/ctl/SubjectCtl" })
 public class SubjectCtl extends BaseCtl {

@@ -23,7 +23,7 @@ import in.co.rays.proj4.util.ServletUtility;
 
 /**
  * Controller class to handle add and update operations for Faculty entities.
- * * @author Harshit
+ * @author Harshit
  */
 @WebServlet(name = "FacultyCtl", urlPatterns = { "/ctl/FacultyCtl" })
 public class FacultyCtl extends BaseCtl {
