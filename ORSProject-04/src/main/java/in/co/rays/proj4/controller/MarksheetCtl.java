@@ -19,9 +19,17 @@ import in.co.rays.proj4.util.DataValidator;
 import in.co.rays.proj4.util.PropertyReader;
 import in.co.rays.proj4.util.ServletUtility;
 
+/**
+ * Controller class to handle add and update operations for Marksheet entities.
+ * * @author Harshit
+ */
 @WebServlet(name = "MarksheetCtl", urlPatterns = { "/ctl/MarksheetCtl" })
 public class MarksheetCtl extends BaseCtl {
 
+	/**
+	 * Preloads the student list into the request for selection in the form.
+	 * * @param request the HTTP servlet request
+	 */
 	@Override
 	protected void preload(HttpServletRequest request) {
 		StudentModel studentModel = new StudentModel();
@@ -33,6 +41,11 @@ public class MarksheetCtl extends BaseCtl {
 		}
 	}
 
+	/**
+	 * Validates the input data to ensure required marksheet fields are correctly filled.
+	 * * @param request the HTTP servlet request
+	 * @return true if validation passes, false otherwise
+	 */
 	@Override
 	protected boolean validate(HttpServletRequest request) {
 
@@ -98,6 +111,11 @@ public class MarksheetCtl extends BaseCtl {
 		return pass;
 	}
 
+	/**
+	 * Populates the MarksheetBean from the incoming request parameters.
+	 * * @param request the HTTP servlet request
+	 * @return the populated BaseBean object representing a marksheet
+	 */
 	@Override
 	protected BaseBean populateBean(HttpServletRequest request) {
 
@@ -124,6 +142,13 @@ public class MarksheetCtl extends BaseCtl {
 		return bean;
 	}
 
+	/**
+	 * Handles HTTP GET requests to populate the form with existing marksheet data.
+	 * * @param request  the HTTP servlet request
+	 * @param response the HTTP servlet response
+	 * @throws ServletException if a servlet-specific error occurs
+	 * @throws IOException      if an I/O error occurs
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -144,6 +169,13 @@ public class MarksheetCtl extends BaseCtl {
 		ServletUtility.forward(getView(), request, response);
 	}
 
+	/**
+	 * Handles HTTP POST requests for saving, updating, cancelling, or resetting marksheet data.
+	 * * @param request  the HTTP servlet request
+	 * @param response the HTTP servlet response
+	 * @throws ServletException if a servlet-specific error occurs
+	 * @throws IOException      if an I/O error occurs
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -193,6 +225,10 @@ public class MarksheetCtl extends BaseCtl {
 		ServletUtility.forward(getView(), request, response);
 	}
 
+	/**
+	 * Returns the specific view corresponding to the marksheet registration/edit page.
+	 * * @return a string representing the view path
+	 */
 	@Override
 	protected String getView() {
 		return ORSView.MARKSHEET_VIEW;

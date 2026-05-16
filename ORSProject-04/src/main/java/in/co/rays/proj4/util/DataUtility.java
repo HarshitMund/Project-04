@@ -4,16 +4,38 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * Format and convert data types from one format to another format.
+ * Primarily handles conversions between String, Integer, Long, Date, and Timestamp.
+ * * @author Harshit
+ */
 public class DataUtility {
 
+	/**
+	 * Application Date Format pattern "yyyy-MM-dd"
+	 */
 	public static final String APP_DATE_FORMAT = "yyyy-MM-dd";
 
+	/**
+	 * Application Time Format pattern "dd-MM-yyyy HH:mm:ss"
+	 */
 	public static final String APP_TIME_FORMAT = "dd-MM-yyyy HH:mm:ss";
 
+	/**
+	 * SimpleDateFormat object targeting {@link #APP_DATE_FORMAT}
+	 */
 	private static final SimpleDateFormat formatter = new SimpleDateFormat(APP_DATE_FORMAT);
 
+	/**
+	 * SimpleDateFormat object targeting {@link #APP_TIME_FORMAT}
+	 */
 	private static final SimpleDateFormat timeFormatter = new SimpleDateFormat(APP_TIME_FORMAT);
 
+	/**
+	 * Trims and returns the input string if it is not null.
+	 * * @param val the input String
+	 * @return trimmed String, or original value if null/empty
+	 */
 	public static String getString(String val) {
 		if (DataValidator.isNotNull(val)) {
 			return val.trim();
@@ -22,6 +44,11 @@ public class DataUtility {
 		}
 	}
 
+	/**
+	 * Converts an Object to its String representation.
+	 * * @param val the object to convert
+	 * @return String value of object, or empty string if null
+	 */
 	public static String getStringData(Object val) {
 		if (val != null) {
 			return val.toString();
@@ -30,6 +57,11 @@ public class DataUtility {
 		}
 	}
 
+	/**
+	 * Converts a String into an integer.
+	 * * @param val the input String
+	 * @return the parsed integer value, or 0 if invalid/null
+	 */
 	public static int getInt(String val) {
 		if (DataValidator.isInteger(val)) {
 			return Integer.parseInt(val);
@@ -38,6 +70,11 @@ public class DataUtility {
 		}
 	}
 
+	/**
+	 * Converts a String into a long.
+	 * * @param val the input String
+	 * @return the parsed long value, or 0 if invalid/null
+	 */
 	public static long getLong(String val) {
 		if (DataValidator.isLong(val)) {
 			return Long.parseLong(val);
@@ -46,6 +83,11 @@ public class DataUtility {
 		}
 	}
 
+	/**
+	 * Parses a String into a {@link Date} object based on {@link #APP_DATE_FORMAT}.
+	 * * @param val the string representation of a date
+	 * @return Date object, or null if parsing fails
+	 */
 	public static Date getDate(String val) {
 		Date date = null;
 		try {
@@ -56,6 +98,11 @@ public class DataUtility {
 		return date;
 	}
 
+	/**
+	 * Formats a {@link Date} object into a String representation based on {@link #APP_DATE_FORMAT}.
+	 * * @param date the date object to format
+	 * @return formatted String, or empty string if formatting fails
+	 */
 	public static String getDateString(Date date) {
 		try {
 			return formatter.format(date);
@@ -64,6 +111,11 @@ public class DataUtility {
 		return "";
 	}
 
+	/**
+	 * Parses a String into a {@link Timestamp} based on {@link #APP_TIME_FORMAT}.
+	 * * @param val the string representation of time
+	 * @return Timestamp object, or null if parsing fails
+	 */
 	public static Timestamp getTimestamp(String val) {
 		Timestamp timeStamp = null;
 		try {
@@ -74,6 +126,11 @@ public class DataUtility {
 		return timeStamp;
 	}
 
+	/**
+	 * Converts milliseconds value (long) into a {@link Timestamp}.
+	 * * @param l epoch milliseconds
+	 * @return Timestamp object, or null if generation fails
+	 */
 	public static Timestamp getTimestamp(long l) {
 		Timestamp timeStamp = null;
 		try {
@@ -84,6 +141,10 @@ public class DataUtility {
 		return timeStamp;
 	}
 
+	/**
+	 * Fetches the current system time as a {@link Timestamp}.
+	 * * @return Timestamp of current time
+	 */
 	public static Timestamp getCurrentTimestamp() {
 		Timestamp timeStamp = null;
 		try {
@@ -94,6 +155,11 @@ public class DataUtility {
 
 	}
 
+	/**
+	 * Converts a {@link Timestamp} into epoch milliseconds (long).
+	 * * @param tm the Timestamp object
+	 * @return time in milliseconds, or 0 if null/invalid
+	 */
 	public static long getTimestamp(Timestamp tm) {
 		try {
 			return tm.getTime();
@@ -102,6 +168,10 @@ public class DataUtility {
 		}
 	}
 
+	/**
+	 * Main method to execute tests for all utility operations within this class.
+	 * * @param args command-line arguments
+	 */
 	public static void main(String[] args) {
 		// Test getString
 		System.out.println("getString Test:");

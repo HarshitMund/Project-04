@@ -19,9 +19,17 @@ import in.co.rays.proj4.util.DataValidator;
 import in.co.rays.proj4.util.PropertyReader;
 import in.co.rays.proj4.util.ServletUtility;
 
+/**
+ * Controller class to handle add and update operations for Subject entities.
+ * * @author Harshit
+ */
 @WebServlet(name = "SubjectCtl", urlPatterns = { "/ctl/SubjectCtl" })
 public class SubjectCtl extends BaseCtl {
 
+	/**
+	 * Preloads the course list into the request for selection in the form.
+	 * * @param request the HTTP servlet request
+	 */
 	@Override
 	protected void preload(HttpServletRequest request) {
 		CourseModel courseModel = new CourseModel();
@@ -33,6 +41,11 @@ public class SubjectCtl extends BaseCtl {
 		}
 	}
 
+	/**
+	 * Validates the input data to ensure required fields for a subject are correct.
+	 * * @param request the HTTP servlet request
+	 * @return true if validation passes, false otherwise
+	 */
 	@Override
 	protected boolean validate(HttpServletRequest request) {
 
@@ -56,6 +69,11 @@ public class SubjectCtl extends BaseCtl {
 		return pass;
 	}
 
+	/**
+	 * Populates the SubjectBean from the incoming request parameters.
+	 * * @param request the HTTP servlet request
+	 * @return the populated BaseBean object representing a subject
+	 */
 	@Override
 	protected BaseBean populateBean(HttpServletRequest request) {
 
@@ -71,6 +89,13 @@ public class SubjectCtl extends BaseCtl {
 		return bean;
 	}
 
+	/**
+	 * Handles HTTP GET requests to populate the form with existing subject data.
+	 * * @param request  the HTTP servlet request
+	 * @param response the HTTP servlet response
+	 * @throws ServletException if a servlet-specific error occurs
+	 * @throws IOException      if an I/O error occurs
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -91,6 +116,13 @@ public class SubjectCtl extends BaseCtl {
 		ServletUtility.forward(getView(), request, response);
 	}
 
+	/**
+	 * Handles HTTP POST requests for saving, updating, cancelling, or resetting subject data.
+	 * * @param request  the HTTP servlet request
+	 * @param response the HTTP servlet response
+	 * @throws ServletException if a servlet-specific error occurs
+	 * @throws IOException      if an I/O error occurs
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -140,6 +172,10 @@ public class SubjectCtl extends BaseCtl {
 		ServletUtility.forward(getView(), request, response);
 	}
 
+	/**
+	 * Returns the specific view corresponding to the subject registration/edit page.
+	 * * @return a string representing the view path
+	 */
 	@Override
 	protected String getView() {
 		return ORSView.SUBJECT_VIEW;

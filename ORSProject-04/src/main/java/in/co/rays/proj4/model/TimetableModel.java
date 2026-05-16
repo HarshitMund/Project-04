@@ -14,8 +14,33 @@ import in.co.rays.proj4.exception.ApplicationException;
 import in.co.rays.proj4.exception.DatabaseException;
 import in.co.rays.proj4.util.JDBCDataSource;
 
+/**
+ * TimetableModel performs database operations related to Timetable.
+ * <p>
+ * This model provides methods for:
+ * <ul>
+ * <li>Generating primary keys</li>
+ * <li>Adding timetable records</li>
+ * <li>Updating timetable records</li>
+ * <li>Deleting timetable records</li>
+ * <li>Searching timetable records</li>
+ * <li>Finding timetable by primary key</li>
+ * <li>Checking timetable records using course, subject, semester and exam
+ * details</li>
+ * </ul>
+ * 
+ * This class uses JDBC API for database interaction.
+ * 
+ * @author Harshit
+ */
 public class TimetableModel {
 
+	/**
+	 * Generates next primary key for timetable table.
+	 * 
+	 * @return next primary key
+	 * @throws DatabaseException if database error occurs
+	 */
 	public Long nextPk() throws DatabaseException {
 
 		long pk = 0;
@@ -39,6 +64,13 @@ public class TimetableModel {
 		return pk + 1;
 	}
 
+	/**
+	 * Adds a new timetable record to database.
+	 * 
+	 * @param bean timetable bean containing timetable information
+	 * @return generated primary key
+	 * @throws ApplicationException if application error occurs
+	 */
 	public long add(TimetableBean bean) throws ApplicationException {
 
 		Connection conn = null;
@@ -90,6 +122,12 @@ public class TimetableModel {
 		return pk;
 	}
 
+	/**
+	 * Updates existing timetable record.
+	 * 
+	 * @param bean timetable bean containing updated information
+	 * @throws ApplicationException if application error occurs
+	 */
 	public void update(TimetableBean bean) throws ApplicationException {
 
 		Connection conn = null;
@@ -140,6 +178,12 @@ public class TimetableModel {
 
 	}
 
+	/**
+	 * Deletes timetable record from database.
+	 * 
+	 * @param bean timetable bean containing ID of record to delete
+	 * @throws ApplicationException if application error occurs
+	 */
 	public void delete(TimetableBean bean) throws ApplicationException {
 
 		Connection conn = null;
@@ -167,6 +211,13 @@ public class TimetableModel {
 
 	}
 
+	/**
+	 * Finds timetable record by primary key.
+	 * 
+	 * @param pk primary key
+	 * @return TimetableBean containing timetable information
+	 * @throws ApplicationException if application error occurs
+	 */
 	public TimetableBean findByPk(long pk) throws ApplicationException {
 
 		Connection conn = null;
@@ -204,6 +255,14 @@ public class TimetableModel {
 		return bean;
 	}
 
+	/**
+	 * Checks timetable by course and exam date.
+	 * 
+	 * @param courseId course ID
+	 * @param date     exam date
+	 * @return TimetableBean if record exists
+	 * @throws ApplicationException if application error occurs
+	 */
 	public TimetableBean checkByCourseName(Long courseId, java.util.Date date) throws ApplicationException {
 
 		TimetableBean bean = null;
@@ -244,7 +303,17 @@ public class TimetableModel {
 		return bean;
 	}
 
-	public TimetableBean checkBySubjectName(Long courseId, Long subjectId, java.util.Date date) throws ApplicationException {
+	/**
+	 * Checks timetable by course, subject and exam date.
+	 * 
+	 * @param courseId  course ID
+	 * @param subjectId subject ID
+	 * @param date      exam date
+	 * @return TimetableBean if record exists
+	 * @throws ApplicationException if application error occurs
+	 */
+	public TimetableBean checkBySubjectName(Long courseId, Long subjectId, java.util.Date date)
+			throws ApplicationException {
 
 		TimetableBean bean = null;
 		Connection conn = null;
@@ -285,6 +354,16 @@ public class TimetableModel {
 		return bean;
 	}
 
+	/**
+	 * Checks timetable by course, subject, semester and exam date.
+	 * 
+	 * @param courseId  course ID
+	 * @param subjectId subject ID
+	 * @param semester  semester
+	 * @param date      exam date
+	 * @return TimetableBean if record exists
+	 * @throws ApplicationException if application error occurs
+	 */
 	public TimetableBean checkBySemester(Long courseId, Long subjectId, String semester, java.util.Date date)
 			throws ApplicationException {
 
@@ -327,8 +406,20 @@ public class TimetableModel {
 		return bean;
 	}
 
-	public TimetableBean checkByExamTime(Long courseId, Long subjectId, String semester, java.util.Date date, String examTime,
-			String description) throws ApplicationException {
+	/**
+	 * Checks timetable by exam details.
+	 * 
+	 * @param courseId    course ID
+	 * @param subjectId   subject ID
+	 * @param semester    semester
+	 * @param date        exam date
+	 * @param examTime    exam time
+	 * @param description description
+	 * @return TimetableBean if record exists
+	 * @throws ApplicationException if application error occurs
+	 */
+	public TimetableBean checkByExamTime(Long courseId, Long subjectId, String semester, java.util.Date date,
+			String examTime, String description) throws ApplicationException {
 
 		TimetableBean bean = null;
 		Connection conn = null;
@@ -372,6 +463,15 @@ public class TimetableModel {
 		return bean;
 	}
 
+	/**
+	 * Searches timetable records using search criteria.
+	 * 
+	 * @param bean     search bean containing search criteria
+	 * @param pageNo   page number
+	 * @param pageSize number of records per page
+	 * @return list of matching timetable records
+	 * @throws ApplicationException if application error occurs
+	 */
 	public List<TimetableBean> search(TimetableBean bean, int pageNo, int pageSize) throws ApplicationException {
 
 		StringBuffer sql = new StringBuffer("select * from st_timetable where 1=1");

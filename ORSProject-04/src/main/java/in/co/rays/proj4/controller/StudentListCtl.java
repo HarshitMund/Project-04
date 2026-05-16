@@ -16,9 +16,18 @@ import in.co.rays.proj4.util.DataUtility;
 import in.co.rays.proj4.util.PropertyReader;
 import in.co.rays.proj4.util.ServletUtility;
 
+/**
+ * Controller class to handle listing and searching of Student entities.
+ * * @author Harshit
+ */
 @WebServlet(name = "StudentListCtl", urlPatterns = { "/ctl/StudentListCtl" })
 public class StudentListCtl extends BaseCtl {
 
+	/**
+	 * Populates the StudentBean representing search criteria from the request.
+	 * * @param request the HTTP servlet request
+	 * @return the populated BaseBean used for filtering the list
+	 */
 	@Override
 	protected BaseBean populateBean(HttpServletRequest request) {
 
@@ -31,6 +40,13 @@ public class StudentListCtl extends BaseCtl {
 		return bean;
 	}
 
+	/**
+	 * Handles HTTP GET requests to display the initial student list.
+	 * * @param request  the HTTP servlet request
+	 * @param response the HTTP servlet response
+	 * @throws ServletException if a servlet-specific error occurs
+	 * @throws IOException      if an I/O error occurs
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -63,6 +79,13 @@ public class StudentListCtl extends BaseCtl {
 		}
 	}
 
+	/**
+	 * Handles HTTP POST requests for searching, paginating, deleting, or resetting the student list.
+	 * * @param request  the HTTP servlet request
+	 * @param response the HTTP servlet response
+	 * @throws ServletException if a servlet-specific error occurs
+	 * @throws IOException      if an I/O error occurs
+	 */
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -141,6 +164,10 @@ public class StudentListCtl extends BaseCtl {
 		}
 	}
 
+	/**
+	 * Returns the specific view corresponding to the student list display page.
+	 * * @return a string representing the view path
+	 */
 	@Override
 	protected String getView() {
 		return ORSView.STUDENT_LIST_VIEW;

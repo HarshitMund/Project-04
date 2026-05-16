@@ -17,9 +17,17 @@ import in.co.rays.proj4.util.DataUtility;
 import in.co.rays.proj4.util.PropertyReader;
 import in.co.rays.proj4.util.ServletUtility;
 
+/**
+ * Controller class to handle listing and searching of Subject entities.
+ * * @author Harshit
+ */
 @WebServlet(name = "SubjectListCtl", urlPatterns = { "/ctl/SubjectListCtl" })
 public class SubjectListCtl extends BaseCtl {
 
+	/**
+	 * Preloads the subject and course lists into the request for filter drop-downs.
+	 * * @param request the HTTP servlet request
+	 */
 	@Override
 	protected void preload(HttpServletRequest request) {
 
@@ -38,6 +46,11 @@ public class SubjectListCtl extends BaseCtl {
 		}
 	}
 
+	/**
+	 * Populates the SubjectBean representing search criteria from the request.
+	 * * @param request the HTTP servlet request
+	 * @return the populated BaseBean used for filtering the list
+	 */
 	@Override
 	protected BaseBean populateBean(HttpServletRequest request) {
 
@@ -52,6 +65,13 @@ public class SubjectListCtl extends BaseCtl {
 		return bean;
 	}
 
+	/**
+	 * Handles HTTP GET requests to display the initial subject list.
+	 * * @param request  the HTTP servlet request
+	 * @param response the HTTP servlet response
+	 * @throws ServletException if a servlet-specific error occurs
+	 * @throws IOException      if an I/O error occurs
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -84,6 +104,13 @@ public class SubjectListCtl extends BaseCtl {
 		}
 	}
 
+	/**
+	 * Handles HTTP POST requests for searching, paginating, deleting, or resetting the subject list.
+	 * * @param request  the HTTP servlet request
+	 * @param response the HTTP servlet response
+	 * @throws ServletException if a servlet-specific error occurs
+	 * @throws IOException      if an I/O error occurs
+	 */
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -162,6 +189,10 @@ public class SubjectListCtl extends BaseCtl {
 		}
 	}
 
+	/**
+	 * Returns the specific view corresponding to the subject list display page.
+	 * * @return a string representing the view path
+	 */
 	@Override
 	protected String getView() {
 		return ORSView.SUBJECT_LIST_VIEW;

@@ -20,9 +20,17 @@ import in.co.rays.proj4.util.DataValidator;
 import in.co.rays.proj4.util.PropertyReader;
 import in.co.rays.proj4.util.ServletUtility;
 
+/**
+ * Controller class to handle add and update operations for User entities.
+ * * @author Harshit
+ */
 @WebServlet(name = "UserCtl", urlPatterns = { "/ctl/UserCtl" })
 public class UserCtl extends BaseCtl {
 
+	/**
+	 * Preloads the role list into the request for selection in the form.
+	 * * @param request the HTTP servlet request
+	 */
 	@Override
 	protected void preload(HttpServletRequest request) {
 		RoleModel roleModel = new RoleModel();
@@ -35,6 +43,11 @@ public class UserCtl extends BaseCtl {
 		}
 	}
 
+	/**
+	 * Validates the input data to ensure required fields for a user are correct.
+	 * * @param request the HTTP servlet request
+	 * @return true if validation passes, false otherwise
+	 */
 	@Override
 	protected boolean validate(HttpServletRequest request) {
 
@@ -117,6 +130,11 @@ public class UserCtl extends BaseCtl {
 		return flag;
 	}
 
+	/**
+	 * Populates the UserBean from the incoming request parameters.
+	 * * @param request the HTTP servlet request
+	 * @return the populated BaseBean object representing a user
+	 */
 	@Override
 	protected BaseBean populateBean(HttpServletRequest request) {
 
@@ -138,6 +156,13 @@ public class UserCtl extends BaseCtl {
 		return bean;
 	}
 
+	/**
+	 * Handles HTTP GET requests to populate the form with existing user data.
+	 * * @param request  the HTTP servlet request
+	 * @param response the HTTP servlet response
+	 * @throws ServletException if a servlet-specific error occurs
+	 * @throws IOException      if an I/O error occurs
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -157,6 +182,13 @@ public class UserCtl extends BaseCtl {
 		ServletUtility.forward(getView(), request, response);
 	}
 
+	/**
+	 * Handles HTTP POST requests for saving, updating, cancelling, or resetting user data.
+	 * * @param request  the HTTP servlet request
+	 * @param response the HTTP servlet response
+	 * @throws ServletException if a servlet-specific error occurs
+	 * @throws IOException      if an I/O error occurs
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -204,6 +236,10 @@ public class UserCtl extends BaseCtl {
 		ServletUtility.forward(getView(), request, response);
 	}
 
+	/**
+	 * Returns the specific view corresponding to the user registration/edit page.
+	 * * @return a string representing the view path
+	 */
 	@Override
 	protected String getView() {
 		return ORSView.USER_VIEW;

@@ -1,5 +1,9 @@
 package in.co.rays.proj4.controller;
 
+/**
+ * Interface defining constant values for all application views and controllers.
+ * * @author Harshit
+ */
 public interface ORSView {
 
 	public String APP_CONTEXT = "/ORSProject-04";

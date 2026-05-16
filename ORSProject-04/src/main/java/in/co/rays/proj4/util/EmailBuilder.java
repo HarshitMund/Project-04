@@ -2,8 +2,17 @@ package in.co.rays.proj4.util;
 
 import java.util.HashMap;
 
+/**
+ * Class used to dynamically compile inline HTML bodies for system mailing alerts.
+ * * @author Harshit
+ */
 public class EmailBuilder {
 
+	/**
+	 * Generates HTML contents for a user registration template.
+	 * * @param map template data map holding keys "login" and "password"
+	 * @return generated HTML template String
+	 */
 	public static String getUserRegistrationMessage(HashMap<String, String> map) {
 		StringBuilder msg = new StringBuilder();
 		msg.append("<HTML><BODY>");
@@ -17,6 +26,11 @@ public class EmailBuilder {
 		return msg.toString();
 	}
 
+	/**
+	 * Generates HTML message text for password recovery assistance.
+	 * * @param map template data map containing keys "firstName", "lastName", "login" and "password"
+	 * @return generated HTML template String
+	 */
 	public static String getForgetPasswordMessage(HashMap<String, String> map) {
 		StringBuilder msg = new StringBuilder();
 		msg.append("<HTML><BODY>");
@@ -29,6 +43,11 @@ public class EmailBuilder {
 		return msg.toString();
 	}
 
+	/**
+	 * Generates HTML notification after a password update sequence concludes.
+	 * * @param map template data map containing keys "firstName", "lastName", "login" and "password"
+	 * @return generated HTML template String
+	 */
 	public static String getChangePasswordMessage(HashMap<String, String> map) {
 		StringBuilder msg = new StringBuilder();
 		msg.append("<HTML><BODY>");

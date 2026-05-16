@@ -17,9 +17,18 @@ import in.co.rays.proj4.util.DataUtility;
 import in.co.rays.proj4.util.DataValidator;
 import in.co.rays.proj4.util.ServletUtility;
 
+/**
+ * Controller class to handle add and update operations for Role entities.
+ * * @author Harshit
+ */
 @WebServlet(name = "RoleCtl", urlPatterns = { "/ctl/RoleCtl" })
 public class RoleCtl extends BaseCtl {
 
+	/**
+	 * Validates the input data to ensure required fields for a role are filled properly.
+	 * * @param request the HTTP servlet request
+	 * @return true if validation passes, false otherwise
+	 */
 	@Override
 	protected boolean validate(HttpServletRequest request) {
 
@@ -41,6 +50,11 @@ public class RoleCtl extends BaseCtl {
 		return flag;
 	}
 
+	/**
+	 * Populates the RoleBean from the incoming request parameters.
+	 * * @param request the HTTP servlet request
+	 * @return the populated BaseBean object representing a role
+	 */
 	@Override
 	protected BaseBean populateBean(HttpServletRequest request) {
 
@@ -55,6 +69,13 @@ public class RoleCtl extends BaseCtl {
 		return bean;
 	}
 
+	/**
+	 * Handles HTTP GET requests to populate the form with existing role data.
+	 * * @param request  the HTTP servlet request
+	 * @param response the HTTP servlet response
+	 * @throws ServletException if a servlet-specific error occurs
+	 * @throws IOException      if an I/O error occurs
+	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -77,6 +98,13 @@ public class RoleCtl extends BaseCtl {
 
 	}
 
+	/**
+	 * Handles HTTP POST requests for saving, updating, cancelling, or resetting role data.
+	 * * @param request  the HTTP servlet request
+	 * @param response the HTTP servlet response
+	 * @throws ServletException if a servlet-specific error occurs
+	 * @throws IOException      if an I/O error occurs
+	 */
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -132,6 +160,10 @@ public class RoleCtl extends BaseCtl {
 
 	}
 
+	/**
+	 * Returns the specific view corresponding to the role registration/edit page.
+	 * * @return a string representing the view path
+	 */
 	@Override
 	protected String getView() {
 		return ORSView.ROLE_VIEW;

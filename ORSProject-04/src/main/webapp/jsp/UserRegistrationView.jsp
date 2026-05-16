@@ -1,3 +1,5 @@
+<%@page import="in.co.rays.proj4.util.HTMLUtility"%>
+<%@page import="java.util.HashMap"%>
 <%@page import="in.co.rays.proj4.controller.UserRegistrationCtl"%>
 <%@page import="in.co.rays.proj4.util.DataUtility"%>
 <%@page import="in.co.rays.proj4.util.ServletUtility"%>
@@ -78,25 +80,27 @@
 				</tr>
 
 				<tr>
-					<th>Date of Birth:</th>
-					<td><input type="date" name="dob"
-						value="<%=DataUtility.getDateString(bean.getDob())%>"></td>
-					<td style="position: fixed"><font color="red"><%=ServletUtility.getErrorMessage("dob", request)%></font>
-					</td>
-				</tr>
+				<th align="left">Date of Birth<span style="width: 98%"
+					style="color: red">*</span></th>
+				<td><input type="date" name="dob" style="width: 165px"
+					placeholder="Select Date of Birth"
+					value="<%=DataUtility.getDateString(bean.getDob())%>"></td>
+				<td style="position: fixed;"><font color="red"> <%=ServletUtility.getErrorMessage("dob", request)%></font></td>
+			</tr>
 
 				<tr>
-					<th>Gender:</th>
-					<td><select style="width: 169px; text-align-last: center;"
-						class='form-control' name='gender'>
-							<option selected value=''>-------------Select-------------</option>
-							<option value='male'>male</option>
-							<option value='female'>female</option>
-					</select></td>
-					<td style="position: fixed;"><font color="red"> <%=ServletUtility.getErrorMessage("gender", request)%></font>
-					</td>
-				</tr>
+					<th>Gender:<span style="color: red">*</span></th>
+					<td>
+						<%
+						HashMap<String, String> map = new HashMap<String, String>();
+						map.put("Male", "Male");
+						map.put("Female", "Female");
 
+						String htmlList = HTMLUtility.getList("gender", bean.getGender(), map);
+						%> <%=htmlList%>
+					</td>
+					<td style="position: fixed;"><font color="red"> <%=ServletUtility.getErrorMessage("gender", request)%></font></td>
+				</tr>
 				<tr>
 					<th>Mobile No:</th>
 					<td><input type="text" name="mobileNo"

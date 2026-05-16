@@ -13,15 +13,25 @@ import javax.mail.internet.MimeMessage;
 
 import in.co.rays.proj4.exception.ApplicationException;
 
+/**
+ * Utility handling mail transfers through an external SMTP network layout.
+ * * @author Harshit
+ */
 public class EmailUtility {
 
+	/** ResourceBundle tracking network configuration references */
 	static ResourceBundle rb = ResourceBundle.getBundle("in.co.rays.proj4.bundle.system");
 
+	/** SMTP Server domain property */
 	private static final String SMTP_HOST_NAME = rb.getString("smtp.server");
+	/** Target routing server port connection flag */
 	private static final String SMTP_PORT = rb.getString("smtp.port");
+	/** System transactional delivery sender address */
 	private static final String emailFromAddress = rb.getString("email.login");
+	/** System authentication account token password */
 	private static final String emailPassword = rb.getString("email.pwd");
 
+	/** Mail server protocol parameters payload object */
 	private static Properties props = new Properties();
 
 	static {
@@ -36,6 +46,11 @@ public class EmailUtility {
 		props.put("mail.smtp.socketFactory.fallback", "false");
 	}
 
+	/**
+	 * Dispatches mail packages based on values derived inside an {@link EmailMessage} container.
+	 * * @param emailMessageDTO email contents parameters package to deliver
+	 * @throws ApplicationException thrown if server transmissions drop or encounter faults
+	 */
 	public static void sendMail(EmailMessage emailMessageDTO) throws ApplicationException {
 		try {
 			// Setup mail session
@@ -63,6 +78,12 @@ public class EmailUtility {
 		}
 	}
 
+	/**
+	 * Compiles comma-separated textual mail listings into a structural sequence of InternetAddress instances.
+	 * * @param emails raw CSV string of emails
+	 * @return formatted InternetAddress tracking arrays
+	 * @throws Exception thrown if address formatting patterns mismatch standard formatting
+	 */
 	private static InternetAddress[] getInternetAddresses(String emails) throws Exception {
 		if (emails == null || emails.isEmpty()) {
 			return new InternetAddress[0];

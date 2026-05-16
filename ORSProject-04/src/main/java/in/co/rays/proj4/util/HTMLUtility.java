@@ -7,8 +7,19 @@ import java.util.Set;
 import in.co.rays.proj4.bean.DropdownListBean;
 import in.co.rays.proj4.model.RoleModel;
 
+/**
+ * Utility factory used to compile structural UI block structures like standard dynamic HTML Select lists.
+ * * @author Harshit
+ */
 public class HTMLUtility {
 
+	/**
+	 * Constructs an HTML Select element drop-down using a simple data map structure.
+	 * * @param name tag string identification name
+	 * @param selectedVal item matching this key identifier is marked selected
+	 * @param map dataset map
+	 * @return safe text representation string of HTML Select dropdown component
+	 */
 	public static String getList(String name, String selectedVal, HashMap<String, String> map) {
 
 		StringBuffer sb = new StringBuffer(
@@ -31,6 +42,13 @@ public class HTMLUtility {
 		return sb.toString();
 	}
 
+	/**
+	 * Constructs an HTML Select element drop-down using objects that implement {@link DropdownListBean}.
+	 * * @param name tag string identification name
+	 * @param selectedVal object entry matching key is marked selected
+	 * @param list objects implementation list collection container
+	 * @return safe text representation string of HTML Select dropdown component
+	 */
 	public static String getList(String name, String selectedVal, List list) {
 
 		// Collections.sort(list);
@@ -59,6 +77,9 @@ public class HTMLUtility {
 		return sb.toString();
 	}
 
+	/**
+	 * Test method simulating dropdown population targeting direct map collections.
+	 */
 	public static void testGetListByMap() {
 
 		HashMap<String, String> map = new HashMap<>();
@@ -71,6 +92,10 @@ public class HTMLUtility {
 		System.out.println(htmlSelectFromMap);
 	}
 
+	/**
+	 * Test method simulating dynamic select compilation tracking database Models processing.
+	 * * @throws Exception generic execution exceptions handled cleanly
+	 */
 	public static void testGetListByList() throws Exception {
 
 		RoleModel model = new RoleModel();
@@ -86,6 +111,11 @@ public class HTMLUtility {
 		System.out.println(htmlSelectFromList);
 	}
 
+	/**
+	 * Primary testing terminal initialization loop context.
+	 * * @param args initialization runtime arguments
+	 * @throws Exception exceptions piped outwards downstream safely
+	 */
 	public static void main(String[] args) throws Exception {
 
 		// testGetListByMap();

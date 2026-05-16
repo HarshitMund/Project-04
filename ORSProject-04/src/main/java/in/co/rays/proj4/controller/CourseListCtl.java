@@ -16,9 +16,17 @@ import in.co.rays.proj4.util.DataUtility;
 import in.co.rays.proj4.util.PropertyReader;
 import in.co.rays.proj4.util.ServletUtility;
 
+/**
+ * Controller class to handle listing and searching of Course entities.
+ * * @author Harshit
+ */
 @WebServlet(name = "CourseListCtl", urlPatterns = { "/ctl/CourseListCtl" })
 public class CourseListCtl extends BaseCtl {
 
+	/**
+	 * Preloads the course list into the request for initial displays.
+	 * * @param request the HTTP servlet request
+	 */
 	@Override
 	protected void preload(HttpServletRequest request) {
 
@@ -32,6 +40,11 @@ public class CourseListCtl extends BaseCtl {
 		}
 	}
 
+	/**
+	 * Populates the CourseBean representing search criteria from the request.
+	 * * @param request the HTTP servlet request
+	 * @return the populated BaseBean used for filtering the list
+	 */
 	@Override
 	protected BaseBean populateBean(HttpServletRequest request) {
 		CourseBean bean = new CourseBean();
@@ -43,6 +56,13 @@ public class CourseListCtl extends BaseCtl {
 		return bean;
 	}
 
+	/**
+	 * Handles HTTP GET requests to display the initial course list.
+	 * * @param request  the HTTP servlet request
+	 * @param response the HTTP servlet response
+	 * @throws ServletException if a servlet-specific error occurs
+	 * @throws IOException      if an I/O error occurs
+	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -76,6 +96,13 @@ public class CourseListCtl extends BaseCtl {
 		}
 	}
 
+	/**
+	 * Handles HTTP POST requests for searching, paginating, deleting, or resetting the list.
+	 * * @param request  the HTTP servlet request
+	 * @param response the HTTP servlet response
+	 * @throws ServletException if a servlet-specific error occurs
+	 * @throws IOException      if an I/O error occurs
+	 */
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -155,6 +182,10 @@ public class CourseListCtl extends BaseCtl {
 		}
 	}
 
+	/**
+	 * Returns the specific view corresponding to the course list display page.
+	 * * @return a string representing the view path
+	 */
 	@Override
 	protected String getView() {
 		return ORSView.COURSE_LIST_VIEW;

@@ -20,9 +20,17 @@ import in.co.rays.proj4.util.DataValidator;
 import in.co.rays.proj4.util.PropertyReader;
 import in.co.rays.proj4.util.ServletUtility;
 
+/**
+ * Controller class to handle add and update operations for Timetable entities.
+ * * @author Harshit
+ */
 @WebServlet(name = "TimetableCtl", urlPatterns = { "/ctl/TimetableCtl" })
 public class TimetableCtl extends BaseCtl {
 
+	/**
+	 * Preloads the subject and course lists into the request for selection in the form.
+	 * * @param request the HTTP servlet request
+	 */
 	@Override
 	protected void preload(HttpServletRequest request) {
 
@@ -41,6 +49,11 @@ public class TimetableCtl extends BaseCtl {
 		}
 	}
 
+	/**
+	 * Validates the input data to ensure required fields for a timetable are correct.
+	 * * @param request the HTTP servlet request
+	 * @return true if validation passes, false otherwise
+	 */
 	@Override
 	protected boolean validate(HttpServletRequest request) {
 
@@ -85,6 +98,11 @@ public class TimetableCtl extends BaseCtl {
 		return pass;
 	}
 
+	/**
+	 * Populates the TimetableBean from the incoming request parameters.
+	 * * @param request the HTTP servlet request
+	 * @return the populated BaseBean object representing a timetable entry
+	 */
 	@Override
 	protected BaseBean populateBean(HttpServletRequest request) {
 
@@ -103,6 +121,13 @@ public class TimetableCtl extends BaseCtl {
 		return bean;
 	}
 
+	/**
+	 * Handles HTTP GET requests to populate the form with existing timetable data.
+	 * * @param request  the HTTP servlet request
+	 * @param response the HTTP servlet response
+	 * @throws ServletException if a servlet-specific error occurs
+	 * @throws IOException      if an I/O error occurs
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -123,6 +148,14 @@ public class TimetableCtl extends BaseCtl {
 		ServletUtility.forward(getView(), request, response);
 	}
 
+	/**
+	 * Handles HTTP POST requests for saving, updating, cancelling, or resetting timetable data.
+	 * Includes complex duplication checks for course, subject, and time conflicts.
+	 * * @param request  the HTTP servlet request
+	 * @param response the HTTP servlet response
+	 * @throws ServletException if a servlet-specific error occurs
+	 * @throws IOException      if an I/O error occurs
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -198,6 +231,10 @@ public class TimetableCtl extends BaseCtl {
 		ServletUtility.forward(getView(), request, response);
 	}
 
+	/**
+	 * Returns the specific view corresponding to the timetable registration/edit page.
+	 * * @return a string representing the view path
+	 */
 	@Override
 	protected String getView() {
 		return ORSView.TIMETABLE_VIEW;

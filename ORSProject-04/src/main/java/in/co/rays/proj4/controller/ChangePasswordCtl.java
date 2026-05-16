@@ -18,11 +18,21 @@ import in.co.rays.proj4.util.DataValidator;
 import in.co.rays.proj4.util.PropertyReader;
 import in.co.rays.proj4.util.ServletUtility;
 
+/**
+ * Controller class to handle the Change Password functionality for users.
+ * 
+ * @author Harshit
+ */
 @WebServlet(name = "ChangePasswordCtl", urlPatterns = { "/ctl/ChangePasswordCtl" })
 public class ChangePasswordCtl extends BaseCtl {
 
 	public static final String OP_CHANGE_MY_PROFILE = "Change My Profile";
 
+	/**
+	 * Validates the input form data for changing the password.
+	 * * @param request the HTTP servlet request
+	 * @return true if all validation checks pass, false otherwise
+	 */
 	@Override
 	protected boolean validate(HttpServletRequest request) {
 
@@ -67,6 +77,11 @@ public class ChangePasswordCtl extends BaseCtl {
 		return pass;
 	}
 
+	/**
+	 * Populates the UserBean with the password data from the request.
+	 * * @param request the HTTP servlet request
+	 * @return the populated BaseBean object
+	 */
 	@Override
 	protected BaseBean populateBean(HttpServletRequest request) {
 
@@ -80,11 +95,25 @@ public class ChangePasswordCtl extends BaseCtl {
 		return bean;
 	}
 
+	/**
+	 * Handles HTTP GET requests to forward to the change password view.
+	 * * @param request  the HTTP servlet request
+	 * @param response the HTTP servlet response
+	 * @throws ServletException if a servlet-specific error occurs
+	 * @throws IOException      if an I/O error occurs
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		ServletUtility.forward(getView(), request, response);
 	}
 
+	/**
+	 * Handles HTTP POST requests for saving the newly changed password.
+	 * * @param request  the HTTP servlet request
+	 * @param response the HTTP servlet response
+	 * @throws ServletException if a servlet-specific error occurs
+	 * @throws IOException      if an I/O error occurs
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -121,6 +150,10 @@ public class ChangePasswordCtl extends BaseCtl {
 		ServletUtility.forward(ORSView.CHANGE_PASSWORD_VIEW, request, response);
 	}
 
+	/**
+	 * Returns the specific view corresponding to the change password page.
+	 * * @return a string representing the view path
+	 */
 	@Override
 	protected String getView() {
 		return ORSView.CHANGE_PASSWORD_VIEW;

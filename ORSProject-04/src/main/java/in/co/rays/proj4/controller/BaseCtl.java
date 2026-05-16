@@ -13,6 +13,13 @@ import in.co.rays.proj4.util.DataUtility;
 import in.co.rays.proj4.util.DataValidator;
 import in.co.rays.proj4.util.ServletUtility;
 
+/**
+ * Base controller class abstracting common servlet operations.
+ * It provides boilerplate implementations for validation, preloading,
+ * and DTO population that other controllers can extend and override.
+ * 
+ * @author Harshit
+ */
 public abstract class BaseCtl extends HttpServlet {
 
 	// Common Buttons
@@ -35,18 +42,39 @@ public abstract class BaseCtl extends HttpServlet {
 	public static final String MSG_SUCCESS = "success";
 	public static final String MSG_ERROR = "error";
 
+	/**
+	 * Validates input data entered by the user.
+	 * * @param request the HTTP servlet request
+	 * @return true if validation passes, false otherwise
+	 */
 	protected boolean validate(HttpServletRequest request) {
 		return true;
 	}
 
+	/**
+	 * Loads required data into the request before forwarding to the view.
+	 * * @param request the HTTP servlet request
+	 */
 	protected void preload(HttpServletRequest request) {
 
 	}
 
+	/**
+	 * Populates the generic bean from request parameters.
+	 * * @param httpServletRequest the HTTP servlet request
+	 * @return the populated BaseBean object
+	 */
 	protected BaseBean populateBean(HttpServletRequest httpServletRequest) {
 		return null;
 	}
 
+	/**
+	 * Populates the common auditing fields (CreatedBy, ModifiedBy, CreatedDatetime, ModifiedDatetime) 
+	 * into the DTO from the request and session data.
+	 * * @param dto     the BaseBean data transfer object
+	 * @param request the HTTP servlet request
+	 * @return the populated BaseBean object with tracking details
+	 */
 	protected BaseBean populateDTO(BaseBean dto, HttpServletRequest request) {
 
 		String createdBy = request.getParameter("createdBy");
@@ -80,6 +108,15 @@ public abstract class BaseCtl extends HttpServlet {
 		return dto;
 	}
 
+	/**
+	 * Intercepts the HTTP request to perform common operations such as preloading 
+	 * data and validating the request based on the triggered operation before 
+	 * delegating to doGet or doPost.
+	 * * @param request  the HTTP servlet request
+	 * @param response the HTTP servlet response
+	 * @throws ServletException if a servlet-specific error occurs
+	 * @throws IOException      if an I/O error occurs
+	 */
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -103,6 +140,10 @@ public abstract class BaseCtl extends HttpServlet {
 		super.service(request, response);
 	}
 
+	/**
+	 * Returns the view page (JSP) associated with the specific controller.
+	 * * @return a string representing the view path
+	 */
 	protected abstract String getView();
 
 }

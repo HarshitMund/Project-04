@@ -17,9 +17,18 @@ import in.co.rays.proj4.util.DataValidator;
 import in.co.rays.proj4.util.PropertyReader;
 import in.co.rays.proj4.util.ServletUtility;
 
+/**
+ * Controller class to handle the Forget Password functionality for users.
+ * * @author Harshit
+ */
 @WebServlet(name = "ForgetPasswordCtl", urlPatterns = { "/ForgetPasswordCtl" })
 public class ForgetPasswordCtl extends BaseCtl {
 
+	/**
+	 * Validates the input email ID to ensure it is correct and provided.
+	 * * @param request the HTTP servlet request
+	 * @return true if validation checks pass, false otherwise
+	 */
 	@Override
 	protected boolean validate(HttpServletRequest request) {
 
@@ -36,6 +45,11 @@ public class ForgetPasswordCtl extends BaseCtl {
 		return pass;
 	}
 
+	/**
+	 * Populates the UserBean with the login email provided in the request.
+	 * * @param request the HTTP servlet request
+	 * @return the populated BaseBean object
+	 */
 	@Override
 	protected BaseBean populateBean(HttpServletRequest request) {
 
@@ -46,11 +60,25 @@ public class ForgetPasswordCtl extends BaseCtl {
 		return bean;
 	}
 
+	/**
+	 * Handles HTTP GET requests to display the forget password view.
+	 * * @param request  the HTTP servlet request
+	 * @param response the HTTP servlet response
+	 * @throws ServletException if a servlet-specific error occurs
+	 * @throws IOException      if an I/O error occurs
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		ServletUtility.forward(getView(), request, response);
 	}
 
+	/**
+	 * Handles HTTP POST requests to trigger the forget password logic and send the email.
+	 * * @param request  the HTTP servlet request
+	 * @param response the HTTP servlet response
+	 * @throws ServletException if a servlet-specific error occurs
+	 * @throws IOException      if an I/O error occurs
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -76,6 +104,10 @@ public class ForgetPasswordCtl extends BaseCtl {
 		}
 	}
 
+	/**
+	 * Returns the specific view corresponding to the forget password page.
+	 * * @return a string representing the view path
+	 */
 	@Override
 	protected String getView() {
 		return ORSView.FORGET_PASSWORD_VIEW;

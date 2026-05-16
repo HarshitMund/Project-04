@@ -18,6 +18,10 @@ import in.co.rays.proj4.util.DataUtility;
 import in.co.rays.proj4.util.DataValidator;
 import in.co.rays.proj4.util.ServletUtility;
 
+/**
+ * Controller class to handle User Login, Sign Up, and Logout operations.
+ * * @author Harshit
+ */
 @WebServlet("/LoginCtl")
 public class LoginCtl extends BaseCtl {
 
@@ -25,6 +29,11 @@ public class LoginCtl extends BaseCtl {
 	public static final String OP_SIGN_UP = "Sign Up";
 	public static final String OP_LOG_OUT = "Logout";
 
+	/**
+	 * Validates the input data to ensure login and password are provided and correctly formatted.
+	 * * @param request the HTTP servlet request
+	 * @return true if validation passes, false otherwise
+	 */
 	@Override
 	protected boolean validate(HttpServletRequest request) {
 
@@ -51,6 +60,11 @@ public class LoginCtl extends BaseCtl {
 
 	}
 
+	/**
+	 * Populates the UserBean from the incoming request parameters.
+	 * * @param request the HTTP servlet request
+	 * @return the populated BaseBean object representing a user
+	 */
 	@Override
 	protected BaseBean populateBean(HttpServletRequest request) {
 
@@ -63,6 +77,13 @@ public class LoginCtl extends BaseCtl {
 
 	}
 
+	/**
+	 * Handles HTTP GET requests, primarily used to perform logout functionality.
+	 * * @param request  the HTTP servlet request
+	 * @param response the HTTP servlet response
+	 * @throws ServletException if a servlet-specific error occurs
+	 * @throws IOException      if an I/O error occurs
+	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -78,6 +99,13 @@ public class LoginCtl extends BaseCtl {
 		ServletUtility.forward(getView(), request, response);
 	}
 
+	/**
+	 * Handles HTTP POST requests for authenticating the user and processing sign in or sign up.
+	 * * @param request  the HTTP servlet request
+	 * @param response the HTTP servlet response
+	 * @throws ServletException if a servlet-specific error occurs
+	 * @throws IOException      if an I/O error occurs
+	 */
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -125,6 +153,10 @@ public class LoginCtl extends BaseCtl {
 		ServletUtility.forward(getView(), request, response);
 	}
 
+	/**
+	 * Returns the specific view corresponding to the login page.
+	 * * @return a string representing the view path
+	 */
 	@Override
 	protected String getView() {
 		return ORSView.LOGIN_VIEW;

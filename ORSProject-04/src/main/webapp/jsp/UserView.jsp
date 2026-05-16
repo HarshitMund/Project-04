@@ -99,7 +99,7 @@
 				</td>
 				<td style="position: fixed;"><font color="red"> <%=ServletUtility.getErrorMessage("gender", request)%></font></td>
 			</tr>
-			`
+			
 			<tr>
 				<th align="left">Date of Birth<span style="width: 98%"
 					style="color: red">*</span></th>

@@ -18,11 +18,22 @@ import in.co.rays.proj4.util.DataUtility;
 import in.co.rays.proj4.util.DataValidator;
 import in.co.rays.proj4.util.ServletUtility;
 
+/**
+ * Controller class to handle new User Registrations.
+ * * @author Harshit
+ */
 @WebServlet("/UserRegistrationCtl")
 public class UserRegistrationCtl extends BaseCtl {
 
 	public static final String OP_SIGN_UP = "Sign Up";
 
+	/**
+	 * Handles HTTP GET requests to display the user registration form.
+	 * * @param request  the HTTP servlet request
+	 * @param response the HTTP servlet response
+	 * @throws ServletException if a servlet-specific error occurs
+	 * @throws IOException      if an I/O error occurs
+	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -30,6 +41,11 @@ public class UserRegistrationCtl extends BaseCtl {
 		ServletUtility.forward(getView(), request, response);
 	}
 
+	/**
+	 * Validates the input data to ensure required fields for a new user registration are correct.
+	 * * @param request the HTTP servlet request
+	 * @return true if validation passes, false otherwise
+	 */
 	@Override
 	protected boolean validate(HttpServletRequest request) {
 
@@ -38,7 +54,7 @@ public class UserRegistrationCtl extends BaseCtl {
 		if (DataValidator.isNull(request.getParameter("firstName"))) {
 			request.setAttribute("firstName", "First Name is required.");
 			flag = false;
-		} else if (DataValidator.isName(request.getParameter("firstName"))) {
+		} else if (!DataValidator.isName(request.getParameter("firstName"))) {
 			request.setAttribute("firstName", "First Name is in invalid format");
 			flag = false;
 		}
@@ -46,7 +62,7 @@ public class UserRegistrationCtl extends BaseCtl {
 		if (DataValidator.isNull(request.getParameter("lastName"))) {
 			request.setAttribute("lastName", "lastName is required.");
 			flag = false;
-		} else if (DataValidator.isName(request.getParameter("lastName"))) {
+		} else if (!DataValidator.isName(request.getParameter("lastName"))) {
 			request.setAttribute("lastName", "lastName is in invalid format");
 			flag = false;
 		}
@@ -54,7 +70,7 @@ public class UserRegistrationCtl extends BaseCtl {
 		if (DataValidator.isNull(request.getParameter("login"))) {
 			request.setAttribute("login", "login is required.");
 			flag = false;
-		} else if (DataValidator.isEmail(request.getParameter("login"))) {
+		} else if (!DataValidator.isEmail(request.getParameter("login"))) {
 			request.setAttribute("login", "login is in invalid format");
 			flag = false;
 		}
@@ -62,10 +78,10 @@ public class UserRegistrationCtl extends BaseCtl {
 		if (DataValidator.isNull(request.getParameter("password"))) {
 			request.setAttribute("password", "password is required");
 			flag = false;
-		} else if (DataValidator.isPasswordLength(request.getParameter("password"))) {
+		} else if (!DataValidator.isPasswordLength(request.getParameter("password"))) {
 			request.setAttribute("password", "password length must be 8 - 12");
 			flag = false;
-		} else if (DataValidator.isPassword(request.getParameter("password"))) {
+		} else if (!DataValidator.isPassword(request.getParameter("password"))) {
 			request.setAttribute("password", "Must contain uppercase, lowercase, digit & special character");
 			flag = false;
 		}
@@ -83,7 +99,7 @@ public class UserRegistrationCtl extends BaseCtl {
 		if (DataValidator.isNull(request.getParameter("dob"))) {
 			request.setAttribute("dob", "dob is required");
 			flag = false;
-		} else if (DataValidator.isDate(request.getParameter("dob"))) {
+		} else if (!DataValidator.isDate(request.getParameter("dob"))) {
 			request.setAttribute("dob", "Invalid date of birth");
 			flag = false;
 		}
@@ -107,6 +123,12 @@ public class UserRegistrationCtl extends BaseCtl {
 		return flag;
 	}
 
+	/**
+	 * Populates the UserBean from the incoming request parameters during registration.
+	 * Default role for newly registered users is set to STUDENT.
+	 * * @param request the HTTP servlet request
+	 * @return the populated BaseBean object representing a new user
+	 */
 	@Override
 	protected BaseBean populateBean(HttpServletRequest request) {
 
@@ -126,6 +148,13 @@ public class UserRegistrationCtl extends BaseCtl {
 		return bean;
 	}
 
+	/**
+	 * Handles HTTP POST requests for saving new user registration data or resetting the form.
+	 * * @param req  the HTTP servlet request
+	 * @param resp the HTTP servlet response
+	 * @throws ServletException if a servlet-specific error occurs
+	 * @throws IOException      if an I/O error occurs
+	 */
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -160,6 +189,10 @@ public class UserRegistrationCtl extends BaseCtl {
 
 	}
 
+	/**
+	 * Returns the specific view corresponding to the user registration page.
+	 * * @return a string representing the view path
+	 */
 	@Override
 	protected String getView() {
 		return ORSView.USER_REGISTRATION_VIEW;
