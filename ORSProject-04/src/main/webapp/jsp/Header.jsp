@@ -8,8 +8,14 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Header</title>
-<link rel="icon" type="image/png"
-	href="<%=ORSView.APP_CONTEXT%>/img/logo.jpg" sizes="16x16" />
+<!-- JQuery -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+<link rel="stylesheet"
+	href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
+<script src="/ORSProject-04/js/checkbox.js"></script>
+<script src="/ORSProject-04/js/datepicker.js"></script>
 </head>
 <body>
 	<!-- Logo -->
@@ -35,16 +41,13 @@
 	<a href="<%=ORSView.GET_MARKSHEET_CTL%>">Get Marksheet</a>
 	<b>|</b>
 	<a href="<%=ORSView.MARKSHEET_MERIT_LIST_CTL%>">Marksheet
-			Merit-List</a>
+		Merit-List</a>
 	<b>|</b>
 
 	<!-- Admin Only + Common Menus-->
 	<%
 	if (user.getRoleId() == RoleBean.ADMIN) {
 	%>
-
-
-
 	<a href="<%=ORSView.ROLE_CTL%>">Add Role</a>
 	<b>|</b>
 	<a href="<%=ORSView.ROLE_LIST_CTL%>">Role List</a>
@@ -83,7 +86,6 @@
 	<b>|</b>
 	<a target="blank" href="<%=ORSView.JAVA_DOC%>"><b>Java Doc</b></a>
 	<b>|</b>
-
 	<%
 	}
 	%>

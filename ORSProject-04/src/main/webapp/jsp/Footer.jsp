@@ -21,7 +21,7 @@
 		<CENTER>
 			<hr>
 			<H3>All rights reserved by Rays Technologies, SunilOS Infotech
-				Pvt Ltd Copyright &copy; 2026</H3>
+				Pvt Ltd Copyright &#169; 2026</H3>
 		</CENTER>
 	</div>
 </html>

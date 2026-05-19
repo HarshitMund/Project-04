@@ -8,6 +8,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import in.co.rays.proj4.bean.BaseBean;
 import in.co.rays.proj4.bean.UserBean;
 import in.co.rays.proj4.exception.ApplicationException;
@@ -19,22 +21,28 @@ import in.co.rays.proj4.util.ServletUtility;
 
 /**
  * Controller class to handle listing and searching of User entities.
+ * 
  * @author Harshit
  */
 @WebServlet(name = "UserListCtl", urlPatterns = { "/ctl/UserListCtl" })
 public class UserListCtl extends BaseCtl {
 
+	private static final Logger log = Logger.getLogger(UserListCtl.class);
+
 	/**
-	 * Preloads the role list into the request for filter drop-downs.
-	 * * @param request the HTTP servlet request
+	 * Preloads the role list into the request for filter drop-downs. * @param
+	 * request the HTTP servlet request
 	 */
 	@Override
 	protected void preload(HttpServletRequest request) {
+		log.debug("UserListCtl preload() called");
 		RoleModel roleModel = new RoleModel();
 		try {
 			List roleList = roleModel.list();
 			request.setAttribute("roleList", roleList);
+			log.info("Preloaded role list, size=" + roleList.size());
 		} catch (ApplicationException e) {
+			log.error("ApplicationException in preload()", e);
 			e.printStackTrace();
 		}
 	}
@@ -42,10 +50,13 @@ public class UserListCtl extends BaseCtl {
 	/**
 	 * Populates the UserBean representing search criteria from the request.
 	 * * @param request the HTTP servlet request
+	 * 
 	 * @return the populated BaseBean used for filtering the list
 	 */
 	@Override
 	protected BaseBean populateBean(HttpServletRequest request) {
+
+		log.debug("UserListCtl populateBean() called");
 
 		UserBean bean = new UserBean();
 
@@ -57,8 +68,9 @@ public class UserListCtl extends BaseCtl {
 	}
 
 	/**
-	 * Handles HTTP GET requests to display the initial user list.
-	 * * @param request  the HTTP servlet request
+	 * Handles HTTP GET requests to display the initial user list. * @param request
+	 * the HTTP servlet request
+	 * 
 	 * @param response the HTTP servlet response
 	 * @throws ServletException if a servlet-specific error occurs
 	 * @throws IOException      if an I/O error occurs
@@ -66,6 +78,8 @@ public class UserListCtl extends BaseCtl {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+		log.info("UserListCtl doGet() started");
 
 		int pageNo = 1;
 		int pageSize = DataUtility.getInt(PropertyReader.getValue("page.size"));
@@ -79,6 +93,7 @@ public class UserListCtl extends BaseCtl {
 
 			if (list == null || list.isEmpty()) {
 				ServletUtility.setErrorMessage("No record found", request);
+				log.info("No record found during initial search");
 			}
 
 			ServletUtility.setList(list, request);
@@ -88,16 +103,19 @@ public class UserListCtl extends BaseCtl {
 			request.setAttribute("nextListSize", next.size());
 
 			ServletUtility.forward(getView(), request, response);
+			log.info("doGet() forwarded to view: " + getView());
 
 		} catch (ApplicationException e) {
+			log.error("ApplicationException in doGet()", e);
 			e.printStackTrace();
 			return;
 		}
 	}
 
 	/**
-	 * Handles HTTP POST requests for searching, paginating, deleting, or resetting the user list.
-	 * * @param request  the HTTP servlet request
+	 * Handles HTTP POST requests for searching, paginating, deleting, or resetting
+	 * the user list. * @param request the HTTP servlet request
+	 * 
 	 * @param response the HTTP servlet response
 	 * @throws ServletException if a servlet-specific error occurs
 	 * @throws IOException      if an I/O error occurs
@@ -105,6 +123,8 @@ public class UserListCtl extends BaseCtl {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+		log.info("UserListCtl doPost() started");
 
 		List list = null;
 		List next = null;
@@ -127,10 +147,13 @@ public class UserListCtl extends BaseCtl {
 
 				if (OP_SEARCH.equalsIgnoreCase(op)) {
 					pageNo = 1;
+					log.debug("Search operation, resetting pageNo to 1");
 				} else if (OP_NEXT.equalsIgnoreCase(op)) {
 					pageNo++;
+					log.debug("Next operation, incrementing pageNo to " + pageNo);
 				} else if (OP_PREVIOUS.equalsIgnoreCase(op) && pageNo > 1) {
 					pageNo--;
+					log.debug("Previous operation, decrementing pageNo to " + pageNo);
 				}
 
 			} else if (OP_NEW.equalsIgnoreCase(op)) {
@@ -145,16 +168,19 @@ public class UserListCtl extends BaseCtl {
 						deletebean.setId(DataUtility.getInt(id));
 						model.delete(deletebean);
 						ServletUtility.setSuccessMessage("User deleted successfully", request);
+						log.info("Deleted user with id=" + id);
 					}
 				} else {
 					ServletUtility.setErrorMessage("Select at least one record", request);
 				}
 
 			} else if (OP_RESET.equalsIgnoreCase(op)) {
+				log.info("Reset operation, redirecting to USER_LIST_CTL");
 				ServletUtility.redirect(ORSView.USER_LIST_CTL, request, response);
 				return;
 
 			} else if (OP_BACK.equalsIgnoreCase(op)) {
+				log.info("Back operation, redirecting to USER_LIST_CTL");
 				ServletUtility.redirect(ORSView.USER_LIST_CTL, request, response);
 				return;
 			}
@@ -164,6 +190,7 @@ public class UserListCtl extends BaseCtl {
 
 			if (list == null || list.size() == 0) {
 				ServletUtility.setErrorMessage("No record found ", request);
+				log.info("No record found on page " + pageNo);
 			}
 
 			ServletUtility.setList(list, request);
@@ -173,8 +200,10 @@ public class UserListCtl extends BaseCtl {
 			request.setAttribute("nextListSize", next.size());
 
 			ServletUtility.forward(getView(), request, response);
+			log.info("doPost() forwarded to view: " + getView());
 
 		} catch (ApplicationException e) {
+			log.error("ApplicationException in doPost()", e);
 			e.printStackTrace();
 			return;
 		}
@@ -186,6 +215,7 @@ public class UserListCtl extends BaseCtl {
 	 */
 	@Override
 	protected String getView() {
+		log.debug("Returning UserList view page");
 		return ORSView.USER_LIST_VIEW;
 	}
 }

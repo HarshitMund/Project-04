@@ -18,11 +18,30 @@ import in.co.rays.proj4.util.DataValidator;
 import in.co.rays.proj4.util.PropertyReader;
 import in.co.rays.proj4.util.ServletUtility;
 
+/**
+ * MyProfileCtl controller class handles profile management functionalities. It
+ * manages the loading, rendering, validation, and profile modification
+ * sequences for the currently authenticated user session.
+ * 
+ * @author Harshit
+ */
 @WebServlet(name = "MyProfileCtl", urlPatterns = { "/ctl/MyProfileCtl" })
 public class MyProfileCtl extends BaseCtl {
 
+	/**
+	 * Operation constant tracking requests to navigate toward password modification
+	 * controls.
+	 */
 	public static final String OP_CHANGE_MY_PASSWORD = "Change Password";
 
+	/**
+	 * Validates user input attributes transmitted from the user profile form
+	 * interface. * @param request the HTTP request context object containing form
+	 * values
+	 * 
+	 * @return true if data elements conform to required specifications, false
+	 *         otherwise
+	 */
 	@Override
 	protected boolean validate(HttpServletRequest request) {
 
@@ -74,6 +93,13 @@ public class MyProfileCtl extends BaseCtl {
 		return pass;
 	}
 
+	/**
+	 * Converts request parameters into a structured data transfer object format
+	 * model. * @param request the HTTP request context object containing form
+	 * inputs
+	 * 
+	 * @return a BaseBean object containing user profile data definitions
+	 */
 	@Override
 	protected BaseBean populateBean(HttpServletRequest request) {
 
@@ -98,6 +124,17 @@ public class MyProfileCtl extends BaseCtl {
 		return bean;
 	}
 
+	/**
+	 * Handles HTTP GET requests to fetch and render the profile details of the
+	 * logged-in user. * @param request the HTTP request context object mapping
+	 * active user session attributes
+	 * 
+	 * @param response the HTTP response context object managing transmission
+	 *                 actions
+	 * @throws ServletException if a servlet-specific execution exception is dropped
+	 * @throws IOException      if an data processing input/output transmission
+	 *                          exception is dropped
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -120,6 +157,18 @@ public class MyProfileCtl extends BaseCtl {
 		ServletUtility.forward(getView(), request, response);
 	}
 
+	/**
+	 * Handles HTTP POST requests managing execution tracks for updating profile
+	 * details or routing toward alternative views based on form operations.
+	 * * @param request the HTTP request context object tracking user action
+	 * operations
+	 * 
+	 * @param response the HTTP response context object managing client-side
+	 *                 navigation paths
+	 * @throws ServletException if a servlet-specific exception occurs during
+	 *                          operational tracks
+	 * @throws IOException      if input or output interaction errors happen
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -160,6 +209,10 @@ public class MyProfileCtl extends BaseCtl {
 		ServletUtility.forward(getView(), request, response);
 	}
 
+	/**
+	 * Identifies the explicit view mapping structure designated for presenting
+	 * profile details. * @return the view identifier path string constant value
+	 */
 	@Override
 	protected String getView() {
 		return ORSView.MY_PROFILE_VIEW;
