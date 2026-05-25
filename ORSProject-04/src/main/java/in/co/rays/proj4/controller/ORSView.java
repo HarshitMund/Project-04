@@ -2,6 +2,7 @@ package in.co.rays.proj4.controller;
 
 /**
  * Interface defining constant values for all application views and controllers.
+ * 
  * @author Harshit
  */
 public interface ORSView {
@@ -92,5 +93,14 @@ public interface ORSView {
 
 	public String ERROR_VIEW = PAGE_FOLDER + "/ErrorView.jsp";
 	public String ERROR_CTL = APP_CONTEXT + "/ErrorCtl";
+
+	public String MODULE_VIEW = PAGE_FOLDER + "/ModuleView.jsp";
+	public String MODULE_CTL = APP_CONTEXT + "/ctl/ModuleCtl";
+
+	public String GYM_VIEW = PAGE_FOLDER + "/GymView.jsp";
+	public String GYM_CTL = APP_CONTEXT + "/ctl/GymCtl";
+
+	public String GYM_LIST_VIEW = PAGE_FOLDER + "/GymListView.jsp";
+	public String GYM_LIST_CTL = APP_CONTEXT + "/ctl/GymListCtl";
 
 }

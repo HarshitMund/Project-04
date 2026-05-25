@@ -5,7 +5,7 @@
 <%@page import="in.co.rays.proj4.util.ServletUtility"%>
 <html>
 <head>
-<title>User</title>
+<title>Add Course</title>
 <style type="text/css">
 .panel-default1 {
 	border-color: red;

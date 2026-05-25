@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>User Registration</title>
 <link rel="icon" type="image/png"
 	href="<%=ORSView.APP_CONTEXT%>/img/logo.jpg" sizes="16x16" />
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>

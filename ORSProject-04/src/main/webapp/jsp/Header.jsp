@@ -111,6 +111,7 @@
 	<a href="<%=ORSView.TIMETABLE_CTL%>">Add TimeTable</a>
 	<b>|</b>
 	<a href="<%=ORSView.TIMETABLE_LIST_CTL%>">TimeTable List</a>
+	<b>|</b>
 	<%
 	}
 	%>
@@ -141,9 +142,13 @@
 	<a href="<%=ORSView.TIMETABLE_CTL%>">Add Timetable</a>
 	<b>|</b>
 	<a href="<%=ORSView.TIMETABLE_LIST_CTL%>">Timetable List</a>
+	<b>|</b>
 	<%
 	}
 	%>
+	<a href="<%=ORSView.MODULE_CTL%>">Daily Module</a>
+	<b>|</b>
+
 	<!-- Logout -->
 	<a href="<%=ORSView.LOGIN_CTL + "?operation=Logout"%>"><b>Logout</b></a>
 	<b>|</b>

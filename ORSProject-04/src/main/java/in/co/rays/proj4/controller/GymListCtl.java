@@ -9,44 +9,27 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import in.co.rays.proj4.bean.BaseBean;
-import in.co.rays.proj4.bean.StudentBean;
+import in.co.rays.proj4.bean.GymBean;
 import in.co.rays.proj4.exception.ApplicationException;
-import in.co.rays.proj4.model.StudentModel;
+import in.co.rays.proj4.model.GymModel;
 import in.co.rays.proj4.util.DataUtility;
 import in.co.rays.proj4.util.PropertyReader;
 import in.co.rays.proj4.util.ServletUtility;
 
-/**
- * Controller class to handle listing and searching of Student entities.
- * @author Harshit
- */
-@WebServlet(name = "StudentListCtl", urlPatterns = { "/ctl/StudentListCtl" })
-public class StudentListCtl extends BaseCtl {
+@WebServlet(name = "GymListCtl", urlPatterns = { "/ctl/GymListCtl" })
+public class GymListCtl extends BaseCtl {
 
-	/**
-	 * Populates the StudentBean representing search criteria from the request.
-	 * * @param request the HTTP servlet request
-	 * @return the populated BaseBean used for filtering the list
-	 */
 	@Override
 	protected BaseBean populateBean(HttpServletRequest request) {
 
-		StudentBean bean = new StudentBean();
+		GymBean bean = new GymBean();
 
-		bean.setFirstName(DataUtility.getString(request.getParameter("firstName")));
-		bean.setLastName(DataUtility.getString(request.getParameter("lastName")));
-		bean.setEmail(DataUtility.getString(request.getParameter("email")));
+		bean.setMemberName(DataUtility.getString(request.getParameter("memberShip")));
+		bean.setTrainerName(DataUtility.getString(request.getParameter("trainerShip")));
 
 		return bean;
 	}
 
-	/**
-	 * Handles HTTP GET requests to display the initial student list.
-	 * * @param request  the HTTP servlet request
-	 * @param response the HTTP servlet response
-	 * @throws ServletException if a servlet-specific error occurs
-	 * @throws IOException      if an I/O error occurs
-	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -54,12 +37,12 @@ public class StudentListCtl extends BaseCtl {
 		int pageNo = 1;
 		int pageSize = DataUtility.getInt(PropertyReader.getValue("page.size"));
 
-		StudentBean bean = (StudentBean) populateBean(request);
-		StudentModel model = new StudentModel();
+		GymBean bean = (GymBean) populateBean(request);
+		GymModel model = new GymModel();
 
 		try {
-			List<StudentBean> list = model.search(bean, pageNo, pageSize);
-			List<StudentBean> next = model.search(bean, pageNo + 1, pageSize);
+			List<GymBean> list = model.search(bean, pageNo, pageSize);
+			List<GymBean> next = model.search(bean, pageNo + 1, pageSize);
 
 			if (list == null || list.isEmpty()) {
 				ServletUtility.setErrorMessage("No record found", request);
@@ -80,13 +63,6 @@ public class StudentListCtl extends BaseCtl {
 		}
 	}
 
-	/**
-	 * Handles HTTP POST requests for searching, paginating, deleting, or resetting the student list.
-	 * * @param request  the HTTP servlet request
-	 * @param response the HTTP servlet response
-	 * @throws ServletException if a servlet-specific error occurs
-	 * @throws IOException      if an I/O error occurs
-	 */
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -100,8 +76,8 @@ public class StudentListCtl extends BaseCtl {
 		pageNo = (pageNo == 0) ? 1 : pageNo;
 		pageSize = (pageSize == 0) ? DataUtility.getInt(PropertyReader.getValue("page.size")) : pageSize;
 
-		StudentBean bean = (StudentBean) populateBean(request);
-		StudentModel model = new StudentModel();
+		GymBean bean = (GymBean) populateBean(request);
+		GymModel model = new GymModel();
 
 		String op = DataUtility.getString(request.getParameter("operation"));
 		String[] ids = request.getParameterValues("ids");
@@ -119,28 +95,28 @@ public class StudentListCtl extends BaseCtl {
 				}
 
 			} else if (OP_NEW.equalsIgnoreCase(op)) {
-				ServletUtility.redirect(ORSView.STUDENT_CTL, request, response);
+				ServletUtility.redirect(ORSView.GYM_CTL, request, response);
 				return;
 
 			} else if (OP_DELETE.equalsIgnoreCase(op)) {
 				pageNo = 1;
 				if (ids != null && ids.length > 0) {
-					StudentBean deletebean = new StudentBean();
+					GymBean deletebean = new GymBean();
 					for (String id : ids) {
 						deletebean.setId(DataUtility.getInt(id));
 						model.delete(deletebean);
-						ServletUtility.setSuccessMessage("Student is deleted successfully", request);
+						ServletUtility.setSuccessMessage("Gym is deleted successfully", request);
 					}
 				} else {
 					ServletUtility.setErrorMessage("Select at least one record", request);
 				}
 
 			} else if (OP_RESET.equalsIgnoreCase(op)) {
-				ServletUtility.redirect(ORSView.STUDENT_LIST_CTL, request, response);
+				ServletUtility.redirect(ORSView.GYM_LIST_CTL, request, response);
 				return;
 
 			} else if (OP_BACK.equalsIgnoreCase(op)) {
-				ServletUtility.redirect(ORSView.STUDENT_LIST_CTL, request, response);
+				ServletUtility.redirect(ORSView.GYM_LIST_CTL, request, response);
 				return;
 			}
 
@@ -165,12 +141,9 @@ public class StudentListCtl extends BaseCtl {
 		}
 	}
 
-	/**
-	 * Returns the specific view corresponding to the student list display page.
-	 * * @return a string representing the view path
-	 */
 	@Override
 	protected String getView() {
-		return ORSView.STUDENT_LIST_VIEW;
+		return ORSView.GYM_LIST_VIEW;
 	}
+
 }
