@@ -7,7 +7,9 @@
 <meta charset="ISO-8859-1">
 <title>Index Page</title>
 <title>Online Result System</title>
-<link rel="icon" type="image/png" href="<%=ORSView.APP_CONTEXT%>/img/logo.jpg" sizes="16x16" /> </head>
+<link rel="icon" type="image/png"
+	href="<%=ORSView.APP_CONTEXT%>/img/logo.jpg" sizes="16x16" />
+</head>
 <body>
 	<br>
 	<br>
@@ -23,8 +25,8 @@
 	<br>
 
 	<h1 align="center">
-		<a href="WelcomeCtl"><font size="10px"
-			color="red">Online Result System</font></a>
+		<a href="WelcomeCtl"><font size="10px">Online
+				Result System</font></a>
 	</h1>
 </body>
 </html>

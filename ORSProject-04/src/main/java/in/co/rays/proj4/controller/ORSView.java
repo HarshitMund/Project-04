@@ -16,6 +16,9 @@ public interface ORSView {
 	public String WELCOME_VIEW = PAGE_FOLDER + "/Welcome.jsp";
 	public String WELCOME_CTL = APP_CONTEXT + "/WelcomeCtl";
 
+	public String HEADER2_VIEW = PAGE_FOLDER + "/Header2.jsp";
+	public String HEADER2_CTL = APP_CONTEXT + "/ctl/Header2";
+
 	public String USER_REGISTRATION_VIEW = PAGE_FOLDER + "/UserRegistrationView.jsp";
 	public String USER_REGISTRATION_CTL = APP_CONTEXT + "/UserRegistrationCtl";
 

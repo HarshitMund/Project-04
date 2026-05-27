@@ -15,13 +15,13 @@ public class ModuleCtl extends BaseCtl {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		ServletUtility.forward(getView(), request, response);
+		ServletUtility.redirect(ORSView.HEADER2_CTL, request, response);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		ServletUtility.forward(getView(), request, response);
 	}
 
 	@Override

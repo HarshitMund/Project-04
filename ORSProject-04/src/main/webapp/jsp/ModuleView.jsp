@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Module</title>
 </head>
 <body>
 	<!-- Logo -->
@@ -26,6 +26,8 @@
 	</h3>
 	<%} %>
 	
+	<a href="<%=ORSView.WELCOME_CTL%>"><b>Go Back</b></a>
+	<b>|</b>
 	<a href="<%=ORSView.GYM_CTL%>">Add Gym Membership</a>
 	<b>|</b>
 	<a href="<%=ORSView.GYM_LIST_CTL%>">Gym Membership List</a>
