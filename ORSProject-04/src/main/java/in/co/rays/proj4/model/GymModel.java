@@ -34,7 +34,7 @@ public class GymModel {
 		} finally {
 			JDBCDataSource.closeConnection(conn);
 		}
-		return pk;
+		return pk + 1;
 	}
 
 	public long add(GymBean bean) throws ApplicationException, DuplicateRecordException {
@@ -67,7 +67,7 @@ public class GymModel {
 				ex.printStackTrace();
 				throw new ApplicationException("Exception : Add rollback exception " + ex.getMessage());
 			}
-			throw new ApplicationException("Exception : Exception in adding gym management");
+			throw new ApplicationException("Exception : Exception in adding gym management" + e.getMessage());
 		}
 
 		return pk;

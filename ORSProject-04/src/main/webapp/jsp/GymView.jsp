@@ -48,28 +48,32 @@
 					<td><input type="text" name="memberName"
 						placeholder="Enter Member Name"
 						value="<%=DataUtility.getStringData(bean.getMemberName())%>">
-					<td style="position: fixed;"><font color="red"><%=ServletUtility.getErrorMessage("memberName", request)%></font>
+					<td style="position: fixed;"><font color="red"><%=ServletUtility.getErrorMessage("memberName", request)%>
+					</font>
 				</tr>
 				<tr>
 					<th align="left">Trainer Name<span style="color: red">*</span></th>
 					<td><input type="text" name="trainerName"
 						placeholder="Enter Trainer Name"
 						value="<%=DataUtility.getStringData(bean.getTrainerName())%>">
-					<td style="position: fixed;"><font color="red"><%=ServletUtility.getErrorMessage("trainerName", request)%></font>
+					<td style="position: fixed;"><font color="red"><%=ServletUtility.getErrorMessage("trainerName", request)%>
+					</font>
 				</tr>
 				<tr>
 					<th align="left">Member Fee<span style="color: red">*</span></th>
 					<td><input type="text" name="fee"
 						placeholder="Enter Member Fee"
 						value="<%=DataUtility.getStringData(bean.getFee())%>">
-					<td style="position: fixed;"><font color="red"><%=ServletUtility.getErrorMessage("fee", request)%></font>
+					<td style="position: fixed;"><font color="red"><%=ServletUtility.getErrorMessage("fee", request)%>
+					</font>
 				</tr>
 				<tr>
 					<th align="left">Joining Date<span style="color: red">*</span></th>
-					<td><input type="text" id="udate" name="joiningDate"
-						placeholder="Select Joining Date"
+					<td><input type="date" id="udate" name="joiningDate"
+						style="width: 165px;" placeholder="Select Joining Date"
 						value="<%=DataUtility.getDateString(bean.getJoiningDate())%>"></td>
-					<td style="position: fixed;"><font color="red"> <%=ServletUtility.getErrorMessage("joiningDate", request)%></font></td>
+					<td style="position: fixed;"><font color="red"> <%=ServletUtility.getErrorMessage("joiningDate", request)%>
+					</font></td>
 				</tr>
 				<tr>
 					<th></th>

@@ -31,6 +31,11 @@
 	<a href="<%=ORSView.GYM_LIST_CTL%>">Gym Membership List</a>
 	<b>|</b>
 	
+	<a href="<%=ORSView.MOBILE_CTL%>">Add Mobile</a>
+	<b>|</b>
+	<a href="<%=ORSView.MOBILE_LIST_CTL%>">Mobile List</a>
+	<b>|</b>
+	
 	<hr>
 
 </body>

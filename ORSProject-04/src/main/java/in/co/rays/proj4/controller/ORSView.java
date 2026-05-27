@@ -103,4 +103,10 @@ public interface ORSView {
 	public String GYM_LIST_VIEW = PAGE_FOLDER + "/GymListView.jsp";
 	public String GYM_LIST_CTL = APP_CONTEXT + "/ctl/GymListCtl";
 
+	public String MOBILE_VIEW = PAGE_FOLDER + "/MobileView.jsp";
+	public String MOBILE_CTL = APP_CONTEXT + "/ctl/MobileCtl";
+
+	public String MOBILE_LIST_VIEW = PAGE_FOLDER + "/MobileListView.jsp";
+	public String MOBILE_LIST_CTL = APP_CONTEXT + "/ctl/MobileListCtl";
+
 }
