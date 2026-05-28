@@ -26,7 +26,7 @@ public class CollegeSystemCtl extends BaseCtl {
 		if (DataValidator.isNull(request.getParameter("studentName"))) {
 			request.setAttribute("studentName", PropertyReader.getValue("error.require", "Student Name"));
 			pass = false;
-		}
+		} else if(!DataValidator.isName(request.getParameter("studentName")))
 
 		if (DataValidator.isNull(request.getParameter("branch"))) {
 			request.setAttribute("branch", PropertyReader.getValue("error.require", "Branch"));
@@ -104,7 +104,7 @@ public class CollegeSystemCtl extends BaseCtl {
 				ServletUtility.setSuccessMessage("Record added successfully", request);
 			} catch (DuplicateRecordException e) {
 				ServletUtility.setBean(bean, request);
-				ServletUtility.setErrorMessage("Student Name already exists", request);
+				ServletUtility.setErrorMessage("Student Name " + bean.getStudentName() + " already exists", request);
 			} catch (ApplicationException e) {
 				e.printStackTrace();
 				ServletUtility.handleException(e, request, response);
