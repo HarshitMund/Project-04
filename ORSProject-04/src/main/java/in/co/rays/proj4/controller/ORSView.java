@@ -112,4 +112,10 @@ public interface ORSView {
 	public String MOBILE_LIST_VIEW = PAGE_FOLDER + "/MobileListView.jsp";
 	public String MOBILE_LIST_CTL = APP_CONTEXT + "/ctl/MobileListCtl";
 
+	public String COLLEGE_SYSTEM_VIEW = PAGE_FOLDER + "/CollegeSystemView.jsp";
+	public String COLLEGE_SYSTEM_CTL = APP_CONTEXT + "/ctl/CollegeSystemCtl";
+
+	public String COLLEGE_SYSTEM_LIST_VIEW = PAGE_FOLDER + "/CollegeSystemListView.jsp";
+	public String COLLEGE_SYSTEM_LIST_CTL = APP_CONTEXT + "/ctl/CollegeSystemListCtl";
+
 }

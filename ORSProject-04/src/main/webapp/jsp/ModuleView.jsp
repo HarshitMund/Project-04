@@ -37,6 +37,11 @@
 	<b>|</b>
 	<a href="<%=ORSView.MOBILE_LIST_CTL%>">Mobile List</a>
 	<b>|</b>
+
+	<a href="<%=ORSView.COLLEGE_SYSTEM_CTL%>">Add College System</a>
+	<b>|</b>
+	<a href="<%=ORSView.COLLEGE_SYSTEM_LIST_CTL%>">College System List</a>
+	<b>|</b>
 	
 	<hr>
 
