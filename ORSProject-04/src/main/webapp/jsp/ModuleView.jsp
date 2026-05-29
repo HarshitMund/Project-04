@@ -42,6 +42,11 @@
 	<b>|</b>
 	<a href="<%=ORSView.COLLEGE_SYSTEM_LIST_CTL%>">College System List</a>
 	<b>|</b>
+
+	<a href="<%=ORSView.EVENT_CTL%>">Add Event</a>
+	<b>|</b>
+	<a href="<%=ORSView.EVENT_LIST_CTL%>">Event List</a>
+	<b>|</b>
 	
 	<hr>
 

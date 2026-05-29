@@ -118,4 +118,12 @@ public interface ORSView {
 	public String COLLEGE_SYSTEM_LIST_VIEW = PAGE_FOLDER + "/CollegeSystemListView.jsp";
 	public String COLLEGE_SYSTEM_LIST_CTL = APP_CONTEXT + "/ctl/CollegeSystemListCtl";
 
+	public String EVENT_VIEW = PAGE_FOLDER + "/EventView.jsp";
+	public String EVENT_CTL = APP_CONTEXT + "/ctl/EventCtl";
+	
+	public String EVENT_LIST_VIEW = PAGE_FOLDER + "/EventListView.jsp";
+	public String EVENT_LIST_CTL = APP_CONTEXT + "/ctl/EventListCtl";
+	
+	
+
 }
