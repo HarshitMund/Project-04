@@ -85,7 +85,7 @@
 			<tr>
 				<th align="left">Confirm Password:<span style="color: red">*</span></th>
 				<td><input type="password" name="confirmPassword"
-					value="<%=DataUtility.getStringData(bean.getConfirmPassword())%>"
+					value="<%=DataUtility.getStringData(bean.getPassword())%>"
 					placeholder="Enter Confirm Password"></td>
 				<td style="position: fixed;"><font color="red"><%=ServletUtility.getErrorMessage("confirmPassword", request)%></font></td>
 			</tr>

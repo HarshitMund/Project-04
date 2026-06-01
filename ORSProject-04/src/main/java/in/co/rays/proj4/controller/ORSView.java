@@ -120,10 +120,20 @@ public interface ORSView {
 
 	public String EVENT_VIEW = PAGE_FOLDER + "/EventView.jsp";
 	public String EVENT_CTL = APP_CONTEXT + "/ctl/EventCtl";
-	
+
 	public String EVENT_LIST_VIEW = PAGE_FOLDER + "/EventListView.jsp";
 	public String EVENT_LIST_CTL = APP_CONTEXT + "/ctl/EventListCtl";
-	
-	
+
+	public String DIGITAL_WALLET_VIEW = PAGE_FOLDER + "/DigitalWalletView.jsp";
+	public String DIGITAL_WALLET_CTL = APP_CONTEXT + "/ctl/DigitalWalletCtl";
+
+	public String DIGITAL_WALLET_LIST_VIEW = PAGE_FOLDER + "/DigitalWalletListView.jsp";
+	public String DIGITAL_WALLET_LIST_CTL = APP_CONTEXT + "/ctl/DigitalWalletListCtl";
+
+	public String CAR_RENTAL_VIEW = PAGE_FOLDER + "/CarRentalView.jsp";
+	public String CAR_RENTAL_CTL = APP_CONTEXT + "/ctl/CarRentalCtl";
+
+	public String CAR_RENTAL_LIST_VIEW = PAGE_FOLDER + "/CarRentalListView.jsp";
+	public String CAR_RENTAL_LIST_CTL = APP_CONTEXT + "/ctl/CarRentalListCtl";
 
 }

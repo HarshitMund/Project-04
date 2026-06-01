@@ -24,15 +24,17 @@
 		<%=user.getFirstName()%>
 		(<%=session.getAttribute("role")%>)
 	</h3>
-	<%} %>
-	
+	<%
+	}
+	%>
+
 	<a href="<%=ORSView.WELCOME_CTL%>"><b>Go Back</b></a>
 	<b>|</b>
 	<a href="<%=ORSView.GYM_CTL%>">Add Gym Membership</a>
 	<b>|</b>
 	<a href="<%=ORSView.GYM_LIST_CTL%>">Gym Membership List</a>
 	<b>|</b>
-	
+
 	<a href="<%=ORSView.MOBILE_CTL%>">Add Mobile</a>
 	<b>|</b>
 	<a href="<%=ORSView.MOBILE_LIST_CTL%>">Mobile List</a>
@@ -47,7 +49,17 @@
 	<b>|</b>
 	<a href="<%=ORSView.EVENT_LIST_CTL%>">Event List</a>
 	<b>|</b>
-	
+
+	<a href="<%=ORSView.DIGITAL_WALLET_CTL%>">Add Digital Wallet</a>
+	<b>|</b>
+	<a href="<%=ORSView.DIGITAL_WALLET_LIST_CTL%>">Digital Wallet List</a>
+	<b>|</b>
+
+	<a href="<%=ORSView.CAR_RENTAL_CTL%>">Add Car Rental</a>
+	<b>|</b>
+	<a href="<%=ORSView.CAR_RENTAL_LIST_CTL%>">Car Rental List</a>
+	<b>|</b>
+
 	<hr>
 
 </body>
