@@ -35,19 +35,23 @@ public class UserCtl extends BaseCtl {
 	/**
 	 * Preloads the role list into the request for selection in the form. * @param
 	 * request the HTTP servlet request
+	 * 
+	 * @throws ServletException
+	 * @throws IOException
 	 */
 	@Override
-	protected void preload(HttpServletRequest request) {
+	protected void preload(HttpServletRequest request, HttpServletResponse response)
+			throws IOException, ServletException {
 		log.debug("UserCtl preload() called");
 		RoleModel roleModel = new RoleModel();
 		try {
 			List<RoleBean> roleList = roleModel.list();
-			System.out.println("roleList size ==> " + roleList.size());
 			request.setAttribute("roleList", roleList);
 			log.info("Preloaded role list, size=" + roleList.size());
 		} catch (ApplicationException e) {
 			log.error("ApplicationException in doPost() SAVE", e);
-			e.printStackTrace();
+			ServletUtility.handleException(e, request, response, getView());
+			return;
 		}
 	}
 
@@ -194,6 +198,7 @@ public class UserCtl extends BaseCtl {
 				ServletUtility.setBean(bean, request);
 				log.info("Loaded UserBean for id=" + id);
 			} catch (ApplicationException e) {
+				ServletUtility.handleException(e, request, response, getView());
 				log.error("ApplicationException in doGet()", e);
 				e.printStackTrace();
 				return;
@@ -235,6 +240,7 @@ public class UserCtl extends BaseCtl {
 				ServletUtility.setErrorMessage("Login Id already exists", request);
 				log.warn("Duplicate login during registration: " + bean.getLogin());
 			} catch (ApplicationException e) {
+				ServletUtility.handleException(e, request, response, getView());
 				log.error("ApplicationException in doPost() SAVE", e);
 				e.printStackTrace();
 				return;
@@ -254,6 +260,7 @@ public class UserCtl extends BaseCtl {
 				ServletUtility.setErrorMessage("Login Id already exists", request);
 				log.warn("Duplicate login during update: " + bean.getLogin());
 			} catch (ApplicationException e) {
+				ServletUtility.handleException(e, request, response, getView());
 				log.error("ApplicationException in doPost() UPDATE", e);
 				e.printStackTrace();
 				return;

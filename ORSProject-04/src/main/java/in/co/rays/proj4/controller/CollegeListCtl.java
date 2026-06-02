@@ -25,11 +25,12 @@ import in.co.rays.proj4.util.ServletUtility;
 public class CollegeListCtl extends BaseCtl {
 
 	/**
-	 * Preloads the college list into the request for use in drop-downs or initial displays.
-	 * * @param request the HTTP servlet request
+	 * Preloads the college list into the request for use in drop-downs or initial
+	 * displays. * @param request the HTTP servlet request
 	 */
 	@Override
-	protected void preload(HttpServletRequest request) {
+	protected void preload(HttpServletRequest request, HttpServletResponse response)
+			throws IOException, ServletException {
 		CollegeModel collegeModel = new CollegeModel();
 
 		try {
@@ -43,6 +44,7 @@ public class CollegeListCtl extends BaseCtl {
 	/**
 	 * Populates the CollegeBean representing search criteria from the request.
 	 * * @param request the HTTP servlet request
+	 * 
 	 * @return the populated BaseBean used for filtering the list
 	 */
 	@Override
@@ -58,8 +60,9 @@ public class CollegeListCtl extends BaseCtl {
 	}
 
 	/**
-	 * Handles HTTP GET requests to display the initial college list.
-	 * * @param request  the HTTP servlet request
+	 * Handles HTTP GET requests to display the initial college list. * @param
+	 * request the HTTP servlet request
+	 * 
 	 * @param response the HTTP servlet response
 	 * @throws ServletException if a servlet-specific error occurs
 	 * @throws IOException      if an I/O error occurs
@@ -92,14 +95,15 @@ public class CollegeListCtl extends BaseCtl {
 
 		} catch (ApplicationException e) {
 			e.printStackTrace();
-			ServletUtility.handleException(e, request, response);
+			ServletUtility.handleException(e, request, response, getView());
 			return;
 		}
 	}
 
 	/**
-	 * Handles HTTP POST requests for searching, paginating, deleting, or resetting the list.
-	 * * @param request  the HTTP servlet request
+	 * Handles HTTP POST requests for searching, paginating, deleting, or resetting
+	 * the list. * @param request the HTTP servlet request
+	 * 
 	 * @param response the HTTP servlet response
 	 * @throws ServletException if a servlet-specific error occurs
 	 * @throws IOException      if an I/O error occurs
@@ -177,7 +181,7 @@ public class CollegeListCtl extends BaseCtl {
 			ServletUtility.forward(getView(), request, response);
 		} catch (ApplicationException e) {
 			e.printStackTrace();
-			ServletUtility.handleException(e, request, response);
+			ServletUtility.handleException(e, request, response, getView());
 			return;
 		}
 	}

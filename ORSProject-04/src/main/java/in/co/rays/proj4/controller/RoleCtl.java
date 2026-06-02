@@ -89,6 +89,7 @@ public class RoleCtl extends BaseCtl {
 				RoleBean bean = model.findByPk(id);
 				ServletUtility.setBean(bean, request);
 			} catch (ApplicationException e) {
+				ServletUtility.handleException(e, request, response, getView());
 				e.printStackTrace();
 				return;
 			}
@@ -127,6 +128,7 @@ public class RoleCtl extends BaseCtl {
 				ServletUtility.setBean(bean, request);
 				ServletUtility.setErrorMessage("Role already exist", request);
 			} catch (ApplicationException e) {
+				ServletUtility.handleException(e, request, response, getView());
 				e.printStackTrace();
 				return;
 			}
@@ -147,6 +149,7 @@ public class RoleCtl extends BaseCtl {
 				ServletUtility.setBean(bean, request);
 				ServletUtility.setErrorMessage("Role already exists", request);
 			} catch (ApplicationException e) {
+				ServletUtility.handleException(e, request, response, getView());
 				e.printStackTrace();
 				return;
 			}

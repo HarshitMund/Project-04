@@ -31,7 +31,7 @@ public class SubjectCtl extends BaseCtl {
 	 * * @param request the HTTP servlet request
 	 */
 	@Override
-	protected void preload(HttpServletRequest request) {
+protected void preload(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		CourseModel courseModel = new CourseModel();
 		try {
 			List courseList = courseModel.list();
@@ -109,7 +109,7 @@ public class SubjectCtl extends BaseCtl {
 				ServletUtility.setBean(bean, request);
 			} catch (ApplicationException e) {
 				e.printStackTrace();
-				ServletUtility.handleException(e, request, response);
+				ServletUtility.handleException(e, request, response, getView());
 				return;
 			}
 		}
@@ -143,7 +143,7 @@ public class SubjectCtl extends BaseCtl {
 				ServletUtility.setErrorMessage("Subject Name already exists", request);
 			} catch (ApplicationException e) {
 				e.printStackTrace();
-				ServletUtility.handleException(e, request, response);
+				ServletUtility.handleException(e, request, response, getView());
 				return;
 			}
 		} else if (OP_UPDATE.equalsIgnoreCase(op)) {
@@ -159,7 +159,7 @@ public class SubjectCtl extends BaseCtl {
 				ServletUtility.setErrorMessage("Subject Name already exists", request);
 			} catch (ApplicationException e) {
 				e.printStackTrace();
-				ServletUtility.handleException(e, request, response);
+				ServletUtility.handleException(e, request, response, getView());
 				return;
 			}
 		} else if (OP_CANCEL.equalsIgnoreCase(op)) {

@@ -32,7 +32,7 @@ public class TimetableCtl extends BaseCtl {
 	 * * @param request the HTTP servlet request
 	 */
 	@Override
-	protected void preload(HttpServletRequest request) {
+protected void preload(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
 		SubjectModel subjectModel = new SubjectModel();
 		CourseModel courseModel = new CourseModel();
@@ -141,7 +141,7 @@ public class TimetableCtl extends BaseCtl {
 				ServletUtility.setBean(bean, request);
 			} catch (ApplicationException e) {
 				e.printStackTrace();
-				ServletUtility.handleException(e, request, response);
+				ServletUtility.handleException(e, request, response, getView());
 				return;
 			}
 		}
@@ -192,7 +192,7 @@ public class TimetableCtl extends BaseCtl {
 				}
 			} catch (ApplicationException e) {
 				e.printStackTrace();
-				ServletUtility.handleException(e, request, response);
+				ServletUtility.handleException(e, request, response, getView());
 				return;
 			}
 
@@ -218,7 +218,7 @@ public class TimetableCtl extends BaseCtl {
 				}
 			} catch (ApplicationException e) {
 				e.printStackTrace();
-				ServletUtility.handleException(e, request, response);
+				ServletUtility.handleException(e, request, response, getView());
 				return;
 			}
 		} else if (OP_CANCEL.equalsIgnoreCase(op)) {

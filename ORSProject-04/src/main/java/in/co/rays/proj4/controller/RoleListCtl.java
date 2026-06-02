@@ -72,7 +72,8 @@ public class RoleListCtl extends BaseCtl {
 			request.setAttribute("nextListSize", next.size());
 
 			ServletUtility.forward(getView(), request, response);
-		} catch (Exception e) {
+		} catch (ApplicationException e) {
+			ServletUtility.handleException(e, request, response, getView());
 			e.printStackTrace();
 			return;
 		}
@@ -152,6 +153,7 @@ public class RoleListCtl extends BaseCtl {
 
 			ServletUtility.forward(getView(), request, response);
 		} catch (ApplicationException e) {
+			ServletUtility.handleException(e, request, response, getView());
 			e.printStackTrace();
 			return;
 		}

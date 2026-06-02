@@ -31,7 +31,7 @@ public class MarksheetCtl extends BaseCtl {
 	 * * @param request the HTTP servlet request
 	 */
 	@Override
-	protected void preload(HttpServletRequest request) {
+protected void preload(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		StudentModel studentModel = new StudentModel();
 		try {
 			List studentList = studentModel.list();
@@ -162,7 +162,7 @@ public class MarksheetCtl extends BaseCtl {
 				ServletUtility.setBean(bean, request);
 			} catch (ApplicationException e) {
 				e.printStackTrace();
-				ServletUtility.handleException(e, request, response);
+				ServletUtility.handleException(e, request, response, getView());
 				return;
 			}
 		}
@@ -196,7 +196,7 @@ public class MarksheetCtl extends BaseCtl {
 				ServletUtility.setErrorMessage("Roll No already exists", request);
 			} catch (ApplicationException e) {
 				e.printStackTrace();
-				ServletUtility.handleException(e, request, response);
+				ServletUtility.handleException(e, request, response, getView());
 				return;
 			}
 		} else if (OP_UPDATE.equalsIgnoreCase(op)) {
@@ -212,7 +212,7 @@ public class MarksheetCtl extends BaseCtl {
 				ServletUtility.setErrorMessage("Roll No already exists", request);
 			} catch (ApplicationException e) {
 				e.printStackTrace();
-				ServletUtility.handleException(e, request, response);
+				ServletUtility.handleException(e, request, response, getView());
 				return;
 			}
 		} else if (OP_CANCEL.equalsIgnoreCase(op)) {

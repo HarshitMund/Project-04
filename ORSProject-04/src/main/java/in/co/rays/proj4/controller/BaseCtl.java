@@ -14,9 +14,9 @@ import in.co.rays.proj4.util.DataValidator;
 import in.co.rays.proj4.util.ServletUtility;
 
 /**
- * Base controller class abstracting common servlet operations.
- * It provides boilerplate implementations for validation, preloading,
- * and DTO population that other controllers can extend and override.
+ * Base controller class abstracting common servlet operations. It provides
+ * boilerplate implementations for validation, preloading, and DTO population
+ * that other controllers can extend and override.
  * 
  * @author Harshit
  */
@@ -43,8 +43,9 @@ public abstract class BaseCtl extends HttpServlet {
 	public static final String MSG_ERROR = "error";
 
 	/**
-	 * Validates input data entered by the user.
-	 * * @param request the HTTP servlet request
+	 * Validates input data entered by the user. * @param request the HTTP servlet
+	 * request
+	 * 
 	 * @return true if validation passes, false otherwise
 	 */
 	protected boolean validate(HttpServletRequest request) {
@@ -52,16 +53,17 @@ public abstract class BaseCtl extends HttpServlet {
 	}
 
 	/**
-	 * Loads required data into the request before forwarding to the view.
-	 * * @param request the HTTP servlet request
+	 * Loads required data into the request before forwarding to the view. * @param
+	 * request the HTTP servlet request
 	 */
-	protected void preload(HttpServletRequest request) {
-
+	protected void preload(HttpServletRequest request, HttpServletResponse response)
+			throws IOException, ServletException {
 	}
 
 	/**
-	 * Populates the generic bean from request parameters.
-	 * * @param httpServletRequest the HTTP servlet request
+	 * Populates the generic bean from request parameters. * @param
+	 * httpServletRequest the HTTP servlet request
+	 * 
 	 * @return the populated BaseBean object
 	 */
 	protected BaseBean populateBean(HttpServletRequest httpServletRequest) {
@@ -69,9 +71,10 @@ public abstract class BaseCtl extends HttpServlet {
 	}
 
 	/**
-	 * Populates the common auditing fields (CreatedBy, ModifiedBy, CreatedDatetime, ModifiedDatetime) 
-	 * into the DTO from the request and session data.
-	 * * @param dto     the BaseBean data transfer object
+	 * Populates the common auditing fields (CreatedBy, ModifiedBy, CreatedDatetime,
+	 * ModifiedDatetime) into the DTO from the request and session data. * @param
+	 * dto the BaseBean data transfer object
+	 * 
 	 * @param request the HTTP servlet request
 	 * @return the populated BaseBean object with tracking details
 	 */
@@ -109,10 +112,10 @@ public abstract class BaseCtl extends HttpServlet {
 	}
 
 	/**
-	 * Intercepts the HTTP request to perform common operations such as preloading 
-	 * data and validating the request based on the triggered operation before 
-	 * delegating to doGet or doPost.
-	 * * @param request  the HTTP servlet request
+	 * Intercepts the HTTP request to perform common operations such as preloading
+	 * data and validating the request based on the triggered operation before
+	 * delegating to doGet or doPost. * @param request the HTTP servlet request
+	 * 
 	 * @param response the HTTP servlet response
 	 * @throws ServletException if a servlet-specific error occurs
 	 * @throws IOException      if an I/O error occurs
@@ -121,7 +124,7 @@ public abstract class BaseCtl extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		preload(request);
+		preload(request, response);
 
 		String op = DataUtility.getString(request.getParameter("operation"));
 

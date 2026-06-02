@@ -136,4 +136,10 @@ public interface ORSView {
 	public String CAR_RENTAL_LIST_VIEW = PAGE_FOLDER + "/CarRentalListView.jsp";
 	public String CAR_RENTAL_LIST_CTL = APP_CONTEXT + "/ctl/CarRentalListCtl";
 
+	public String APPOINTMENT_VIEW = PAGE_FOLDER + "/AppointmentView.jsp";
+	public String APPOINTMENT_CTL = APP_CONTEXT + "/ctl/AppointmentCtl";
+	
+	public String APPOINTMENT_LIST_VIEW = PAGE_FOLDER + "/AppointmentListView.jsp";
+	public String APPOINTMENT_LIST_CTL = APP_CONTEXT + "/ctl/AppointmentListCtl";
+
 }

@@ -85,7 +85,7 @@ public class GymCtl extends BaseCtl {
 				ServletUtility.setBean(bean, request);
 			} catch (ApplicationException e) {
 				e.printStackTrace();
-				ServletUtility.handleException(e, request, response);
+				ServletUtility.handleException(e, request, response, getView());
 				return;
 			}
 		}
@@ -114,7 +114,7 @@ public class GymCtl extends BaseCtl {
 				ServletUtility.setErrorMessage("Member Name already Exist", request);
 			} catch (ApplicationException e) {
 				e.printStackTrace();
-				ServletUtility.handleException(e, request, response);
+				ServletUtility.handleException(e, request, response, getView());
 				return;
 			}
 		} else if (OP_UPDATE.equalsIgnoreCase(op)) {
@@ -130,7 +130,7 @@ public class GymCtl extends BaseCtl {
 				ServletUtility.setErrorMessage("Member Name already Exist", request);
 			} catch (ApplicationException e) {
 				e.printStackTrace();
-				ServletUtility.handleException(e, request, response);
+				ServletUtility.handleException(e, request, response, getView());
 				return;
 			}
 		} else if (OP_CANCEL.equalsIgnoreCase(op)) {

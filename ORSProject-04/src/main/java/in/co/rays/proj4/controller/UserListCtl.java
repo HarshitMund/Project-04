@@ -34,7 +34,8 @@ public class UserListCtl extends BaseCtl {
 	 * request the HTTP servlet request
 	 */
 	@Override
-	protected void preload(HttpServletRequest request) {
+	protected void preload(HttpServletRequest request, HttpServletResponse response)
+			throws IOException, ServletException {
 		log.debug("UserListCtl preload() called");
 		RoleModel roleModel = new RoleModel();
 		try {
@@ -42,6 +43,7 @@ public class UserListCtl extends BaseCtl {
 			request.setAttribute("roleList", roleList);
 			log.info("Preloaded role list, size=" + roleList.size());
 		} catch (ApplicationException e) {
+			ServletUtility.handleException(e, request, response, getView());
 			log.error("ApplicationException in preload()", e);
 			e.printStackTrace();
 		}
@@ -106,6 +108,7 @@ public class UserListCtl extends BaseCtl {
 			log.info("doGet() forwarded to view: " + getView());
 
 		} catch (ApplicationException e) {
+			ServletUtility.handleException(e, request, response, getView());
 			log.error("ApplicationException in doGet()", e);
 			e.printStackTrace();
 			return;
@@ -203,6 +206,7 @@ public class UserListCtl extends BaseCtl {
 			log.info("doPost() forwarded to view: " + getView());
 
 		} catch (ApplicationException e) {
+			ServletUtility.handleException(e, request, response, getView());
 			log.error("ApplicationException in doPost()", e);
 			e.printStackTrace();
 			return;

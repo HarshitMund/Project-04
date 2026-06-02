@@ -75,7 +75,7 @@ public class EventCtl extends BaseCtl {
 				ServletUtility.setBean(bean, request);
 			} catch (ApplicationException e) {
 				e.printStackTrace();
-				ServletUtility.handleException(e, request, response);
+				ServletUtility.handleException(e, request, response, getView());
 				return;
 			}
 		}
@@ -100,7 +100,7 @@ public class EventCtl extends BaseCtl {
 				ServletUtility.setErrorMessage("Event Name" + bean.getEventName() + "already Exists", request);
 			} catch (ApplicationException e) {
 				e.printStackTrace();
-				ServletUtility.handleException(e, request, response);
+				ServletUtility.handleException(e, request, response, getView());
 				return;
 			}
 		} else if (OP_UPDATE.equalsIgnoreCase(op)) {
@@ -116,7 +116,7 @@ public class EventCtl extends BaseCtl {
 				ServletUtility.setErrorMessage("Event Name already Exists", request);
 			} catch (ApplicationException e) {
 				e.printStackTrace();
-				ServletUtility.handleException(e, request, response);
+				ServletUtility.handleException(e, request, response, getView());
 				return;
 			}
 		} else if (OP_CANCEL.equalsIgnoreCase(op)) {

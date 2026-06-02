@@ -60,6 +60,11 @@
 	<a href="<%=ORSView.CAR_RENTAL_LIST_CTL%>">Car Rental List</a>
 	<b>|</b>
 
+	<a href="<%=ORSView.APPOINTMENT_CTL%>">Add Appointment</a>
+	<b>|</b>
+	<a href="<%=ORSView.APPOINTMENT_LIST_CTL%>">Appointment List</a>
+	<b>|</b>
+
 	<hr>
 
 </body>
